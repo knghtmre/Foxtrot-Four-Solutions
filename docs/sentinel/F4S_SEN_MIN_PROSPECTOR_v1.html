@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>F4S // PROSPECTOR OPS v9</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+    /* F4S "TITAN" CSS FRAMEWORK v9 */
+    :root {
+        --bg-deep: #05070a;
+        --bg-panel: rgba(16, 20, 28, 0.98);
+        --text-bright: #e2e8f0;
+        --text-dim: #64748b;
+        --accent-gold: #cfaa48;
+        --accent-blue: #3b82f6;
+        --accent-red: #ef4444;
+        --accent-green: #10b981;
+        --scan-line: rgba(74, 158, 255, 0.05);
+    }
+
+    body {
+        font-family: 'Rajdhani', sans-serif;
+        background-color: var(--bg-deep);
+        background-image: 
+            linear-gradient(0deg, transparent 24%, var(--scan-line) 25%, var(--scan-line) 26%, transparent 27%, transparent 74%, var(--scan-line) 75%, var(--scan-line) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, var(--scan-line) 25%, var(--scan-line) 26%, transparent 27%, transparent 74%, var(--scan-line) 75%, var(--scan-line) 76%, transparent 77%, transparent);
+        background-size: 50px 50px;
+        color: var(--text-bright);
+        margin: 0;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .hud-container {
+        width: 100%;
+        max-width: 1100px;
+        background: var(--bg-panel);
+        border: 1px solid #334155;
+        box-shadow: 0 0 60px rgba(0,0,0,0.9);
+        backdrop-filter: blur(12px);
+    }
+
+    /* HEADER */
+    .header-section { border-bottom: 2px solid var(--accent-gold); position: relative; }
+    .header-img { width: 100%; display: block; opacity: 0.9; }
+    .classification-bar {
+        background: #0f172a; color: #475569; text-align: center; font-family: 'Orbitron';
+        font-size: 11px; letter-spacing: 4px; padding: 8px 0; border-bottom: 1px solid #1e293b;
+    }
+
+    .content-body { padding: 40px; }
+
+    h1 { font-family: 'Orbitron'; font-size: 42px; margin: 0; color: #fff; text-transform: uppercase; }
+    h2 {
+        font-family: 'Orbitron'; color: var(--accent-blue); border-left: 4px solid var(--accent-blue);
+        padding-left: 15px; margin-top: 40px; font-size: 20px;
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+    }
+    h3 {
+        font-family: 'Orbitron'; color: var(--accent-gold); font-size: 16px; margin-top: 25px;
+        margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; width: 100%;
+    }
+
+    /* TABS */
+    .nav-tabs { display: flex; gap: 4px; margin-top: 30px; border-bottom: 1px solid #334155; }
+    .tab-btn {
+        flex: 1; padding: 18px; background: rgba(30, 41, 59, 0.5); border: 1px solid transparent;
+        color: #94a3b8; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; transition: 0.2s;
+    }
+    .tab-btn.active {
+        background: rgba(59, 130, 246, 0.1); color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold);
+    }
+    .panel { display: none; animation: slideIn 0.3s ease-out; }
+    .panel.active { display: block; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* TABLES */
+    .tech-table { width: 100%; border-collapse: separate; border-spacing: 0 4px; margin-top: 10px; }
+    .tech-table th {
+        text-align: left; color: var(--accent-gold); font-family: 'Orbitron'; font-size: 12px;
+        padding: 12px 15px; background: rgba(207, 170, 72, 0.05); border-bottom: 1px solid var(--accent-gold);
+    }
+    .tech-table td { background: rgba(255,255,255,0.02); padding: 12px 15px; color: #e2e8f0; }
+
+    /* SHOPPING CARDS */
+    .shop-card { border: 1px solid #334155; background: rgba(0,0,0,0.2); margin-bottom: 20px; }
+    .shop-header {
+        background: rgba(30, 41, 59, 0.5); padding: 15px; display: flex; justify-content: space-between;
+        align-items: center; border-bottom: 1px solid #334155;
+    }
+    .shop-title { font-family: 'Orbitron'; color: var(--accent-gold); font-weight: bold; font-size: 16px; }
+    .shop-loc { color: #94a3b8; font-size: 14px; }
+    .shop-body { padding: 20px; }
+
+    /* DETAILS/SUMMARY */
+    details { background: rgba(0, 0, 0, 0.3); border-top: 1px solid #334155; transition: 0.2s; }
+    details[open] { background: rgba(207, 170, 72, 0.05); }
+    summary {
+        padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; color: #64748b; font-size: 12px;
+        list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::after { content: 'SHOW DIRECTIONS +'; font-weight: bold; }
+    details[open] summary::after { content: 'HIDE -'; color: var(--accent-gold); }
+    .location-guide { padding: 20px; font-size: 14px; line-height: 1.6; color: #ccc; }
+    .step { display: flex; margin-bottom: 8px; }
+    .step-num { color: var(--accent-blue); font-weight: bold; min-width: 30px; }
+
+    /* CHECKLIST */
+    .checklist-group { display: flex; flex-direction: column; gap: 5px; }
+    .check-item {
+        display: flex; align-items: center; padding: 15px; margin-bottom: 5px;
+        background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
+        border-left: 3px solid #334155; cursor: pointer;
+    }
+    .check-item:hover { border-left-color: var(--accent-gold); background: rgba(255,255,255,0.05); }
+    input[type="checkbox"] { margin-right: 20px; accent-color: var(--accent-gold); }
+    .check-item.checked { opacity: 0.4; text-decoration: line-through; }
+    
+    .warning-box {
+        border: 1px solid var(--accent-red); background: rgba(239, 68, 68, 0.1);
+        padding: 20px; margin-top: 25px; color: #fca5a5; font-weight: 600;
+    }
+    
+    /* STRATEGY BLOCKS */
+    .strat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .strat-box { border: 1px solid #334155; padding: 20px; background: rgba(0,0,0,0.3); }
+    .sig-readout { font-family: 'Orbitron'; font-size: 24px; color: var(--accent-blue); margin: 10px 0; }
+</style>
+</head>
+<body>
+
+<div class="hud-container">
+    <div class="classification-bar">F4S SECURE DATABASE // CLEARANCE LEVEL 3 // VERSION 9.0</div>
+    <div class="header-section"><img src="image_0.png" class="header-img"></div>
+
+    <div class="content-body">
+        <h1>PROSPECTOR OPS <span style="font-size:24px; color:#64748b;">// SOP-MIN-44-P</span></h1>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="openTab('logistics', this)">01 // LOGISTICS</button>
+            <button class="tab-btn" onclick="openTab('strategy', this)">02 // STRATEGY & SIGINT</button>
+            <button class="tab-btn" onclick="openTab('execution', this)">03 // EXECUTION</button>
+            <button class="tab-btn" onclick="openTab('checklist', this)">04 // CHECKLIST</button>
+        </div>
+
+        <div id="logistics" class="panel active">
+            <h2 style="margin-top:0;">ACQUISITION ROUTE</h2>
+            <div style="margin-bottom: 20px; color:#94a3b8; font-size:14px;">
+                This loadout requires visiting <strong>4 distinct locations</strong>. Follow the route below to fully equip the Prospector.
+            </div>
+
+            <div class="shop-card">
+                <div class="shop-header"><span class="shop-title">STOP 01: PLATINUM BAY</span><span class="shop-loc">HUR-L5 (HIGHPOINT)</span></div>
+                <div class="shop-body">
+                    <table class="tech-table" style="margin-top:0;">
+                        <tr><th>ITEM</th><th>GRADE</th><th>PRICE (EST)</th></tr>
+                        <tr><td style="color:var(--accent-blue)">ATLAS QUANTUM DRIVE</td><td>Civ A</td><td>19,500 aUEC</td></tr>
+                    </table>
+                </div>
+                <details>
+                    <summary>NAVIGATIONAL DATA</summary>
+                    <div class="location-guide">
+                        <div class="step"><span class="step-num">01</span> Set Quantum Course to <strong>HUR-L5</strong>.</div>
+                        <div class="step"><span class="step-num">02</span> Land at Highpoint Station.</div>
+                        <div class="step"><span class="step-num">03</span> Take elevator to <strong>Galleria</strong>.</div>
+                        <div class="step"><span class="step-num">04</span> Locate <strong>Platinum Bay</strong> shop (Ship Parts).</div>
+                        <div class="step"><span class="step-num">05</span> Purchase 1x <strong>Atlas</strong> Drive (Size 1).</div>
+                        <div class="step"><span class="step-num">06</span> Open VLM (F1->Ship) and install IMMEDIATELY for range.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="shop-card">
+                <div class="shop-header"><span class="shop-title">STOP 02: CENTERMASS</span><span class="shop-loc">AREA18 (ARCCORP)</span></div>
+                <div class="shop-body">
+                    <table class="tech-table" style="margin-top:0;">
+                        <tr><th>ITEM</th><th>QTY</th><th>GRADE</th><th>PRICE (EST)</th></tr>
+                        <tr><td style="color:var(--accent-gold)">PALISADE SHIELDS</td><td>x2</td><td>Ind A</td><td>24,400 aUEC</td></tr>
+                        <tr><td style="color:var(--accent-gold)">DILEMMA POWER PLANT</td><td>x1</td><td>Ind A</td><td>28,200 aUEC</td></tr>
+                        <tr><td style="color:var(--accent-gold)">CHILLMAX COOLERS</td><td>x2</td><td>Ind A</td><td>12,100 aUEC</td></tr>
+                    </table>
+                </div>
+                <details>
+                    <summary>NAVIGATIONAL DATA</summary>
+                    <div class="location-guide">
+                        <div class="step"><span class="step-num">01</span> Fly to <strong>Area18</strong>. Land at Riker Memorial Spaceport.</div>
+                        <div class="step"><span class="step-num">02</span> Take the Tram to Area18 Plaza.</div>
+                        <div class="step"><span class="step-num">03</span> Exit Tram, turn <strong>RIGHT</strong>. Walk past "Astro Armada".</div>
+                        <div class="step"><span class="step-num">04</span> Look for the tall <strong>IO NORTH TOWER</strong> building.</div>
+                        <div class="step"><span class="step-num">05</span> Take elevator to <strong>CENTERMASS</strong>. Purchase items.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="shop-card">
+                <div class="shop-header"><span class="shop-title">STOP 03: SHUBIN INTERSTELLAR</span><span class="shop-loc">NEW BABBAGE (MICROTECH)</span></div>
+                <div class="shop-body">
+                    <table class="tech-table" style="margin-top:0;">
+                        <tr><th>ITEM</th><th>QTY</th><th>TYPE</th><th>PRICE (EST)</th></tr>
+                        <tr><td style="color:var(--accent-blue)">HELIX I MINING HEAD</td><td>x1</td><td>Size 1</td><td>108,000 aUEC</td></tr>
+                    </table>
+                </div>
+                <details>
+                    <summary>NAVIGATIONAL DATA</summary>
+                    <div class="location-guide">
+                        <div class="step"><span class="step-num">01</span> Fly to <strong>New Babbage</strong>.</div>
+                        <div class="step"><span class="step-num">02</span> Do NOT land at Spaceport. Fly to <strong>"The Commons"</strong> surface entrance.</div>
+                        <div class="step"><span class="step-num">03</span> Land on the ice lake outside the Commons dome.</div>
+                        <div class="step"><span class="step-num">04</span> Enter the surface airlock.</div>
+                        <div class="step"><span class="step-num">05</span> Walk straight. <strong>Shubin Interstellar</strong> kiosk is in the center of the hall.</div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="shop-card">
+                <div class="shop-header"><span class="shop-title">STOP 04: REFINERY DECK</span><span class="shop-loc">HUR-L1 or CRU-L1</span></div>
+                <div class="shop-body">
+                    <table class="tech-table" style="margin-top:0;">
+                        <tr><th>ITEM</th><th>QTY</th><th>TYPE</th><th>NOTES</th></tr>
+                        <tr><td style="color:var(--accent-red)">SURGE MODULE</td><td>x5</td><td>Active</td><td>Buy spares (Consumable)</td></tr>
+                        <tr><td style="color:var(--accent-green)">STAMPEDE MODULE</td><td>x5</td><td>Active</td><td>Buy spares (Consumable)</td></tr>
+                        <tr><td>RIEGER C3 MODULE</td><td>x2</td><td>Passive</td><td>Permanent install</td></tr>
+                        <tr><td>BOREMAX GADGET</td><td>x1</td><td>Gadget</td><td>Equip to armor (Key 4)</td></tr>
+                        <tr><td>PYRO RYT TOOL</td><td>x1</td><td>Tool</td><td>Equip to armor</td></tr>
+                        <tr><td>OREBIT ATTACHMENT</td><td>x1</td><td>Part</td><td>For Multi-tool</td></tr>
+                        <tr><td>TRU-HOLD TRACTOR</td><td>x1</td><td>Part</td><td>For Multi-tool</td></tr>
+                    </table>
+                </div>
+                <details>
+                    <summary>NAVIGATIONAL DATA</summary>
+                    <div class="location-guide">
+                        <div class="step"><span class="step-num">01</span> Fly to <strong>HUR-L1 (Green Glade)</strong>.</div>
+                        <div class="step"><span class="step-num">02</span> Land and take elevator to <strong>Refinery Deck</strong>.</div>
+                        <div class="step"><span class="step-num">03</span> Enter the shop located on the Refinery level.</div>
+                        <div class="step"><span class="step-num">04</span> Purchase all items. Equip Multi-tool immediately.</div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div id="strategy" class="panel">
+            <h2>SIGINT: SIGNAL INTELLIGENCE LOOKUP</h2>
+            <div style="margin-bottom:20px; color:#94a3b8">
+                Do not fly blind. Use RS (Return Strength) values to identify rock composition <strong>before</strong> you fly 10km to check it.
+            </div>
+
+            <div class="strat-grid">
+                <div class="strat-box">
+                    <strong style="color:var(--accent-gold); font-family:'Orbitron'">RS LOOKUP TABLE (@ 10KM)</strong>
+                    <div class="sig-readout">1,000 - 3,000 RS</div>
+                    <div style="font-size:13px; color:#ccc; margin-bottom:15px;">TRASH. Likely single rock &lt; 2000kg. Ignore.</div>
+                    
+                    <div class="sig-readout">6,000 - 8,000 RS</div>
+                    <div style="font-size:13px; color:#ccc; margin-bottom:15px;">POSSIBLE. Could be a 5k mass rock or a small cluster. Verify angle.</div>
+
+                    <div class="sig-readout" style="color:var(--accent-green); text-shadow:0 0 10px var(--accent-green);">12,000+ RS</div>
+                    <div style="font-size:13px; color:#fff;">JACKPOT. Guaranteed massive cluster. 2+ Rocks of high mass. BURN TO TARGET.</div>
+                </div>
+
+                <div class="strat-box">
+                    <strong style="color:var(--accent-blue); font-family:'Orbitron'">FLIGHT GEOMETRY (LYRIA)</strong>
+                    <table class="tech-table" style="margin-top:10px;">
+                        <tr><td>ALTITUDE</td><td><span style="color:var(--accent-gold)">350m - 450m</span> AGL</td></tr>
+                        <tr><td>VELOCITY</td><td><span style="color:var(--accent-gold)">SCM Limiter @ 75%</span></td></tr>
+                        <tr><td>PITCH</td><td><span style="color:var(--accent-gold)">-15 Degrees</span> (Look down)</td></tr>
+                        <tr><td>PING</td><td><span style="color:var(--accent-gold)">360°</span> every 4 seconds</td></tr>
+                    </table>
+                    <div style="margin-top:10px; font-size:13px; line-height:1.5; color:#ccc;">
+                        <strong>THE "CORKSCREW":</strong> If signature disappears, do not fly straight. Roll 90° and pitch up to scan perpendicular to your previous path.
+                    </div>
+                </div>
+            </div>
+
+            <h2>YIELD CALCULATOR</h2>
+            <div class="shop-card" style="margin-top:20px;">
+                <div class="shop-body">
+                    <div style="font-family:'Orbitron'; color:var(--accent-gold); font-size:16px; margin-bottom:10px;">
+                        FORMULA: (MASS × %) ÷ 200 = SCU
+                    </div>
+                    <p style="font-size:14px; color:#ccc;">
+                        Example: <strong>5,000kg</strong> Rock @ <strong>40%</strong> Quantainium.<br>
+                        5000 × 0.40 = 2000 units.<br>
+                        2000 ÷ 100 (cSCU conversion) = 20 SCU.<br>
+                        <strong>RESULT:</strong> Fills 62% of Prospector Hold (32 SCU). <span style="color:var(--accent-green)">TAKE IT.</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <strong>THE 30% RULE:</strong> Never crack a rock under 30% Quantainium unless it is massive (>6k). 
+                The filtration system cannot separate the inert materials fast enough, filling your bags with trash.
+            </div>
+        </div>
+
+        <div id="execution" class="panel">
+            <h2>FRACTURE DOCTRINE (HELIX I)</h2>
+            <div class="warning-box">
+                ⚠️ <strong>CRITICAL:</strong> "Surge" module adds 40% heat INSTANTLY. <br>
+                Laser power MUST be at 0% before activation to avoid explosion.
+            </div>
+            <table class="tech-table">
+                <tr><th>PHASE</th><th>ACTION</th><th>DETAIL</th></tr>
+                <tr>
+                    <td style="color:var(--accent-blue)">1. ANALYZE</td>
+                    <td>Scan & Gadget</td>
+                    <td>If Resistance > 50%, EVA and attach <strong>BoreMax</strong>.</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--accent-red)">2. INJECT</td>
+                    <td>Activate SURGE (Alt+1)</td>
+                    <td>Wait for cooldown. Charge jumps ~40%.</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--accent-gold)">3. BUILD</td>
+                    <td>Feather Laser</td>
+                    <td>Stabilize heat in Green Zone.</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--accent-green)">4. CRACK</td>
+                    <td>Activate STAMPEDE (Alt+2)</td>
+                    <td>Only when Green. +125% Charge Rate. Cut power at 100%.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="checklist" class="panel">
+            <h2>PRE-FLIGHT GO/NO-GO</h2>
+            <div class="checklist-group">
+                <label class="check-item"><input type="checkbox"><span><strong>STOP 1 (HUR-L5):</strong> Atlas Drive Installed.</span></label>
+                <label class="check-item"><input type="checkbox"><span><strong>STOP 2 (Area18):</strong> Ind A Power/Coolers/Shields Installed.</span></label>
+                <label class="check-item"><input type="checkbox"><span><strong>STOP 3 (New Babbage):</strong> Helix I Head Installed.</span></label>
+                <label class="check-item"><input type="checkbox"><span><strong>STOP 4 (Refinery):</strong> Modules & Gadgets Loaded.</span></label>
+                <label class="check-item"><input type="checkbox"><span><strong>GEAR:</strong> Multi-tool + OreBit + Tractor equipped.</span></label>
+                <label class="check-item"><input type="checkbox"><span><strong>CARGO:</strong> 32 SCU Grid Empty.</span></label>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function openTab(id, btn) {
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+    document.querySelectorAll('.check-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'INPUT') {
+                const cb = this.querySelector('input');
+                cb.checked = !cb.checked;
+            }
+            const cb = this.querySelector('input');
+            if(cb.checked) this.classList.add('checked'); else this.classList.remove('checked');
+        });
+    });
+</script>
+</body>
+</html>

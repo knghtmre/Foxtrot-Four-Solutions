@@ -1,0 +1,108 @@
+{
+  "mining_components": [
+    {
+      "id": "mining_head_arbor",
+      "name": "Arbor MH1",
+      "category": "Mining Head",
+      "type": "All-Purpose",
+      "power_range": "300-1500W",
+      "resistance_reduction": "-50%",
+      "inert_reduction": "-50%",
+      "optimal_for": "Budget Setup, Mixed Ores",
+      "vendor": "Shubin Interstellar",
+      "location": "New Babbage (Microtech)"
+    },
+    {
+      "id": "mining_head_helix",
+      "name": "Helix I",
+      "category": "Mining Head",
+      "type": "Premium / Quantanium Specialist",
+      "power_range": "600-3000W",
+      "resistance_reduction": "-70%",
+      "inert_reduction": "-70%",
+      "optimal_for": "Top-Tier Setup, Quantanium Mining",
+      "vendor": "Shubin Interstellar",
+      "location": "New Babbage (Microtech)"
+    },
+    {
+      "id": "module_boremax",
+      "name": "BoreMax Module",
+      "category": "Mining Module",
+      "type": "Power Amplifier",
+      "effect": "Increases laser power output by 20%",
+      "optimal_for": "Both Loadouts",
+      "vendor": "Mining Supply Depot",
+      "location": "HUR-L1 Refinery Deck"
+    },
+    {
+      "id": "module_optimax",
+      "name": "OptiMax Module",
+      "category": "Mining Module",
+      "type": "Resistance Reducer",
+      "effect": "Reduces rock resistance by 15%",
+      "optimal_for": "Top-Tier Setup, Hard Rocks",
+      "vendor": "Mining Supply Depot",
+      "location": "HUR-L1 Refinery Deck"
+    },
+    {
+      "id": "gadget_surge",
+      "name": "Surge Gadget",
+      "category": "Mining Gadget",
+      "type": "Temporary Power Boost",
+      "effect": "Instant +30% power for 10 seconds",
+      "optimal_for": "Emergency Fractures",
+      "vendor": "Mining Supply Depot",
+      "location": "HUR-L1 Refinery Deck"
+    },
+    {
+      "id": "gadget_stampede",
+      "name": "Stampede Gadget",
+      "category": "Mining Gadget",
+      "type": "Instability Reducer",
+      "effect": "Reduces instability by 25% for 15 seconds",
+      "optimal_for": "Volatile Rocks",
+      "vendor": "Mining Supply Depot",
+      "location": "HUR-L1 Refinery Deck"
+    },
+    {
+      "id": "power_plant_js300",
+      "name": "JS-300 Power Plant",
+      "category": "Power Plant",
+      "type": "Military Grade A",
+      "power_output": "3000W",
+      "optimal_for": "Prospector Mining",
+      "vendor": "Platinum Bay",
+      "location": "HUR-L5 Highpoint Station"
+    },
+    {
+      "id": "quantum_drive_atlas",
+      "name": "Atlas Quantum Drive",
+      "category": "Quantum Drive",
+      "type": "Civilian Grade A",
+      "range": "Extended",
+      "optimal_for": "Long Mining Runs",
+      "vendor": "Platinum Bay",
+      "location": "HUR-L5 Highpoint Station"
+    },
+    {
+      "id": "shield_fr66",
+      "name": "FR-66 Shield Generator",
+      "category": "Shield Generator",
+      "type": "Military Grade B",
+      "protection": "Enhanced",
+      "optimal_for": "Prospector Protection",
+      "vendor": "CenterMass",
+      "location": "Area18 (ArcCorp)"
+    },
+    {
+      "id": "cooler_zerorush",
+      "name": "Zero-Rush Cooler",
+      "category": "Cooler",
+      "type": "Industrial Grade A",
+      "cooling_efficiency": "High",
+      "optimal_for": "Thermal Management",
+      "vendor": "CenterMass",
+      "location": "Area18 (ArcCorp)"
+    }
+  ]
+}

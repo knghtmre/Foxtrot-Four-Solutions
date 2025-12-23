@@ -1,0 +1,70 @@
+{
+  "vendors": [
+    {
+      "id": "platinum_bay",
+      "name": "Platinum Bay",
+      "type": "Ship Parts Vendor",
+      "location": "HUR-L5 Highpoint Station",
+      "system": "Stanton",
+      "level": "Galleria Level, Section C",
+      "items_sold": ["Atlas Quantum Drive", "JS-300 Power Plant"],
+      "accessibility": "Easy",
+      "armistice_zone": true
+    },
+    {
+      "id": "centermass",
+      "name": CenterMass",
+      "type": "Ship Parts Vendor",
+      "location": "Area18 (ArcCorp)",
+      "system": "Stanton",
+      "level": "IO North Tower, CenterMass Level",
+      "items_sold": ["FR-66 Shield Generator", "Zero-Rush Cooler"],
+      "accessibility": "Moderate",
+      "armistice_zone": true
+    },
+    {
+      "id": "shubin_interstellar",
+      "name": "Shubin Interstellar",
+      "type": "Mining Equipment Vendor",
+      "location": "New Babbage (Microtech)",
+      "system": "Stanton",
+      "level": "The Commons, Main Hall",
+      "items_sold": ["Arbor MH1", "Helix I"],
+      "accessibility": "Moderate",
+      "armistice_zone": true
+    },
+    {
+      "id": "mining_supply_depot",
+      "name": "Mining Supply Depot",
+      "type": "Mining Modules & Gadgets",
+      "location": "HUR-L1 Green Glade Station",
+      "system": "Stanton",
+      "level": "Refinery Deck",
+      "items_sold": ["OptiMax Module", "BoreMax Module", "Surge Gadget", "Stampede Gadget"],
+      "accessibility": "Easy",
+      "armistice_zone": true
+    },
+    {
+      "id": "orbituary_station",
+      "name": "Orbituary Station",
+      "type": "Refinery & Vendor",
+      "location": "Pyro V Orbit",
+      "system": "Pyro",
+      "level": "Main Deck",
+      "items_sold": ["Mining Equipment (Limited)"],
+      "accessibility": "Difficult",
+      "armistice_zone": false
+    },
+    {
+      "id": "ruin_station",
+      "name": "Ruin Station",
+      "type": "Refinery & Vendor",
+      "location": "Terminus",
+      "system": "Pyro",
+      "level": "Main Deck",
+      "items_sold": ["Mining Equipment (Limited)"],
+      "accessibility": "Difficult",
+      "armistice_zone": false
+    }
+  ]
+}

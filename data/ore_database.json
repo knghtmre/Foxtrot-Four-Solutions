@@ -1,0 +1,81 @@
+{
+  "ores": [
+    {
+      "id": "quantanium",
+      "name": "Quantanium",
+      "rarity": "Rare",
+      "profitability_tier": "Maximum",
+      "mine_threshold": "≥30% (single) or ≥25% (cluster)",
+      "skip_threshold": "<20%",
+      "timer": "25 minutes (hard limit)",
+      "primary_locations": ["Lyria", "Bloom", "Terminus"],
+      "notes": "Most valuable ore. Requires careful timer management."
+    },
+    {
+      "id": "taranite",
+      "name": "Taranite",
+      "rarity": "Uncommon",
+      "profitability_tier": "Very High",
+      "mine_threshold": "≥25%",
+      "skip_threshold": "<20%",
+      "timer": "No timer",
+      "primary_locations": ["Yela", "Bloom", "Terminus"],
+      "notes": "Excellent value, no timer pressure."
+    },
+    {
+      "id": "hadanite",
+      "name": "Hadanite",
+      "rarity": "Uncommon",
+      "profitability_tier": "Very High",
+      "mine_threshold": "≥25%",
+      "skip_threshold": "<20%",
+      "timer": "No timer",
+      "primary_locations": ["Yela", "Terminus"],
+      "notes": "Often found in clusters, good yield."
+    },
+    {
+      "id": "bexalite",
+      "name": "Bexalite",
+      "rarity": "Common",
+      "profitability_tier": "High",
+      "mine_threshold": "≥20%",
+      "skip_threshold": "<15%",
+      "timer": "No timer",
+      "primary_locations": ["Yela", "Bloom"],
+      "notes": "Solid mid-tier ore, reliable profitability."
+    },
+    {
+      "id": "corundum",
+      "name": "Corundum",
+      "rarity": "Common",
+      "profitability_tier": "Medium",
+      "mine_threshold": "≥35%",
+      "skip_threshold": "<25%",
+      "timer": "No timer",
+      "primary_locations": ["Lyria", "Microtech"],
+      "notes": "Viable filler material for bulk runs."
+    },
+    {
+      "id": "titanium",
+      "name": "Titanium",
+      "rarity": "Very Common",
+      "profitability_tier": "Medium",
+      "mine_threshold": "≥35%",
+      "skip_threshold": "<25%",
+      "timer": "No timer",
+      "primary_locations": ["Lyria", "Microtech"],
+      "notes": "Common, good for learning runs."
+    },
+    {
+      "id": "stileron",
+      "name": "Stileron (Rare)",
+      "rarity": "Extremely Rare",
+      "profitability_tier": "Maximum",
+      "mine_threshold": "≥20%",
+      "skip_threshold": "<15%",
+      "timer": "Unknown (Pyro-specific)",
+      "primary_locations": ["Bloom"],
+      "notes": "New ore in 4.5. Premium pricing. Pyro-exclusive."
+    }
+  ]
+}
