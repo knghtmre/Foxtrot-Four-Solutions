@@ -1197,6 +1197,22 @@
             <p>Interactive pre-flight, operational, and post-mining verification checklist.</p>
         </div>
 
+        <h2 style="color: #ef4444; margin-top: 0;">⚠ QUANTANIUM TIMER - START HERE ⚠</h2>
+        
+        <div class="info-box" style="background: rgba(239, 68, 68, 0.15); border-left: 6px solid #ef4444; padding: 25px; margin: 20px 0; border-radius: 8px;">
+            <strong style="font-size: 18px; color: #ef4444;">QUANTANIUM TIMER MONITOR</strong>
+            <p style="margin: 10px 0; color: #cfaa48; font-size: 16px;">Start timer when Quantanium enters cargo hold. You have 25 minutes before explosion.</p>
+            
+            <div style="margin: 20px 0; display: flex; gap: 15px; justify-content: center;">
+                <button onclick="startTimer()" style="padding: 15px 30px; background: #10b981; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 16px; font-family: 'Orbitron', sans-serif; transition: all 0.3s ease;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">▶ START TIMER</button>
+                <button onclick="resetTimer()" style="padding: 15px 30px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 16px; font-family: 'Orbitron', sans-serif; transition: all 0.3s ease;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">⏹ RESET TIMER</button>
+            </div>
+            
+            <div style="margin: 20px 0; font-size: 48px; font-family: 'Orbitron', sans-serif; color: #cfaa48; font-weight: 700; text-align: center; letter-spacing: 2px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 6px;" id="timerDisplay">00:00 / 25:00</div>
+            
+            <div style="margin: 20px 0; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 6px; text-align: center; font-size: 16px;" id="timerWarning"></div>
+        </div>
+
         <h2>Pre-Flight Checklist</h2>
         <ul class="checklist">
             <li><input type="checkbox"> Ship systems check: All green</li>
@@ -1217,16 +1233,6 @@
         </ul>
 
         <h2>Mining Operation Checklist</h2>
-        
-        <div class="info-box">
-            <strong>Quantanium Timer Monitor:</strong> Start timer when Quantanium enters cargo hold. You have 25 minutes before explosion.
-            <div style="margin-top: 10px;">
-                <button onclick="startTimer()" style="padding: 8px 15px; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 700; margin-right: 10px;">START TIMER</button>
-                <button onclick="resetTimer()" style="padding: 8px 15px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 700;">RESET TIMER</button>
-            </div>
-            <div style="margin-top: 10px; font-size: 24px; font-family: 'Orbitron', sans-serif; color: #cfaa48; font-weight: 700;" id="timerDisplay">00:00 / 25:00</div>
-            <div style="margin-top: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;" id="timerWarning"></div>
-        </div>
         
         <ul class="checklist">
             <li><input type="checkbox"> Arrived at mining zone safely</li>
@@ -1249,7 +1255,7 @@
             <li><input type="checkbox"> Repeated fracturing until target fill reached (60-80% for Quantanium)</li>
             <li><input type="checkbox"> Planned return route to nearest refinery</li>
             <li><input type="checkbox"> Quantum jumped to refinery station</li>
-            <li><input type="checkbox"> Quantanium timer: STOPPED (ore delivered safely)</li>
+            <li><input type="checkbox"> Quantanium timer: STOPPED (ore delivered safely) - Click RESET TIMER at top</li>
         </ul>
 
         <h2>Refinery and Sales Checklist</h2>
