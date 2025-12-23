@@ -1208,7 +1208,7 @@
                 <button onclick="resetTimer()" style="padding: 15px 30px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 16px; font-family: 'Orbitron', sans-serif; transition: all 0.3s ease;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">⏹ RESET TIMER</button>
             </div>
             
-            <div style="margin: 20px 0; font-size: 48px; font-family: 'Orbitron', sans-serif; color: #cfaa48; font-weight: 700; text-align: center; letter-spacing: 2px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 6px;" id="timerDisplay">00:00 / 25:00</div>
+            <div style="margin: 20px 0; font-size: 48px; font-family: 'Orbitron', sans-serif; color: #cfaa48; font-weight: 700; text-align: center; letter-spacing: 2px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 6px;" id="timerDisplay">25:00</div>
             
             <div style="margin: 20px 0; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 6px; text-align: center; font-size: 16px;" id="timerWarning"></div>
         </div>
@@ -1341,25 +1341,26 @@
 
 <script>
     let timerInterval = null;
-    let timerSeconds = 0;
+    let timerSeconds = TIMER_MAX = 25 * 60; // 25 minutes in seconds
     const TIMER_MAX = 25 * 60; // 25 minutes in seconds
 
     function startTimer() {
         if (timerInterval !== null) return; // Already running
         
         timerInterval = setInterval(function() {
-            timerSeconds++;
+            timerSeconds--;
             updateTimerDisplay();
             
-            if (timerSeconds >= TIMER_MAX) {
+            if (timerSeconds <= 0) {
                 clearInterval(timerInterval);
                 timerInterval = null;
+                timerSeconds = 0;
                 document.getElementById('timerWarning').innerHTML = '<strong style="color: #ef4444;">⚠ TIMER EXPIRED - QUANTANIUM DETONATION IMMINENT ⚠</strong>';
                 document.getElementById('timerWarning').style.background = 'rgba(239, 68, 68, 0.3)';
-            } else if (timerSeconds >= TIMER_MAX - 300) { // Last 5 minutes
+            } else if (timerSeconds <= 300) { // Last 5 minutes
                 document.getElementById('timerWarning').innerHTML = '<strong style="color: #ef4444;">⚠ CRITICAL: Less than 5 minutes remaining. Return to refinery immediately.</strong>';
                 document.getElementById('timerWarning').style.background = 'rgba(239, 68, 68, 0.2)';
-            } else if (timerSeconds >= TIMER_MAX - 600) { // Last 10 minutes
+            } else if (timerSeconds <= 600) { // Last 10 minutes
                 document.getElementById('timerWarning').innerHTML = '<strong style="color: #cfaa48;">⚠ WARNING: Less than 10 minutes remaining. Plan return route to refinery.</strong>';
                 document.getElementById('timerWarning').style.background = 'rgba(207, 170, 72, 0.2)';
             } else {
@@ -1374,7 +1375,7 @@
             clearInterval(timerInterval);
             timerInterval = null;
         }
-        timerSeconds = 0;
+        timerSeconds = TIMER_MAX;
         updateTimerDisplay();
         document.getElementById('timerWarning').innerHTML = '';
     }
@@ -1384,7 +1385,7 @@
         const seconds = timerSeconds % 60;
         const displayMin = minutes.toString().padStart(2, '0');
         const displaySec = seconds.toString().padStart(2, '0');
-        document.getElementById('timerDisplay').textContent = displayMin + ':' + displaySec + ' / 25:00';
+        document.getElementById('timerDisplay').textContent = displayMin + ':' + displaySec;
     }
 
     function openTab(evt, tabName) {
