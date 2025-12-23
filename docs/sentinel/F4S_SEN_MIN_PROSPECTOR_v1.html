@@ -1217,6 +1217,17 @@
         </ul>
 
         <h2>Mining Operation Checklist</h2>
+        
+        <div class="info-box">
+            <strong>Quantanium Timer Monitor:</strong> Start timer when Quantanium enters cargo hold. You have 25 minutes before explosion.
+            <div style="margin-top: 10px;">
+                <button onclick="startTimer()" style="padding: 8px 15px; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 700; margin-right: 10px;">START TIMER</button>
+                <button onclick="resetTimer()" style="padding: 8px 15px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 700;">RESET TIMER</button>
+            </div>
+            <div style="margin-top: 10px; font-size: 24px; font-family: 'Orbitron', sans-serif; color: #cfaa48; font-weight: 700;" id="timerDisplay">00:00 / 25:00</div>
+            <div style="margin-top: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;" id="timerWarning"></div>
+        </div>
+        
         <ul class="checklist">
             <li><input type="checkbox"> Arrived at mining zone safely</li>
             <li><input type="checkbox"> Reduced speed to scanning speed (200 m/s)</li>
@@ -1238,6 +1249,7 @@
             <li><input type="checkbox"> Repeated fracturing until target fill reached (60-80% for Quantanium)</li>
             <li><input type="checkbox"> Planned return route to nearest refinery</li>
             <li><input type="checkbox"> Quantum jumped to refinery station</li>
+            <li><input type="checkbox"> Quantanium timer: STOPPED (ore delivered safely)</li>
         </ul>
 
         <h2>Refinery and Sales Checklist</h2>
@@ -1322,6 +1334,53 @@
 </div>
 
 <script>
+    let timerInterval = null;
+    let timerSeconds = 0;
+    const TIMER_MAX = 25 * 60; // 25 minutes in seconds
+
+    function startTimer() {
+        if (timerInterval !== null) return; // Already running
+        
+        timerInterval = setInterval(function() {
+            timerSeconds++;
+            updateTimerDisplay();
+            
+            if (timerSeconds >= TIMER_MAX) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                document.getElementById('timerWarning').innerHTML = '<strong style="color: #ef4444;">⚠ TIMER EXPIRED - QUANTANIUM DETONATION IMMINENT ⚠</strong>';
+                document.getElementById('timerWarning').style.background = 'rgba(239, 68, 68, 0.3)';
+            } else if (timerSeconds >= TIMER_MAX - 300) { // Last 5 minutes
+                document.getElementById('timerWarning').innerHTML = '<strong style="color: #ef4444;">⚠ CRITICAL: Less than 5 minutes remaining. Return to refinery immediately.</strong>';
+                document.getElementById('timerWarning').style.background = 'rgba(239, 68, 68, 0.2)';
+            } else if (timerSeconds >= TIMER_MAX - 600) { // Last 10 minutes
+                document.getElementById('timerWarning').innerHTML = '<strong style="color: #cfaa48;">⚠ WARNING: Less than 10 minutes remaining. Plan return route to refinery.</strong>';
+                document.getElementById('timerWarning').style.background = 'rgba(207, 170, 72, 0.2)';
+            } else {
+                document.getElementById('timerWarning').innerHTML = '<strong style="color: #10b981;">✓ Timer running. Continue mining operations.</strong>';
+                document.getElementById('timerWarning').style.background = 'rgba(16, 185, 129, 0.2)';
+            }
+        }, 1000);
+    }
+
+    function resetTimer() {
+        if (timerInterval !== null) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        timerSeconds = 0;
+        updateTimerDisplay();
+        document.getElementById('timerWarning').innerHTML = '';
+    }
+
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timerSeconds / 60);
+        const seconds = timerSeconds % 60;
+        const displayMin = minutes.toString().padStart(2, '0');
+        const displaySec = seconds.toString().padStart(2, '0');
+        document.getElementById('timerDisplay').textContent = displayMin + ':' + displaySec + ' / 25:00';
+    }
+
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content");
@@ -1346,6 +1405,11 @@
             element.textContent = "▼ Hide Navigation Details";
         }
     }
+
+    // Initialize timer display on page load
+    window.addEventListener('load', function() {
+        updateTimerDisplay();
+    });
 </script>
 
 </body>
