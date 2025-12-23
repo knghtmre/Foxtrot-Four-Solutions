@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxtrot-Four Solutions - F4S Manual</title>
+    <style>
+        /* F4S "TITAN" CSS Framework v1.1 */
+        @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Russo+One&family=Rajdhani:wght@400;700&display=swap");
+
+        :root {
+            --f4s-gold: #cfaa48;
+            --f4s-blue: #3b82f6;
+            --f4s-red: #ef4444;
+            --f4s-green: #10b981;
+            --f4s-dark-bg: #111827;
+            --f4s-light-bg: #1f2937;
+            --f4s-text-light: #d1d5db;
+            --f4s-text-dark: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--f4s-dark-bg);
+            color: var(--f4s-text-light);
+            font-family: "Rajdhani", sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: var(--f4s-light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--f4s-gold);
+            padding-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-family: "Orbitron", sans-serif;
+            color: var(--f4s-gold);
+            margin: 20px 0 10px 0;
+            font-size: 2.5em;
+        }
+
+        .header p {
+            color: var(--f4s-text-dark);
+            margin: 5px 0;
+        }
+
+        .division-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .division-card {
+            background: var(--f4s-dark-bg);
+            border-left: 4px solid var(--f4s-gold);
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .division-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .division-card h2 {
+            font-family: "Orbitron", sans-serif;
+            color: var(--f4s-gold);
+            margin-top: 0;
+        }
+
+        .division-card p {
+            color: var(--f4s-text-dark);
+        }
+
+        .sop-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .sop-list li {
+            margin-bottom: 10px;
+        }
+
+        .sop-link {
+            color: var(--f4s-blue);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .sop-link:hover {
+            color: var(--f4s-gold);
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--f4s-text-dark);
+            color: var(--f4s-text-dark);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="assets/image_0.png" alt="Foxtrot-Four Solutions Logo">
+        <h1>F4S MANUAL</h1>
+        <p>Standard Operating Procedures for the Verse</p>
+        <p>Star Citizen 4.5 // Foxtrot-Four Solutions</p>
+    </div>
+
+    <div class="division-grid">
+        <!-- SENTINEL DIVISION -->
+        <div class="division-card">
+            <h2>SEN // SENTINEL</h2>
+            <p>Mining, Salvage, Trade</p>
+            <ul class="sop-list">
+                <li><a href="docs/sentinel/F4S_SEN_MIN_PROSPECTOR_v1.html" class="sop-link">F4S_SEN_MIN_PROSPECTOR_v1</a></li>
+                <!-- Add more Sentinel SOPs here -->
+            </ul>
+        </div>
+
+        <!-- NEXUS DIVISION -->
+        <div class="division-card">
+            <h2>NEX // NEXUS</h2>
+            <p>Medical, Cargo, Repair</p>
+            <ul class="sop-list">
+                <!-- Add more Nexus SOPs here -->
+            </ul>
+        </div>
+
+        <!-- VANGUARD DIVISION -->
+        <div class="division-card">
+            <h2>VAN // VANGUARD</h2>
+            <p>Combat</p>
+            <ul class="sop-list">
+                <!-- Add more Vanguard SOPs here -->
+            </ul>
+        </div>
+
+        <!-- AEGIS DIVISION -->
+        <div class="division-card">
+            <h2>AEG // AEGIS</h2>
+            <p>Security</p>
+            <ul class="sop-list">
+                <!-- Add more Aegis SOPs here -->
+            </ul>
+        </div>
+
+        <!-- OBSIDIAN DIVISION -->
+        <div class="division-card">
+            <h2>OBS // OBSIDIAN</h2>
+            <p>Illicit</p>
+            <ul class="sop-list">
+                <!-- Add more Obsidian SOPs here -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Foxtrot-Four Solutions. All rights reserved.</p>
+    </div>
+</div>
+
+</body>
+</html>
