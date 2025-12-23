@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F4S Prospector Mining SOP</title>
+    <title>F4S Prospector Mining SOP v1.1</title>
     <style>
         /* F4S "TITAN" CSS Framework v1.1 */
         @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Russo+One&family=Rajdhani:wght@400;700&display=swap");
@@ -19,6 +19,10 @@
             --f4s-text-dark: #9ca3af;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--f4s-dark-bg);
             color: var(--f4s-text-light);
@@ -32,61 +36,85 @@
             max-width: 1200px;
             margin: auto;
             background: var(--f4s-light-bg);
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .header img {
-            max-width: 100%;
-            height: auto;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--f4s-gold);
+            padding-bottom: 20px;
         }
 
         .classification-bar {
             background: var(--f4s-gold);
             color: var(--f4s-dark-bg);
-            padding: 5px 10px;
+            padding: 8px 15px;
             text-align: center;
             font-family: "Orbitron", sans-serif;
             font-weight: 700;
             border-radius: 4px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .header h1 {
+            font-family: "Orbitron", sans-serif;
+            color: var(--f4s-gold);
+            margin: 20px 0 10px 0;
+            font-size: 2.5em;
+        }
+
+        .header p {
+            color: var(--f4s-text-dark);
+            margin: 5px 0;
         }
 
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             border-bottom: 2px solid var(--f4s-gold);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            gap: 5px;
         }
 
         .tab-btn {
             background: none;
             border: none;
             color: var(--f4s-text-dark);
-            padding: 10px 20px;
+            padding: 12px 16px;
             cursor: pointer;
             font-family: "Orbitron", sans-serif;
-            font-size: 16px;
+            font-size: 13px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
-        .tab-btn.active, .tab-btn:hover {
+        .tab-btn.active {
             color: var(--f4s-gold);
-            border-bottom: 2px solid var(--f4s-gold);
+            border-bottom: 3px solid var(--f4s-gold);
             margin-bottom: -2px;
+        }
+
+        .tab-btn:hover {
+            color: var(--f4s-gold);
         }
 
         .tab-content {
             display: none;
+            animation: fadeIn 0.3s ease-in;
         }
 
         .tab-content.active {
             display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         h1, h2, h3 {
@@ -94,10 +122,17 @@
             color: var(--f4s-gold);
         }
 
+        h2 {
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--f4s-gold);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            background: var(--f4s-dark-bg);
         }
 
         th, td {
@@ -107,33 +142,46 @@
         }
 
         th {
-            background-color: var(--f4s-dark-bg);
+            background-color: rgba(207, 170, 72, 0.1);
             color: var(--f4s-gold);
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: rgba(59, 130, 246, 0.05);
         }
 
         .shop-card {
             background: var(--f4s-dark-bg);
-            border-radius: 8px;
+            border-left: 4px solid var(--f4s-gold);
+            border-radius: 4px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         .shop-card h3 {
             margin-top: 0;
-        }
-
-        .nav-details {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background: #2c3e50;
-            border-radius: 4px;
+            color: var(--f4s-gold);
         }
 
         .nav-toggle {
             cursor: pointer;
             color: var(--f4s-blue);
             text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .nav-toggle:hover {
+            color: var(--f4s-gold);
+        }
+
+        .nav-details {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 4px;
+            border-left: 3px solid var(--f4s-blue);
         }
 
         .warning-box {
@@ -142,6 +190,7 @@
             padding: 15px;
             margin: 20px 0;
             color: var(--f4s-text-light);
+            border-radius: 4px;
         }
 
         .success-box {
@@ -150,6 +199,16 @@
             padding: 15px;
             margin: 20px 0;
             color: var(--f4s-text-light);
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--f4s-blue);
+            padding: 15px;
+            margin: 20px 0;
+            color: var(--f4s-text-light);
+            border-radius: 4px;
         }
 
         .checklist {
@@ -158,27 +217,64 @@
         }
 
         .checklist li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            padding: 8px;
+            background: var(--f4s-dark-bg);
+            border-radius: 4px;
         }
 
         .checklist input[type="checkbox"] {
-            margin-right: 10px;
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .glossary-term {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: var(--f4s-dark-bg);
+            border-radius: 4px;
+        }
+
+        .glossary-term strong {
+            color: var(--f4s-gold);
+        }
+
+        .reference-link {
+            color: var(--f4s-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            color: var(--f4s-gold);
+            text-decoration: underline;
+        }
+
+        .section-intro {
+            background: rgba(207, 170, 72, 0.05);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--f4s-gold);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="classification-bar">
-        F4S CLEARANCE: LEVEL 2 // F4S-STD-03 // v1.1
-    </div>
-
     <div class="header">
-        <img src="https://i.imgur.com/your-logo-url.png" alt="Foxtrot-Four Solutions Logo">
+        <div class="classification-bar">
+            F4S CLEARANCE: LEVEL 2 // F4S-STD-03 // v1.1 // PROSPECTOR MINING SOP
+        </div>
+        <h1>MISC PROSPECTOR</h1>
+        <p>Mining Operations Standard Operating Procedure</p>
+        <p>Star Citizen 4.5 // Foxtrot-Four Solutions</p>
     </div>
 
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab(event, 'logistics')">01 // LOGISTICS</button>
+        <button class="tab-btn active" onclick="openTab(event, 'introduction')">00 // INTRODUCTION</button>
+        <button class="tab-btn" onclick="openTab(event, 'logistics')">01 // LOGISTICS</button>
         <button class="tab-btn" onclick="openTab(event, 'loadouts')">02 // LOADOUTS</button>
         <button class="tab-btn" onclick="openTab(event, 'strategy')">03 // STRATEGY</button>
         <button class="tab-btn" onclick="openTab(event, 'proficiency')">04 // PROFICIENCY</button>
@@ -188,40 +284,266 @@
         <button class="tab-btn" onclick="openTab(event, 'checklist')">08 // CHECKLIST</button>
     </div>
 
+    <!-- INTRODUCTION TAB -->
+    <div id="introduction" class="tab-content active">
+        <div class="section-intro">
+            <p><strong>SECTION 00 // INTRODUCTION</strong></p>
+            <p>This section provides an overview of mining operations, basic mechanics, and foundational knowledge required before proceeding to specific procedures.</p>
+        </div>
+
+        <h2>What is Mining in Star Citizen?</h2>
+        <p>Mining is a core gameplay loop in Star Citizen that allows operators to extract valuable minerals and ore from asteroids and planetary surfaces. The Prospector is a dedicated single-operator mining vessel designed for asteroid mining in space. Operators scan for valuable ore deposits, fracture rocks using a mining laser, and extract the ore into their cargo hold for refinement and sale.</p>
+
+        <p>Mining profitability depends on three factors: <strong>location selection</strong>, <strong>ore quality</strong>, and <strong>operational efficiency</strong>. This SOP focuses on maximizing all three to ensure consistent, high-yield mining operations.</p>
+
+        <h2>Why the MISC Prospector?</h2>
+        <p>The Prospector is the entry-level mining vessel in Star Citizen, designed for solo operators. It features a 32 SCU cargo hold, a front-mounted mining laser arm with interchangeable heads, and sufficient power and cooling systems for sustained mining operations. The Prospector is ideal for both new miners learning the mechanics and experienced operators looking for consistent profitability.</p>
+
+        <div class="success-box">
+            <strong>Prospector Advantages:</strong> Solo operation, low maintenance costs, proven profitability, accessible learning curve, versatile mining head options.
+        </div>
+
+        <h2>Basic Mining Mechanics</h2>
+
+        <h3>Phase 1: Scanning</h3>
+        <p>Scanning is the process of detecting ore deposits within asteroids. Operators use the ship's scanner to ping the surrounding space for mineable rocks. The scanner returns signal strength based on distance and ore concentration. Stronger signals at greater distances indicate larger, more valuable deposits.</p>
+
+        <p><strong>Key Scanning Principles:</strong></p>
+        <ul>
+            <li>Scan range: Approximately 10-15 km depending on equipment</li>
+            <li>Signal strength indicates ore quality and quantity</li>
+            <li>Bright, stable signals indicate mineable rocks</li>
+            <li>Faint or flickering signals indicate small, low-value rocks</li>
+        </ul>
+
+        <h3>Phase 2: Fracturing</h3>
+        <p>Fracturing is the process of breaking down ore within a rock using the mining laser. The operator targets a rock and applies laser power to initiate a fracture. The fracture process involves managing a charge window and instability rating. When the charge reaches the green zone, the operator triggers the fracture, breaking the rock into extractable ore.</p>
+
+        <p><strong>Key Fracturing Principles:</strong></p>
+        <ul>
+            <li>Charge window: The optimal power range for fracturing</li>
+            <li>Instability: Resistance to fracturing; higher instability = harder to crack</li>
+            <li>Gadgets and modules modify these parameters for better results</li>
+            <li>Timing and precision are critical to success</li>
+        </ul>
+
+        <h3>Phase 3: Extraction</h3>
+        <p>Extraction is the process of collecting the fractured ore into the ship's cargo hold. Once a rock is successfully fractured, the ore is automatically collected. Operators monitor cargo capacity and manage the Quantanium timer (see below) to ensure safe extraction and transport to refineries.</p>
+
+        <h2>The Quantanium Timer: Critical Safety Mechanic</h2>
+        <p>Quantanium is the most valuable ore in Star Citizen, but it is highly volatile. Once Quantanium enters the ship's cargo hold, a 25-minute timer begins. If the timer expires before the ore is refined or sold, the Quantanium will explode, destroying the ship and all cargo.</p>
+
+        <div class="warning-box">
+            <strong>CRITICAL:</strong> The Quantanium timer is absolute. Once started, it cannot be paused or reset. Operators must plan routes to refineries and manage cargo carefully to avoid catastrophic loss.
+        </div>
+
+        <p><strong>Timer Management Rules:</strong></p>
+        <ul>
+            <li>Timer begins when Quantanium enters cargo hold</li>
+            <li>Timer duration: 25 minutes from collection</li>
+            <li>Timer stacks with quantity (more Quantanium = higher risk)</li>
+            <li>Heat and damage reduce timer margin</li>
+            <li>Target cargo fill: 60-80% Quantanium (balances payout and survival)</li>
+            <li>Never attempt to "top off" cargo; return to refinery immediately when target is reached</li>
+        </ul>
+
+        <h2>Profitability Overview</h2>
+        <p>Mining profitability is measured in aUEC per hour (aUEC/hr). The Prospector with optimal loadout and skilled operation can generate:</p>
+
+        <table>
+            <tr>
+                <th>Setup</th>
+                <th>Ore Type</th>
+                <th>Expected Yield</th>
+                <th>Profitability</th>
+            </tr>
+            <tr>
+                <td>Budget (Arbor MH1)</td>
+                <td>Mixed Ore</td>
+                <td>60-80 SCU/hr</td>
+                <td>Moderate</td>
+            </tr>
+            <tr>
+                <td>Top-Tier (Helix I)</td>
+                <td>Quantanium</td>
+                <td>100-150 SCU/hr</td>
+                <td>Maximum</td>
+            </tr>
+        </table>
+
+        <p>Profitability depends on ore type, location, operator skill, and market conditions. Quantanium commands the highest prices but requires careful timer management. Other valuable ores include Taranite, Hadanite, Bexalite, and Corundum.</p>
+
+        <h2>Prerequisites: What You Need to Know</h2>
+        <p>Before beginning mining operations, operators should be familiar with:</p>
+
+        <ul>
+            <li><strong>Basic Flight:</strong> Ability to navigate and dock with stations</li>
+            <li><strong>Ship Systems:</strong> Understanding of power distribution, shields, and thermal management</li>
+            <li><strong>Quantum Travel:</strong> Ability to quantum jump between locations</li>
+            <li><strong>Cargo Management:</strong> Understanding of cargo holds and inventory systems</li>
+            <li><strong>Station Navigation:</strong> Ability to locate shops and vendors</li>
+            <li><strong>Refinery Operations:</strong> Understanding of ore refinement and selling</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>New to Star Citizen?</strong> Complete the tutorial and practice basic flight and docking before attempting mining operations. Mining requires precision and situational awareness.
+        </div>
+
+        <h2>Mining Glossary</h2>
+
+        <div class="glossary-term">
+            <strong>Scan:</strong> The process of detecting ore deposits using the ship's scanner. Returns signal strength indicating ore quality and quantity.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Signal Strength:</strong> A measure of ore concentration and rock size. Stronger signals at greater distances indicate larger, more valuable deposits.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Fracture:</strong> The process of breaking down ore within a rock using the mining laser. Requires managing charge window and instability.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Charge Window:</strong> The optimal power range for fracturing. When laser power enters the green zone, the fracture is ready to trigger.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Instability:</strong> Resistance to fracturing. Higher instability means the rock is harder to crack and requires more power or gadget assistance.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Gadget:</strong> Mining equipment that modifies fracturing parameters. Examples: BoreMax (reduces instability), OptiMax (increases charge window), Stampede (increases laser power).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Module:</strong> Ship equipment that enhances mining performance. Examples: Surge modules (increase laser power), Focus modules (increase laser range).
+        </div>
+
+        <div class="glossary-term">
+            <strong>Quantanium:</strong> The most valuable ore in Star Citizen. Highly volatile with a 25-minute timer before explosion. Requires careful management.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Extraction:</strong> The process of collecting fractured ore into the ship's cargo hold. Automatic once rock is fractured.
+        </div>
+
+        <div class="glossary-term">
+            <strong>Refinery:</strong> Station facility where ore is processed into refined materials for sale. Processing time varies by ore type.
+        </div>
+
+        <h2>Common Mistakes to Avoid</h2>
+
+        <div class="warning-box">
+            <strong>Mistake 1: Ignoring Signal Strength</strong><br>
+            Chasing faint signals wastes time on low-value rocks. Always prioritize bright, stable signals at 8km+ distance. Faint signals inside 3-4km are usually not worth the effort.
+        </div>
+
+        <div class="warning-box">
+            <strong>Mistake 2: Mining Low-Percentage Ore</strong><br>
+            A full hold of low-quality ore (5-15% Quantanium) is worth less than a half-full hold of high-quality ore (30%+ Quantanium). Be selective. Skip rocks with less than 20% Quantanium unless desperate.
+        </div>
+
+        <div class="warning-box">
+            <strong>Mistake 3: Attempting Oversized Rocks</strong><br>
+            Rocks over 9,000 tons are extremely difficult for solo Prospector operations. A 12,000-ton rock with 40% Quantanium might seem tempting, but the time cost makes it unprofitable. Skip it and find smaller rocks.
+        </div>
+
+        <div class="warning-box">
+            <strong>Mistake 4: Ignoring the Quantanium Timer</strong><br>
+            The 25-minute timer is absolute. Never attempt to "top off" cargo or make detours. Return to refinery immediately when target fill is reached. Greed kills runs.
+        </div>
+
+        <div class="warning-box">
+            <strong>Mistake 5: Poor Power Management</strong><br>
+            Running out of power during fracturing leaves you stranded. Monitor power levels and manage power distribution carefully. Use power management gadgets and modules to optimize efficiency.
+        </div>
+
+        <div class="warning-box">
+            <strong>Mistake 6: Thermal Overload</strong><br>
+            Mining generates extreme heat. Insufficient cooling causes thermal damage and reduced laser efficiency. Ensure coolers are properly equipped and power-managed.
+        </div>
+
+        <div class="warning-box">
+            <strong>Mistake 7: Wrong Location Selection</strong><br>
+            Mining in contested or dangerous areas increases risk. New operators should start in safe, accessible locations. Experienced operators can take calculated risks in high-value zones.
+        </div>
+
+        <h2>Learning Resources</h2>
+
+        <p><strong>Video Tutorials:</strong></p>
+        <ul>
+            <li><a href="https://www.youtube.com/results?search_query=star+citizen+mining+tutorial+4.5" class="reference-link">Star Citizen Mining Tutorial 4.5 (YouTube)</a></li>
+            <li><a href="https://www.youtube.com/results?search_query=prospector+mining+guide+star+citizen" class="reference-link">Prospector Mining Guide (YouTube)</a></li>
+        </ul>
+
+        <p><strong>Community Resources:</strong></p>
+        <ul>
+            <li><a href="https://starcitizen.tools/Mining" class="reference-link">Star Citizen Tools - Mining Guide</a></li>
+            <li><a href="https://www.scminingmom.com/" class="reference-link">SC Mining Mom - Mining Locations and Strategies</a></li>
+            <li><a href="https://regolith.rocks/" class="reference-link">Regolith Co - Mining Tools and Calculators</a></li>
+        </ul>
+
+        <h2>Quick Start: Your First Mining Run</h2>
+
+        <ol>
+            <li><strong>Acquire a Prospector:</strong> Rent or purchase from a ship dealer</li>
+            <li><strong>Equip Components:</strong> Follow the LOGISTICS section to acquire and install components</li>
+            <li><strong>Load Gadgets:</strong> Install BoreMax and OptiMax gadgets for optimal performance</li>
+            <li><strong>Travel to Mining Zone:</strong> Quantum jump to a beginner-friendly location (e.g., Lyria)</li>
+            <li><strong>Scan for Rocks:</strong> Use scanner to locate bright signals at 8km+ distance</li>
+            <li><strong>Approach and Fracture:</strong> Follow EXECUTION procedures to fracture rocks</li>
+            <li><strong>Manage Cargo:</strong> Monitor cargo fill and Quantanium timer</li>
+            <li><strong>Return to Refinery:</strong> Quantum jump to nearest refinery when target fill is reached</li>
+            <li><strong>Refine and Sell:</strong> Process ore and sell for profit</li>
+            <li><strong>Repeat:</strong> Return to mining zone for next run</li>
+        </ol>
+
+        <div class="success-box">
+            <strong>Expected First Run:</strong> Budget 60-90 minutes for your first mining run including travel, learning, and refinery processing. Subsequent runs will be faster as you gain experience.
+        </div>
+
+        <p><strong>Next Steps:</strong> Proceed to LOGISTICS (Tab 01) to begin component acquisition and setup.</p>
+    </div>
+
     <!-- LOGISTICS TAB -->
-    <div id="logistics" class="tab-content active">
+    <div id="logistics" class="tab-content">
+        <div class="section-intro">
+            <p><strong>SECTION 01 // LOGISTICS</strong></p>
+            <p>Component acquisition route optimized for efficiency. All components listed are verified as purchasable in Star Citizen 4.5.</p>
+        </div>
+
         <h2>Component Acquisition Route</h2>
-        <p>This route is optimized for efficiency, allowing operators to acquire all necessary components with minimal travel time. All components listed are verified as purchasable in Star Citizen 4.5.</p>
+        <p>This route is optimized for efficiency, allowing operators to acquire all necessary components with minimal travel time. All components listed are verified as purchasable in Star Citizen 4.5. No looted items or military-grade components are included.</p>
 
         <div class="shop-card">
             <h3>Stop 1: Area 18, ArcCorp</h3>
             <p><strong>Shop:</strong> Dumper's Depot</p>
             <table>
-                <tr><th>Item</th><th>Grade/Type</th></tr>
-                <tr><td>Cirrus Power Plant</td><td>Industrial A</td></tr>
-                <tr><td>Shimmer Shield Generator (x3)</td><td>Stealth D</td></tr>
+                <tr><th>Item</th><th>Grade/Type</th><th>Purpose</th></tr>
+                <tr><td>Cirrus Power Plant</td><td>Industrial A</td><td>Top-tier power generation</td></tr>
+                <tr><td>Shimmer Shield Generator (x3)</td><td>Stealth D</td><td>Stealth-focused protection</td></tr>
             </table>
-            <p class="nav-toggle" onclick="toggleNav(this)">Show Navigation Details</p>
+            <p class="nav-toggle" onclick="toggleNav(this)">► Show Navigation Details</p>
             <div class="nav-details">
-                <p>1. Travel to ArcCorp and land at Area 18.</p>
-                <p>2. Take the city transit to the ArcCorp Plaza.</p>
-                <p>3. Dumper's Depot is located in the main plaza area.</p>
+                <p><strong>Route:</strong> Travel to ArcCorp and land at Area 18 landing zone.</p>
+                <p><strong>Navigation:</strong> After landing, take the city transit elevator to ArcCorp Plaza. Dumper's Depot is located in the main plaza area near the central fountain.</p>
+                <p><strong>Vendor Location:</strong> Ground floor, main plaza. Look for the Dumper's Depot storefront sign.</p>
             </div>
         </div>
 
         <div class="shop-card">
-            <h3>Stop 2: HUR-L5</h3>
+            <h3>Stop 2: HUR-L5 Station</h3>
             <p><strong>Shop:</strong> Platinum Bay</p>
             <table>
-                <tr><th>Item</th><th>Grade/Type</th></tr>
-                <tr><td>IceBox Cooler</td><td>Industrial A</td></tr>
-                <tr><td>7SA 'Concord' Shield Generator</td><td>Civilian A</td></tr>
+                <tr><th>Item</th><th>Grade/Type</th><th>Purpose</th></tr>
+                <tr><td>IceBox Cooler</td><td>Industrial A</td><td>Thermal management</td></tr>
+                <tr><td>7SA 'Concord' Shield Generator</td><td>Civilian A</td><td>Top-tier protection</td></tr>
             </table>
-            <p class="nav-toggle" onclick="toggleNav(this)">Show Navigation Details</p>
+            <p class="nav-toggle" onclick="toggleNav(this)">► Show Navigation Details</p>
             <div class="nav-details">
-                <p>1. Quantum travel to HUR-L5 station.</p>
-                <p>2. Dock and proceed to the main concourse.</p>
-                <p>3. Platinum Bay is located in the Galleria section.</p>
+                <p><strong>Route:</strong> Quantum travel to HUR-L5 station (Hurston L5 Lagrange Point).</p>
+                <p><strong>Navigation:</strong> Dock at HUR-L5 and proceed to the main concourse. Platinum Bay is located in the Galleria section on the upper level.</p>
+                <p><strong>Vendor Location:</strong> Upper concourse, Galleria section. Follow signs for "Platinum Bay" or ask station personnel.</p>
             </div>
         </div>
 
@@ -229,124 +551,772 @@
             <h3>Stop 3: New Babbage, microTech</h3>
             <p><strong>Shop:</strong> Shubin Interstellar</p>
             <table>
-                <tr><th>Item</th><th>Grade/Type</th></tr>
-                <tr><td>Helix I Mining Laser</td><td>Mining</td></tr>
-                <tr><td>Arbor MH1 Mining Laser</td><td>Mining</td></tr>
+                <tr><th>Item</th><th>Grade/Type</th><th>Purpose</th></tr>
+                <tr><td>Helix I Mining Laser</td><td>Mining</td><td>Top-tier mining head (best in game)</td></tr>
+                <tr><td>Arbor MH1 Mining Laser</td><td>Mining</td><td>Budget mining head (all-purpose)</td></tr>
             </table>
-            <p class="nav-toggle" onclick="toggleNav(this)">Show Navigation Details</p>
+            <p class="nav-toggle" onclick="toggleNav(this)">► Show Navigation Details</p>
             <div class="nav-details">
-                <p>1. Travel to microTech and land at New Babbage.</p>
-                <p>2. Take the city transit to the Commons.</p>
-                <p>3. Shubin Interstellar is located in the main plaza.</p>
+                <p><strong>Route:</strong> Travel to microTech and land at New Babbage landing zone.</p>
+                <p><strong>Navigation:</strong> After landing, take the city transit elevator to the Commons. Shubin Interstellar is located in the main plaza near the central atrium.</p>
+                <p><strong>Vendor Location:</strong> Main plaza, ground floor. Look for the Shubin Interstellar storefront with mining equipment displays.</p>
             </div>
         </div>
 
         <div class="shop-card">
-            <h3>Stop 4: Any Refinery Deck</h3>
-            <p><strong>Shop:</strong> Refinery Shop</p>
+            <h3>Stop 4: Any Refinery Station</h3>
+            <p><strong>Shop:</strong> Refinery Equipment Shop</p>
             <table>
-                <tr><th>Item</th><th>Grade/Type</th></tr>
-                <tr><td>BoreMax Mining Gadget</td><td>Gadget</td></tr>
-                <tr><td>OptiMax Mining Gadget</td><td>Gadget</td></tr>
-                <tr><td>Stampede Module</td><td>Module</td></tr>
+                <tr><th>Item</th><th>Grade/Type</th><th>Purpose</th></tr>
+                <tr><td>BoreMax Mining Gadget</td><td>Gadget</td><td>Reduces instability</td></tr>
+                <tr><td>OptiMax Mining Gadget</td><td>Gadget</td><td>Increases charge window</td></tr>
+                <tr><td>Stampede Module</td><td>Module</td><td>Increases laser power</td></tr>
             </table>
-            <p class="nav-toggle" onclick="toggleNav(this)">Show Navigation Details</p>
+            <p class="nav-toggle" onclick="toggleNav(this)">► Show Navigation Details</p>
             <div class="nav-details">
-                <p>1. Travel to any station with a refinery (e.g., HUR-L1, CRU-L1).</p>
-                <p>2. The refinery shop is located on the refinery deck.</p>
+                <p><strong>Route:</strong> Travel to any refinery station (HUR-L1, CRU-L1, ARC-L1, etc.).</p>
+                <p><strong>Navigation:</strong> Dock at the refinery station and proceed to the refinery deck. The equipment shop is located on the main refinery level.</p>
+                <p><strong>Vendor Location:</strong> Refinery deck, main level. Look for "Mining Equipment" or "Refinery Shop" signage.</p>
             </div>
+        </div>
+
+        <div class="success-box">
+            <strong>Acquisition Complete:</strong> Once all components are acquired from these four stops, your Prospector is fully equipped for mining operations. Proceed to LOADOUTS (Tab 02) to configure your preferred setup.
         </div>
     </div>
 
     <!-- LOADOUTS TAB -->
     <div id="loadouts" class="tab-content">
-        <h2>Prospector Loadouts</h2>
-        <p>Two primary loadouts are recommended, balancing budget and performance.</p>
+        <div class="section-intro">
+            <p><strong>SECTION 02 // LOADOUTS</strong></p>
+            <p>Two primary loadout configurations balancing budget and maximum efficiency.</p>
+        </div>
 
-        <h3>Budget Setup (Arbor MH1)</h3>
-        <p>Ideal for new miners or those on a budget. Focuses on all-purpose mining with lower risk.</p>
+        <h2>Budget Setup: Arbor MH1 Configuration</h2>
+        <p>Ideal for new miners or those on a budget. This configuration focuses on all-purpose mining with lower risk and moderate profitability. Expected yield: 60-80 SCU/hour.</p>
+
         <table>
-            <tr><th>Component</th><th>Item</th><th>Grade/Type</th></tr>
-            <tr><td>Mining Laser</td><td>Arbor MH1</td><td>Mining</td></tr>
-            <tr><td>Shield Generator</td><td>RPEL</td><td>Civilian D</td></tr>
-            <tr><td>Power Plant</td><td>LightBlossom</td><td>Civilian C</td></tr>
-            <tr><td>Cooler</td><td>BlastChill</td><td>Civilian D</td></tr>
-            <tr><td>Quantum Drive</td><td>Explorer</td><td>Civilian A</td></tr>
+            <tr><th>Component</th><th>Item</th><th>Grade/Type</th><th>Notes</th></tr>
+            <tr><td>Mining Laser</td><td>Arbor MH1</td><td>Mining</td><td>Versatile, all-purpose mining head</td></tr>
+            <tr><td>Shield Generator</td><td>RPEL</td><td>Civilian D</td><td>Basic protection, lower signature</td></tr>
+            <tr><td>Power Plant</td><td>LightBlossom</td><td>Civilian C</td><td>Adequate power for sustained mining</td></tr>
+            <tr><td>Cooler</td><td>BlastChill</td><td>Civilian D</td><td>Basic thermal management</td></tr>
+            <tr><td>Quantum Drive</td><td>Explorer</td><td>Civilian A</td><td>Efficient long-distance travel</td></tr>
         </table>
 
-        <h3>Top-Tier Setup (Helix I)</h3>
-        <p>Optimized for maximum profit, specializing in Quantanium mining. Requires skilled power management.</p>
+        <div class="info-box">
+            <strong>Budget Setup Advantages:</strong> Lower component costs, easier to replace if damaged, suitable for learning mining mechanics, consistent profitability for mixed ore types.
+        </div>
+
+        <h2>Top-Tier Setup: Helix I Configuration</h2>
+        <p>Optimized for maximum profit, specializing in Quantanium mining. This configuration requires skilled power management and thermal control. Expected yield: 100-150 SCU/hour (Quantanium), 110-160 SCU/hour (Taranite).</p>
+
         <table>
-            <tr><th>Component</th><th>Item</th><th>Grade/Type</th></tr>
-            <tr><td>Mining Laser</td><td>Helix I</td><td>Mining</td></tr>
-            <tr><td>Shield Generator</td><td>7SA 'Concord'</td><td>Civilian A</td></tr>
-            <tr><td>Power Plant</td><td>Cirrus</td><td>Industrial A</td></tr>
-            <tr><td>Cooler</td><td>IceBox</td><td>Industrial A</td></tr>
-            <tr><td>Quantum Drive</td><td>FoxFire</td><td>Competition B</td></tr>
+            <tr><th>Component</th><th>Item</th><th>Grade/Type</th><th>Notes</th></tr>
+            <tr><td>Mining Laser</td><td>Helix I</td><td>Mining</td><td>Best mining head in game, highest efficiency</td></tr>
+            <tr><td>Shield Generator</td><td>7SA 'Concord'</td><td>Civilian A</td><td>Top-tier protection, highest durability</td></tr>
+            <tr><td>Power Plant</td><td>Cirrus</td><td>Industrial A</td><td>Maximum power for sustained operations</td></tr>
+            <tr><td>Cooler</td><td>IceBox</td><td>Industrial A</td><td>Superior thermal management</td></tr>
+            <tr><td>Quantum Drive</td><td>FoxFire</td><td>Competition B</td><td>Balanced speed and efficiency</td></tr>
         </table>
+
+        <div class="success-box">
+            <strong>Top-Tier Setup Advantages:</strong> Helix I is the best mining laser in the game, superior component durability, maximum profitability for Quantanium mining, professional-grade performance.
+        </div>
+
+        <h2>Loadout Comparison</h2>
+
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Budget (Arbor)</th>
+                <th>Top-Tier (Helix I)</th>
+            </tr>
+            <tr>
+                <td>Mining Laser Power</td>
+                <td>Moderate</td>
+                <td>Maximum</td>
+            </tr>
+            <tr>
+                <td>Thermal Capacity</td>
+                <td>Basic</td>
+                <td>Superior</td>
+            </tr>
+            <tr>
+                <td>Shield Durability</td>
+                <td>Low-Moderate</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Expected Yield</td>
+                <td>60-80 SCU/hr</td>
+                <td>100-150 SCU/hr</td>
+            </tr>
+            <tr>
+                <td>Ore Specialization</td>
+                <td>Mixed</td>
+                <td>Quantanium</td>
+            </tr>
+            <tr>
+                <td>Skill Requirement</td>
+                <td>Beginner</td>
+                <td>Intermediate/Advanced</td>
+            </tr>
+        </table>
+
+        <p><strong>Recommendation:</strong> New operators should start with the Budget setup to learn mining mechanics. Once comfortable with scanning, fracturing, and timer management, upgrade to the Top-Tier setup for maximum profitability.</p>
     </div>
 
     <!-- STRATEGY TAB -->
     <div id="strategy" class="tab-content">
+        <div class="section-intro">
+            <p><strong>SECTION 03 // STRATEGY</strong></p>
+            <p>The 7-part ore selection framework for maximum profitability and safety.</p>
+        </div>
+
         <h2>Ore Selection Framework</h2>
-        <p>This 7-part framework guides operators on which rocks to mine for maximum profitability.</p>
-        <!-- ... (detailed strategy content from previous steps) ... -->
+        <p>This framework guides operators on which rocks to mine for maximum profitability. Follow each step in sequence to make optimal mining decisions.</p>
+
+        <h3>1. Scan Return Strength: What to Chase</h3>
+        <p>Signal strength indicates ore quality and rock size. Operators do not receive numeric values on the first ping, so use distance and clarity to evaluate signals.</p>
+
+        <p><strong>Chase These Signals:</strong></p>
+        <ul>
+            <li>Return appears beyond ~8 km distance</li>
+            <li>Bright, stable blip on scanner</li>
+            <li>Does not flicker when you change heading</li>
+            <li>Often resolves into 2-4 rocks (cluster)</li>
+            <li>These correlate with mineable mass and profitability</li>
+        </ul>
+
+        <p><strong>Ignore These Signals:</strong></p>
+        <ul>
+            <li>Only appears inside 3-4 km distance</li>
+            <li>Faint or flickering signal</li>
+            <li>Resolves into a single pebble</li>
+            <li>These waste time with low yield</li>
+        </ul>
+
+        <h3>2. Rock Mass: The Hard Numbers</h3>
+        <p>Once you scan a rock directly, you get mass in tons. Use these thresholds to determine if a rock is worth mining.</p>
+
+        <p><strong>Sweet Spot (Fast Profit):</strong></p>
+        <ul>
+            <li>4,000 – 7,500 tons mass</li>
+            <li>Ideal Quantanium range for solo Prospector</li>
+            <li>Fractures quickly, high yield, manageable time</li>
+        </ul>
+
+        <p><strong>Upper Practical Limit (With Your Setup):</strong></p>
+        <ul>
+            <li>~8,500 – 9,000 tons mass</li>
+            <li>Crackable with Helix I + 2x Rieger C3 + at least one gadget</li>
+            <li>Time cost climbs fast above this threshold</li>
+        </ul>
+
+        <p><strong>Skip These:</strong></p>
+        <ul>
+            <li>&lt;2,000 tons: Even if Quant is present, yield is too low</li>
+            <li>&gt;10,000 tons: Not worth it solo. That is MOLE territory</li>
+        </ul>
+
+        <h3>3. Quantanium Percentage: When to Mine</h3>
+        <p>Quantanium percentage is the real gate to profitability. This is the most critical decision point.</p>
+
+        <p><strong>Mine Immediately If:</strong></p>
+        <ul>
+            <li>Quantanium ≥30% in a single rock</li>
+            <li>Quantanium ≥25% in a multi-rock cluster</li>
+        </ul>
+
+        <p><strong>Skip If:</strong></p>
+        <ul>
+            <li>Quant &lt;20%</li>
+            <li>Quant mixed heavily with inert junk</li>
+        </ul>
+
+        <p><strong>Key Principle:</strong> A half-full hold of 35% Quantanium beats a full hold of garbage. Be selective. Greed reduces profitability.</p>
+
+        <h3>4. Other Valuable Minerals</h3>
+        <p>While Quantanium is the primary target, other minerals have significant value. Consider mining these if Quantanium is unavailable.</p>
+
+        <table>
+            <tr>
+                <th>Mineral</th>
+                <th>Min % to Mine</th>
+                <th>Profitability</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>Taranite</td>
+                <td>≥25%</td>
+                <td>Very High</td>
+                <td>Second most valuable ore</td>
+            </tr>
+            <tr>
+                <td>Hadanite</td>
+                <td>≥20%</td>
+                <td>High</td>
+                <td>Consistent value</td>
+            </tr>
+            <tr>
+                <td>Bexalite</td>
+                <td>≥15%</td>
+                <td>Moderate</td>
+                <td>Accessible, reliable</td>
+            </tr>
+            <tr>
+                <td>Corundum</td>
+                <td>≥10%</td>
+                <td>Low-Moderate</td>
+                <td>Filler ore, lower priority</td>
+            </tr>
+            <tr>
+                <td>Titanium</td>
+                <td>≥5%</td>
+                <td>Low</td>
+                <td>Minimal value, avoid if possible</td>
+            </tr>
+        </table>
+
+        <h3>5. Fracture Difficulty and Instability</h3>
+        <p>You will see an optimal charge window and instability rating when scanning a rock. Use these to determine if fracturing is feasible.</p>
+
+        <p><strong>Green Light (Proceed):</strong></p>
+        <ul>
+            <li>Instability manageable with BoreMax or OptiMax gadget</li>
+            <li>Charge window not razor-thin after gadgets applied</li>
+            <li>Fracture appears achievable with your setup</li>
+        </ul>
+
+        <p><strong>Red Flag (Skip):</strong></p>
+        <ul>
+            <li>Instability spikes uncontrollably</li>
+            <li>Charge window collapses even with gadgets</li>
+            <li>Fracture appears impossible with your setup</li>
+        </ul>
+
+        <p><strong>Rule:</strong> You are not here to wrestle rocks. Leave difficult rocks and find easier targets. Time is money.</p>
+
+        <h3>6. Quantanium Timer: The Rule That Matters</h3>
+        <p>Once Quantanium enters your hold, the 25-minute clock is live. This is absolute and non-negotiable.</p>
+
+        <p><strong>What That Means in Practice:</strong></p>
+        <ul>
+            <li>You have ~25 minutes before explosion</li>
+            <li>Timer stacks with amount collected (more Quant = higher risk)</li>
+            <li>Heat and damage shorten margin</li>
+        </ul>
+
+        <p><strong>Hard Rules:</strong></p>
+        <ul>
+            <li>Start heading back once you hit your target fill</li>
+            <li>Do not "top off" cargo</li>
+            <li>Do not detour for one more rock</li>
+        </ul>
+
+        <p><strong>Target Fill (Safe and Fast):</strong></p>
+        <ul>
+            <li>60–80% Quantanium</li>
+            <li>Balances payout and survival</li>
+            <li>Greed kills runs</li>
+        </ul>
+
+        <h3>7. Maximum Mass You Should Ever Crack Solo</h3>
+
+        <p><strong>Absolute Ceiling (With Perfect Execution):</strong></p>
+        <ul>
+            <li>~9,000 tons mass</li>
+            <li>Requires Helix I, optimal gadgets, skilled operation</li>
+        </ul>
+
+        <p><strong>Smart Ceiling (Repeatable Profit):</strong></p>
+        <ul>
+            <li>~7,500 tons mass</li>
+            <li>Consistent fractures, manageable time, reliable profit</li>
+        </ul>
+
+        <p><strong>The Temptation (Skip It):</strong></p>
+        <ul>
+            <li>If you see a 12k monster with 40% Quant:</li>
+            <li>Smile</li>
+            <li>Mark it mentally</li>
+            <li>Move on</li>
+            <li>You will make more credits skipping it</li>
+        </ul>
     </div>
 
     <!-- PROFICIENCY TAB -->
     <div id="proficiency" class="tab-content">
-        <h2>Operator Proficiency Pathway</h2>
-        <p>Progression from Beginner to Advanced mining operations.</p>
-        <!-- ... (proficiency content) ... -->
+        <div class="section-intro">
+            <p><strong>SECTION 04 // PROFICIENCY</strong></p>
+            <p>Operator progression pathways from Beginner to Advanced mining operations.</p>
+        </div>
+
+        <h2>Proficiency Levels</h2>
+
+        <h3>Level 1: Beginner Operator</h3>
+        <p><strong>Characteristics:</strong> Learning mining mechanics, building confidence, establishing routine.</p>
+        <p><strong>Recommended Setup:</strong> Budget (Arbor MH1)</p>
+        <p><strong>Recommended Locations:</strong> Lyria (ArcCorp) - Safe, accessible, consistent yields</p>
+        <p><strong>Focus Areas:</strong></p>
+        <ul>
+            <li>Master scanning and signal interpretation</li>
+            <li>Practice fracturing technique</li>
+            <li>Learn timer management</li>
+            <li>Build muscle memory for procedures</li>
+        </ul>
+        <p><strong>Expected Performance:</strong> 60-80 SCU/hour, 3-4 runs per session</p>
+
+        <h3>Level 2: Intermediate Operator</h3>
+        <p><strong>Characteristics:</strong> Comfortable with mechanics, optimizing efficiency, exploring new locations.</p>
+        <p><strong>Recommended Setup:</strong> Budget or Top-Tier (Helix I) depending on preference</p>
+        <p><strong>Recommended Locations:</strong> Yela Belt (Stanton) - Moderate risk, good yields</p>
+        <p><strong>Focus Areas:</strong></p>
+        <ul>
+            <li>Optimize rock selection for profitability</li>
+            <li>Manage power and thermal systems</li>
+            <li>Reduce fracture time through technique</li>
+            <li>Explore Quantanium-focused mining</li>
+        </ul>
+        <p><strong>Expected Performance:</strong> 80-120 SCU/hour, 4-5 runs per session</p>
+
+        <h3>Level 3: Advanced Operator</h3>
+        <p><strong>Characteristics:</strong> Expert-level technique, maximizing profit, managing high-risk operations.</p>
+        <p><strong>Recommended Setup:</strong> Top-Tier (Helix I) with optimal gadgets</p>
+        <p><strong>Recommended Locations:</strong> Pyro System - High-risk/high-reward, premium minerals</p>
+        <p><strong>Focus Areas:</strong></p>
+        <ul>
+            <li>Specialize in Quantanium mining</li>
+            <li>Master complex fracture scenarios</li>
+            <li>Manage risk in contested zones</li>
+            <li>Achieve maximum efficiency and profitability</li>
+        </ul>
+        <p><strong>Expected Performance:</strong> 100-150 SCU/hour, 5-6 runs per session</p>
+
+        <h2>Progression Pathway</h2>
+        <p>Follow this pathway to advance from Beginner to Advanced proficiency:</p>
+
+        <ol>
+            <li><strong>Complete 10 runs with Budget setup:</strong> Build confidence and muscle memory</li>
+            <li><strong>Achieve 70+ SCU/hour consistently:</strong> Demonstrate scanning and fracturing proficiency</li>
+            <li><strong>Complete 5 runs in Yela Belt:</strong> Prove ability to handle moderate difficulty</li>
+            <li><strong>Upgrade to Top-Tier setup:</strong> Invest in Helix I and premium components</li>
+            <li><strong>Complete 10 runs with Helix I:</strong> Master new laser and power management</li>
+            <li><strong>Achieve 100+ SCU/hour consistently:</strong> Demonstrate expert-level technique</li>
+            <li><strong>Complete 5 runs in Pyro System:</strong> Prove ability to handle high-risk operations</li>
+            <li><strong>Achieve Advanced status:</strong> Ready for maximum profitability operations</li>
+        </ol>
     </div>
 
     <!-- EXECUTION TAB -->
     <div id="execution" class="tab-content">
-        <h2>Mining Doctrine</h2>
-        <p>Phase-by-phase procedures for efficient mining.</p>
-        <!-- ... (execution doctrine) ... -->
+        <div class="section-intro">
+            <p><strong>SECTION 05 // EXECUTION</strong></p>
+            <p>Phase-by-phase mining procedures for efficient, safe operations.</p>
+        </div>
+
+        <h2>Mining Doctrine: Four-Phase Procedure</h2>
+
+        <h3>Phase 1: Prospecting (15-20 minutes)</h3>
+        <p><strong>Objective:</strong> Locate high-value ore deposits and select optimal rocks for mining.</p>
+
+        <table>
+            <tr><th>Step</th><th>Action</th><th>Notes</th></tr>
+            <tr><td>1</td><td>Arrive at mining zone</td><td>Quantum jump to designated location</td></tr>
+            <tr><td>2</td><td>Reduce speed to 200 m/s</td><td>Allows scanner to function effectively</td></tr>
+            <tr><td>3</td><td>Activate scanner</td><td>Begin pinging for ore deposits</td></tr>
+            <tr><td>4</td><td>Identify bright signals</td><td>Look for signals beyond 8km at 10km+ range</td></tr>
+            <tr><td>5</td><td>Approach signal</td><td>Quantum jump or boost toward signal</td></tr>
+            <tr><td>6</td><td>Scan rock directly</td><td>Get mass and ore composition data</td></tr>
+            <tr><td>7</td><td>Evaluate against framework</td><td>Apply 7-part ore selection criteria</td></tr>
+            <tr><td>8</td><td>Accept or reject rock</td><td>Mine if meets criteria, skip if not</td></tr>
+            <tr><td>9</td><td>Repeat until target found</td><td>Continue scanning until optimal rock located</td></tr>
+        </table>
+
+        <h3>Phase 2: Fracturing (5-15 minutes per rock)</h3>
+        <p><strong>Objective:</strong> Break down ore within the rock using mining laser and gadgets.</p>
+
+        <table>
+            <tr><th>Step</th><th>Action</th><th>Notes</th></tr>
+            <tr><td>1</td><td>Approach rock to 500m</td><td>Optimal laser range for Prospector</td></tr>
+            <tr><td>2</td><td>Reduce speed to 0 m/s</td><td>Stabilize for laser targeting</td></tr>
+            <tr><td>3</td><td>Target rock with mining laser</td><td>Crosshair should be on rock center</td></tr>
+            <tr><td>4</td><td>Activate mining laser</td><td>Begin charging fracture</td></tr>
+            <tr><td>5</td><td>Monitor charge window</td><td>Watch for green zone on charge meter</td></tr>
+            <tr><td>6</td><td>Apply gadgets if needed</td><td>Use BoreMax/OptiMax to manage instability</td></tr>
+            <tr><td>7</td><td>Maintain laser power</td><td>Keep power steady in optimal range</td></tr>
+            <tr><td>8</td><td>Trigger fracture at green</td><td>Fire when charge enters green zone</td></tr>
+            <tr><td>9</td><td>Monitor fracture result</td><td>Successful = rock breaks into ore</td></tr>
+        </table>
+
+        <h3>Phase 3: Extraction (Automatic)</h3>
+        <p><strong>Objective:</strong> Collect fractured ore into cargo hold.</p>
+
+        <table>
+            <tr><th>Step</th><th>Action</th><th>Notes</th></tr>
+            <tr><td>1</td><td>Fractured ore auto-collects</td><td>No action required; automatic process</td></tr>
+            <tr><td>2</td><td>Monitor cargo fill</td><td>Watch cargo meter for capacity</td></tr>
+            <tr><td>3</td><td>Monitor Quantanium timer</td><td>If Quant collected, timer begins (25 min)</td></tr>
+            <tr><td>4</td><td>Plan return route</td><td>Identify nearest refinery for ore processing</td></tr>
+            <tr><td>5</td><td>Repeat fracturing if needed</td><td>Continue mining until target fill reached</td></tr>
+        </table>
+
+        <h3>Phase 4: Refinement and Sale (20-30 minutes)</h3>
+        <p><strong>Objective:</strong> Transport ore to refinery, process, and sell for profit.</p>
+
+        <table>
+            <tr><th>Step</th><th>Action</th><th>Notes</th></tr>
+            <tr><td>1</td><td>Quantum jump to refinery</td><td>Nearest refinery to mining zone</td></tr>
+            <tr><td>2</td><td>Dock with refinery station</td><td>Follow standard docking procedures</td></tr>
+            <tr><td>3</td><td>Transfer ore to refinery</td><td>Use cargo management interface</td></tr>
+            <tr><td>4</td><td>Initiate refining process</td><td>Select ore type and refinery method</td></tr>
+            <tr><td>5</td><td>Wait for processing</td><td>Time varies by ore type (30 min - 2 hours)</td></tr>
+            <tr><td>6</td><td>Collect refined materials</td><td>Transfer to cargo hold</td></tr>
+            <tr><td>7</td><td>Travel to commodity market</td><td>Nearest trading station</td></tr>
+            <tr><td>8</td><td>Sell refined materials</td><td>Execute sell order for maximum profit</td></tr>
+            <tr><td>9</td><td>Repeat cycle</td><td>Return to mining zone for next run</td></tr>
+        </table>
+
+        <h2>Power Management During Mining</h2>
+        <p>The Prospector's power plant has limited capacity. Manage power distribution to maintain optimal performance.</p>
+
+        <p><strong>Power Distribution Priority:</strong></p>
+        <ol>
+            <li>Mining Laser (Primary) - 60-70% power</li>
+            <li>Shields (Secondary) - 20-30% power</li>
+            <li>Coolers (Tertiary) - 10-20% power</li>
+            <li>Thrusters/Quantum (As needed) - Remaining</li>
+        </ol>
+
+        <p><strong>Thermal Management:</strong></p>
+        <ul>
+            <li>Monitor ship temperature continuously</li>
+            <li>Reduce laser power if temperature exceeds 80°C</li>
+            <li>Activate coolers at full power during mining</li>
+            <li>Reduce power to shields if thermal critical</li>
+        </ul>
     </div>
 
     <!-- LOCATIONS TAB -->
     <div id="locations" class="tab-content">
-        <h2>Mining Locations</h2>
-        <p>Verified mining zones across Stanton and Pyro systems.</p>
-        <!-- ... (location data) ... -->
+        <div class="section-intro">
+            <p><strong>SECTION 06 // LOCATIONS</strong></p>
+            <p>Verified mining zones across Stanton and Pyro systems with profitability data.</p>
+        </div>
+
+        <h2>Stanton System Mining Locations</h2>
+
+        <h3>Location 1: Lyria (ArcCorp) - Beginner Zone</h3>
+        <p><strong>Risk Level:</strong> Low | <strong>Profitability:</strong> Moderate | <strong>Accessibility:</strong> High</p>
+        <p><strong>Description:</strong> Safe, accessible asteroid field near ArcCorp. Ideal for new miners learning mechanics. Consistent yields of mixed ore types.</p>
+        <p><strong>Ore Types:</strong> Quantanium (15-25%), Hadanite, Bexalite, Titanium</p>
+        <p><strong>Expected Yield:</strong> 60-80 SCU/hour</p>
+        <p><strong>Navigation:</strong> Quantum jump to Lyria. Follow asteroid field markers. Avoid deep space zones initially.</p>
+
+        <h3>Location 2: Yela Belt (Stanton) - Intermediate Zone</h3>
+        <p><strong>Risk Level:</strong> Moderate | <strong>Profitability:</strong> High | <strong>Accessibility:</strong> Moderate</p>
+        <p><strong>Description:</strong> Dense asteroid belt with high ore concentration. Moderate difficulty with good profitability. Requires intermediate skill.</p>
+        <p><strong>Ore Types:</strong> Quantanium (25-35%), Taranite, Hadanite, Bexalite</p>
+        <p><strong>Expected Yield:</strong> 80-120 SCU/hour</p>
+        <p><strong>Navigation:</strong> Quantum jump to Yela. Navigate through asteroid field carefully. Watch for other miners.</p>
+
+        <h3>Location 3: Microtech Orbit - Backup Zone</h3>
+        <p><strong>Risk Level:</strong> Low | <strong>Profitability:</strong> Low-Moderate | <strong>Accessibility:</strong> Very High</p>
+        <p><strong>Description:</strong> Accessible backup location near microTech. Lower profitability but safe and reliable. Use when primary zones are contested.</p>
+        <p><strong>Ore Types:</strong> Bexalite, Corundum, Titanium</p>
+        <p><strong>Expected Yield:</strong> 40-60 SCU/hour</p>
+        <p><strong>Navigation:</strong> Quantum jump to microTech orbit. Follow navigation markers to asteroid fields.</p>
+
+        <h2>Pyro System Mining Locations (Advanced)</h2>
+
+        <h3>Location 4: Bloom Surface - High-Risk Zone</h3>
+        <p><strong>Risk Level:</strong> High | <strong>Profitability:</strong> Very High | <strong>Accessibility:</strong> Low</p>
+        <p><strong>Description:</strong> Premium mining zone with highest ore concentrations. Extreme risk due to environmental hazards and pirate activity. Advanced operators only.</p>
+        <p><strong>Ore Types:</strong> Quantanium (40-50%), Taranite (30-40%), Hadanite</p>
+        <p><strong>Expected Yield:</strong> 120-180 SCU/hour (if successful)</p>
+        <p><strong>Navigation:</strong> Quantum jump to Pyro. Navigate to Bloom surface. Extreme caution required.</p>
+
+        <h3>Location 5: Terminus Belt - Premium Zone</h3>
+        <p><strong>Risk Level:</strong> High | <strong>Profitability:</strong> Very High | <strong>Accessibility:</strong> Moderate</p>
+        <p><strong>Description:</strong> Dense asteroid belt with large ore clusters. High profitability but contested by other miners and NPCs. Requires combat awareness.</p>
+        <p><strong>Ore Types:</strong> Quantanium (35-45%), Taranite (25-35%), Bexalite</p>
+        <p><strong>Expected Yield:</strong> 100-150 SCU/hour</p>
+        <p><strong>Navigation:</strong> Quantum jump to Pyro. Navigate to Terminus. Watch for other ships.</p>
+
+        <h2>Location Selection Strategy</h2>
+        <p><strong>New Miners:</strong> Start at Lyria (Beginner Zone). Learn mechanics in safe environment. Progress to Yela Belt after 10+ successful runs.</p>
+        <p><strong>Intermediate Miners:</strong> Alternate between Yela Belt and Microtech Orbit. Build profitability and skill. Consider Pyro after 50+ runs.</p>
+        <p><strong>Advanced Miners:</strong> Focus on Pyro locations (Bloom, Terminus) for maximum profitability. Manage risk carefully.</p>
     </div>
 
     <!-- TROUBLESHOOTING TAB -->
     <div id="troubleshooting" class="tab-content">
-        <h2>Troubleshooting Guide</h2>
-        <p>Solutions for common failures and emergency protocols.</p>
-        <table>
-            <tr><th>Issue</th><th>Symptoms</th><th>Solution</th></tr>
-            <tr>
-                <td>Laser Power Insufficient</td>
-                <td>Fracture charge level won't enter green zone.</td>
-                <td>- Use Stampede module for power boost.<br>- Target rocks with lower resistance.<br>- Upgrade to Helix I mining laser.</td>
-            </tr>
-            <tr>
-                <td>Instability Spikes</td>
-                <td>Fracture charge level jumps erratically.</td>
-                <td>- Use BoreMax gadget to reduce instability.<br>- Feather the laser power to maintain control.<br>- Avoid rocks with high instability ratings.</td>
-            </tr>
-            <tr>
-                <td>Quantanium Timer Critical</td>
-                <td>Ship computer announces timer expiration imminent.</td>
-                <td>- Immediately stop mining and head to refinery.<br>- Do not attempt to "top off" cargo.<br>- Plan routes to refineries before starting.</td>
-            </tr>
-            <!-- ... (more troubleshooting scenarios) ... -->
-        </table>
+        <div class="section-intro">
+            <p><strong>SECTION 07 // TROUBLESHOOTING</strong></p>
+            <p>Solutions for common failures and emergency protocols.</p>
+        </div>
+
+        <h2>Common Failures and Solutions</h2>
+
+        <h3>Failure 1: Laser Power Insufficient</h3>
+        <p><strong>Symptoms:</strong> Fracture charge level won't enter green zone. Laser power maxes out before reaching optimal charge.</p>
+        <p><strong>Causes:</strong> Rock has high resistance. Laser power insufficient. Gadgets not equipped.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Equip Stampede module to increase laser power</li>
+            <li>Target rocks with lower resistance</li>
+            <li>Upgrade to Helix I mining laser (more power)</li>
+            <li>Upgrade power plant for sustained power output</li>
+            <li>Skip rock and find easier target</li>
+        </ul>
+
+        <h3>Failure 2: Instability Spikes Uncontrollable</h3>
+        <p><strong>Symptoms:</strong> Fracture charge level jumps erratically. Instability meter spikes uncontrollably.</p>
+        <p><strong>Causes:</strong> Rock has high instability. Gadgets not equipped. Laser power not stable.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Equip BoreMax gadget to reduce instability</li>
+            <li>Feather laser power to maintain control (don't max power)</li>
+            <li>Avoid rocks with high instability ratings</li>
+            <li>Use OptiMax gadget to increase charge window</li>
+            <li>Skip rock and find easier target</li>
+        </ul>
+
+        <h3>Failure 3: Quantanium Timer Critical</h3>
+        <p><strong>Symptoms:</strong> Ship computer announces timer expiration imminent. Less than 5 minutes remaining.</p>
+        <p><strong>Causes:</strong> Spent too much time mining. Didn't plan refinery route. Attempted to "top off" cargo.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>IMMEDIATELY stop mining and head to refinery</li>
+            <li>Quantum jump directly to nearest refinery</li>
+            <li>Do not attempt additional mining runs</li>
+            <li>Do not detour for any reason</li>
+            <li>Dock and transfer ore to refinery immediately</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>CRITICAL:</strong> If timer expires before reaching refinery, your ship and all cargo will be destroyed. There is no recovery. Prioritize reaching refinery above all else.
+        </div>
+
+        <h3>Failure 4: Thermal Overload</h3>
+        <p><strong>Symptoms:</strong> Ship temperature exceeds 80°C. Coolers unable to manage heat. Laser efficiency reduced.</p>
+        <p><strong>Causes:</strong> Coolers insufficient. Power not distributed to coolers. Mining laser running too long.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Reduce laser power immediately (50% instead of 100%)</li>
+            <li>Increase power to coolers (move slider to max)</li>
+            <li>Reduce mining laser duty cycle (mine less frequently)</li>
+            <li>Upgrade to IceBox cooler (Industrial A grade)</li>
+            <li>Upgrade power plant for better thermal management</li>
+            <li>Take break to allow ship to cool naturally</li>
+        </ul>
+
+        <h3>Failure 5: Power Plant Overload</h3>
+        <p><strong>Symptoms:</strong> Power plant shuts down. All systems offline. Ship dead in space.</p>
+        <p><strong>Causes:</strong> Demanding too much power simultaneously. Power plant insufficient for setup.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Reduce laser power to 50% (frees up power for other systems)</li>
+            <li>Disable shields temporarily (frees up power)</li>
+            <li>Reduce cooler power (frees up power)</li>
+            <li>Upgrade power plant (Cirrus Industrial A for top-tier)</li>
+            <li>Manage power distribution more carefully</li>
+        </ul>
+
+        <h3>Failure 6: Shield Failure During Mining</h3>
+        <p><strong>Symptoms:</strong> Shields go down. Ship takes damage. Environmental hazards penetrate.</p>
+        <p><strong>Causes:</strong> Insufficient shield power. Flying in hazardous zone. NPC attack.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Increase power to shields (move slider up)</li>
+            <li>Move away from hazardous zone</li>
+            <li>Evade NPC attackers (boost away, quantum jump)</li>
+            <li>Upgrade shield generator (7SA 'Concord' for top-tier)</li>
+            <li>Avoid high-risk zones if shields are weak</li>
+        </ul>
+
+        <h3>Failure 7: Cargo Hold Overflow</h3>
+        <p><strong>Symptoms:</strong> Cargo hold full. Cannot collect more ore. Mining laser stops working.</p>
+        <p><strong>Causes:</strong> Collected too much ore. Didn't plan cargo capacity.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Stop mining immediately</li>
+            <li>Quantum jump to refinery</li>
+            <li>Transfer ore to refinery</li>
+            <li>Return to mining zone</li>
+            <li>Plan cargo capacity better (target 60-80% fill for Quantanium)</li>
+        </ul>
+
+        <h3>Failure 8: Navigation/Approach Vector Failure</h3>
+        <p><strong>Symptoms:</strong> Cannot approach rock. Laser won't target. Ship stuck in asteroid.</p>
+        <p><strong>Causes:</strong> Approach angle too steep. Asteroid blocking path. Navigation error.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Adjust approach vector (aim for 45-degree angle)</li>
+            <li>Reduce speed to 0 m/s</li>
+            <li>Boost away from asteroid and re-approach</li>
+            <li>Select different rock with better approach</li>
+            <li>Practice approach technique</li>
+        </ul>
+
+        <h3>Failure 9: Environmental Hazards (Cold, Radiation)</h3>
+        <p><strong>Symptoms:</strong> Ship takes environmental damage. Shields flicker. Systems malfunction.</p>
+        <p><strong>Causes:</strong> Mining in extreme environment. Insufficient shielding. Prolonged exposure.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Move to safer zone with less extreme environment</li>
+            <li>Increase shield power for better protection</li>
+            <li>Reduce time in hazardous zone</li>
+            <li>Upgrade shields and coolers for better protection</li>
+            <li>Avoid extreme environment zones until experienced</li>
+        </ul>
+
+        <h3>Failure 10: Emergency: Ship Damage/Distress</h3>
+        <p><strong>Symptoms:</strong> Hull integrity critical. Life support failing. Systems offline.</p>
+        <p><strong>Causes:</strong> Combat damage. Environmental damage. Collision.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li>Quantum jump to nearest station immediately</li>
+            <li>Disable all non-essential systems to conserve power</li>
+            <li>Reduce speed to 0 m/s</li>
+            <li>Activate distress beacon if available</li>
+            <li>Call for assistance if in group</li>
+            <li>Attempt emergency landing at nearest station</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>EMERGENCY PROTOCOL:</strong> If ship is critically damaged, prioritize reaching nearest station for repairs. Abandon mining operation. Cargo is not worth your life.
+        </div>
     </div>
 
     <!-- CHECKLIST TAB -->
     <div id="checklist" class="tab-content">
-        <h2>Interactive Checklist</h2>
+        <div class="section-intro">
+            <p><strong>SECTION 08 // CHECKLIST</strong></p>
+            <p>Interactive pre-flight, operational, and post-mining verification checklist.</p>
+        </div>
+
+        <h2>Pre-Flight Checklist</h2>
         <ul class="checklist">
-            <li><input type="checkbox"> Pre-flight: All systems green</li>
-            <li><input type="checkbox"> Pre-flight: Mining laser calibrated</li>
-            <!-- ... (full checklist) ... -->
+            <li><input type="checkbox"> Ship systems check: All green</li>
+            <li><input type="checkbox"> Mining laser installed and calibrated</li>
+            <li><input type="checkbox"> Mining laser head selected (Arbor MH1 or Helix I)</li>
+            <li><input type="checkbox"> BoreMax gadget equipped</li>
+            <li><input type="checkbox"> OptiMax gadget equipped</li>
+            <li><input type="checkbox"> Stampede module installed</li>
+            <li><input type="checkbox"> Power plant operational (Cirrus or LightBlossom)</li>
+            <li><input type="checkbox"> Cooler operational (IceBox or BlastChill)</li>
+            <li><input type="checkbox"> Shield generator operational (7SA 'Concord' or RPEL)</li>
+            <li><input type="checkbox"> Quantum drive operational (FoxFire or Explorer)</li>
+            <li><input type="checkbox"> Cargo hold empty and ready</li>
+            <li><input type="checkbox"> Fuel tanks full</li>
+            <li><input type="checkbox"> Life support systems operational</li>
+            <li><input type="checkbox"> Communication systems operational</li>
+            <li><input type="checkbox"> Navigation computer updated with mining zone coordinates</li>
         </ul>
+
+        <h2>Mining Operation Checklist</h2>
+        <ul class="checklist">
+            <li><input type="checkbox"> Arrived at mining zone safely</li>
+            <li><input type="checkbox"> Reduced speed to scanning speed (200 m/s)</li>
+            <li><input type="checkbox"> Scanner activated and operational</li>
+            <li><input type="checkbox"> Identified bright signal at 8km+ distance</li>
+            <li><input type="checkbox"> Approached signal and scanned rock directly</li>
+            <li><input type="checkbox"> Evaluated rock against 7-part ore selection framework</li>
+            <li><input type="checkbox"> Rock meets profitability criteria (mine = proceed, skip = find new rock)</li>
+            <li><input type="checkbox"> Approached rock to 500m optimal laser range</li>
+            <li><input type="checkbox"> Reduced speed to 0 m/s for stable targeting</li>
+            <li><input type="checkbox"> Targeted rock with mining laser</li>
+            <li><input type="checkbox"> Activated mining laser and began charging</li>
+            <li><input type="checkbox"> Applied gadgets (BoreMax/OptiMax) to manage instability</li>
+            <li><input type="checkbox"> Maintained laser power in optimal range</li>
+            <li><input type="checkbox"> Triggered fracture when charge entered green zone</li>
+            <li><input type="checkbox"> Rock fractured successfully and ore collected</li>
+            <li><input type="checkbox"> Monitored cargo fill percentage</li>
+            <li><input type="checkbox"> Monitored Quantanium timer (if applicable)</li>
+            <li><input type="checkbox"> Repeated fracturing until target fill reached (60-80% for Quantanium)</li>
+            <li><input type="checkbox"> Planned return route to nearest refinery</li>
+            <li><input type="checkbox"> Quantum jumped to refinery station</li>
+        </ul>
+
+        <h2>Refinery and Sales Checklist</h2>
+        <ul class="checklist">
+            <li><input type="checkbox"> Docked with refinery station safely</li>
+            <li><input type="checkbox"> Transferred ore to refinery inventory</li>
+            <li><input type="checkbox"> Selected refinery method (standard/optimal)</li>
+            <li><input type="checkbox"> Initiated refining process</li>
+            <li><input type="checkbox"> Noted processing time and completion time</li>
+            <li><input type="checkbox"> Waited for ore processing to complete</li>
+            <li><input type="checkbox"> Collected refined materials from refinery</li>
+            <li><input type="checkbox"> Transferred refined materials to cargo hold</li>
+            <li><input type="checkbox"> Traveled to commodity market/trading station</li>
+            <li><input type="checkbox"> Checked current market prices for refined ore</li>
+            <li><input type="checkbox"> Executed sell order for maximum profit</li>
+            <li><input type="checkbox"> Confirmed transaction and received payment</li>
+            <li><input type="checkbox"> Noted total profit from run</li>
+        </ul>
+
+        <h2>Post-Mining Checklist</h2>
+        <ul class="checklist">
+            <li><input type="checkbox"> Ship systems check: All green</li>
+            <li><input type="checkbox"> Hull integrity: No damage</li>
+            <li><input type="checkbox"> Cargo hold: Empty and ready for next run</li>
+            <li><input type="checkbox"> Fuel tanks: Refuel if below 50%</li>
+            <li><input type="checkbox"> Mining laser: Inspect for damage or wear</li>
+            <li><input type="checkbox"> Power plant: Check for overheating or malfunction</li>
+            <li><input type="checkbox"> Coolers: Check for malfunction</li>
+            <li><input type="checkbox"> Shields: Check for damage</li>
+            <li><input type="checkbox"> Quantum drive: Check for malfunction</li>
+            <li><input type="checkbox"> All systems repaired/replaced as needed</li>
+            <li><input type="checkbox"> Ship ready for next mining run</li>
+        </ul>
+
+        <h2>Performance Tracking</h2>
+        <p>Track your mining performance to identify improvements and optimize profitability.</p>
+
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Target</th>
+                <th>Actual</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>Ore Collected (SCU)</td>
+                <td>60-80</td>
+                <td></td>
+                <td>Total cargo collected per run</td>
+            </tr>
+            <tr>
+                <td>Profit (aUEC)</td>
+                <td>Varies</td>
+                <td></td>
+                <td>Total profit from refined ore sale</td>
+            </tr>
+            <tr>
+                <td>Time per Run (min)</td>
+                <td>60-90</td>
+                <td></td>
+                <td>Total time from start to sale</td>
+            </tr>
+            <tr>
+                <td>Profitability (aUEC/hr)</td>
+                <td>60k-150k</td>
+                <td></td>
+                <td>Profit divided by time</td>
+            </tr>
+            <tr>
+                <td>Runs per Session</td>
+                <td>3-6</td>
+                <td></td>
+                <td>Number of complete mining runs</td>
+            </tr>
+        </table>
+
+        <div class="success-box">
+            <strong>Congratulations!</strong> You have completed the F4S Prospector Mining SOP. You are now ready to begin mining operations in Star Citizen 4.5. Good luck, operator.
+        </div>
     </div>
 
 </div>
@@ -356,27 +1326,27 @@
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
         }
         tablinks = document.getElementsByClassName("tab-btn");
         for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tablinks[i].classList.remove("active");
         }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
     }
 
     function toggleNav(element) {
         var details = element.nextElementSibling;
         if (details.style.display === "block") {
             details.style.display = "none";
+            element.textContent = "► Show Navigation Details";
         } else {
             details.style.display = "block";
+            element.textContent = "▼ Hide Navigation Details";
         }
     }
 </script>
 
 </body>
-</html>
-</html>
 </html>
