@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F4S Standard Operating Procedure - MISC MOLE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --f4s-gold: #cfaa48;
+            --f4s-blue: #3b82f6;
+            --f4s-red: #ef4444;
+            --f4s-green: #10b981;
+            --f4s-dark: #111827;
+            --f4s-light: #f3f4f6;
+        }
+        body {
+            background-color: var(--f4s-dark);
+            color: var(--f4s-light);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 100%;
+            height: auto;
+        }
+        .classification-bar {
+            background-color: #000;
+            color: var(--f4s-gold);
+            padding: 5px 10px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--f4s-gold);
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--f4s-light);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--f4s-gold);
+            color: var(--f4s-dark);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--f4s-gold);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid var(--f4s-gold);
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+        .shop-card {
+            background-color: #222;
+            border: 1px solid var(--f4s-gold);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .shop-card h3 {
+            margin-top: 0;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            background-color: #222;
+            padding: 10px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .timer-container {
+            background-color: var(--f4s-red);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 6px solid var(--f4s-red);
+        }
+        .timer-display {
+            font-size: 48px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .timer-btn {
+            background-color: var(--f4s-green);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .timer-btn.reset {
+            background-color: var(--f4s-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="classification-bar">F4S CLEARANCE: LEVEL 2 // F4S_SEN_MIN_MOLE_v1.1</div>
+        <div class="header">
+            <img src="../../assets/image_0.png" alt="Foxtrot-Four Solutions Logo">
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'introduction')">00 // INTRODUCTION</button>
+            <button class="tab-btn" onclick="openTab(event, 'logistics')">01 // LOGISTICS</button>
+            <button class="tab-btn" onclick="openTab(event, 'loadouts')">02 // LOADOUTS</button>
+            <button class="tab-btn" onclick="openTab(event, 'strategy')">03 // STRATEGY</button>
+            <button class="tab-btn" onclick="openTab(event, 'proficiency')">04 // PROFICIENCY</button>
+            <button class="tab-btn" onclick="openTab(event, 'execution')">05 // EXECUTION</button>
+            <button class="tab-btn" onclick="openTab(event, 'locations')">06 // LOCATIONS</button>
+            <button class="tab-btn" onclick="openTab(event, 'troubleshooting')">07 // TROUBLESHOOTING</button>
+            <button class="tab-btn" onclick="openTab(event, 'checklist')">08 // CHECKLIST</button>
+        </div>
+
+        <div id="introduction" class="tab-content active">
+            
+            <h2>Introduction to Multi-Crew Mining</h2>
+            <p>This document provides the standard operating procedure (SOP) for the MISC MOLE, a multi-crew mining vessel. Unlike the Prospector, the MOLE is designed for team-based operations, allowing for significantly higher yields and the ability to tackle larger, more valuable deposits.</p>
+            <h3>Why the MISC MOLE?</h3>
+            <p>The MOLE is the industrial backbone of any serious mining operation. With three independent mining turrets and a 96 SCU cargo capacity, it represents a significant step up from solo mining operations. Its ability to fracture massive rocks that are impossible for a Prospector to handle makes it the premier choice for team-based profitability.</p>
+            <h3>Basic Mining Mechanics</h3>
+            <p>The core mechanics of mining remain the same: scanning for deposits, fracturing rocks, and extracting valuable ore. However, the MOLE introduces multi-crew coordination, requiring a pilot and up to three turret operators to work in concert for maximum efficiency.</p>
+            <h3>The Quantanium Timer: A Critical Safety Mechanic</h3>
+            <p>As with all mining operations, the 25-minute Quantanium timer is a critical safety consideration. Once Quantanium enters the cargo hold, a 25-minute countdown begins, after which the ore will detonate, destroying the ship. This SOP includes an interactive countdown timer in the checklist section to assist operators in managing this risk.</p>
+            <h3>Profitability Overview</h3>
+            <p>A fully crewed MOLE is one of the most profitable non-combat activities in the verse. With a top-tier loadout and a skilled crew, operators can expect to earn upwards of 250,000-350,000 aUEC per hour mining Quantanium.</p>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Basic understanding of Star Citizen flight and ship systems.</li>
+                <li>Familiarity with the mining mechanics outlined in the Prospector SOP.</li>
+                <li>Access to a MISC MOLE and the recommended components.</li>
+                <li>A crew of at least 2, with 3-4 being optimal.</li>
+            </ul>
+            <h3>Mining Glossary</h3>
+            <ul>
+                <li><b>Fracturing:</b> The process of breaking a large rock into smaller, extractable fragments.</li>
+                <li><b>Instability:</b> A measure of how volatile a rock is during fracturing.</li>
+                <li><b>Optimal Charge Window:</b> The ideal power level for fracturing a rock without overcharging it.</li>
+                <li><b>Inert Material:</b> Worthless rock that takes up cargo space.</li>
+                <li><b>SCU:</b> Standard Cargo Unit, the measure of cargo capacity.</li>
+            </ul>
+            <h3>Common Mistakes to Avoid</h3>
+            <ul>
+                <li>Attempting to solo mine large, unstable rocks.</li>
+                <li>Poor communication between pilot and turret operators.</li>
+                <li>Ignoring the Quantanium timer.</li>
+                <li>Using the wrong mining laser for the rock type.</li>
+                <li>Not carrying sufficient repair and medical supplies.</li>
+            </ul>
+            <h3>Learning Resources</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=u3_iQdjOoIE" target="_blank">Captain Deadwake's Solo Mole Guide</a></li>
+                <li><a href="https://starcitizen.tools/" target="_blank">Star Citizen Tools Database</a></li>
+                <li><a href="https://www.erkul.games/" target="_blank">Erkul Games DPS Calculator</a></li>
+            </ul>
+            
+        </div>
+
+        <div id="logistics" class="tab-content">
+            
+            <h2>Component Acquisition</h2>
+            <p>Acquiring the optimal components for the MOLE requires visiting several locations across the Stanton system. This route is designed for efficiency, allowing operators to purchase all necessary components in a single trip.</p>
+            <div class="shop-card">
+                <h3>1. Dumper's Depot - Area18, ArcCorp</h3>
+                <p><b>Navigation:</b> Fly to ArcCorp, land at Area18. Take the city transit to the ArcCorp Plaza. Dumper's Depot is located in the main plaza area.</p>
+                <table>
+                    <tr><th>Item</th><th>Grade/Type</th></tr>
+                    <tr><td>Cirrus (Power Plant)</td><td>Industrial A</td></tr>
+                    <tr><td>Shimmer (Shield Generator)</td><td>Stealth D</td></tr>
+                </table>
+            </div>
+            <div class="shop-card">
+                <h3>2. Platinum Bay - HUR-L5</h3>
+                <p><b>Navigation:</b> Quantum travel to Hurston, then to the HUR-L5 Lagrange point. Dock at the station and locate Platinum Bay.</p>
+                <table>
+                    <tr><th>Item</th><th>Grade/Type</th></tr>
+                    <tr><td>IceBox (Cooler)</td><td>Industrial A</td></tr>
+                    <tr><td>RPEL (Shield Generator)</td><td>Civilian D</td></tr>
+                    <tr><td>Agni (Quantum Drive)</td><td>Civilian B</td></tr>
+                </table>
+            </div>
+            <div class="shop-card">
+                <h3>3. Cousin Crows Custom Craft - Orison, Crusader</h3>
+                <p><b>Navigation:</b> Fly to Crusader, land at the Orison spaceport. Take the shuttle to the industrial platform. Cousin Crows is located on the main promenade.</p>
+                <table>
+                    <tr><th>Item</th><th>Grade/Type</th></tr>
+                    <tr><td>Helix II (Mining Laser)</td><td>N/A</td></tr>
+                    <tr><td>Impact II (Mining Laser)</td><td>N/A</td></tr>
+                </table>
+            </div>
+            <div class="shop-card">
+                <h3>4. Refinery Deck - Any Major Station</h3>
+                <p><b>Navigation:</b> Available at most major space stations with a refinery (e.g., HUR-L1, CRU-L1).</p>
+                <table>
+                    <tr><th>Item</th><th>Grade/Type</th></tr>
+                    <tr><td>Torrent III (Module)</td><td>N/A</td></tr>
+                    <tr><td>Focus III (Module)</td><td>N/A</td></tr>
+                    <tr><td>Surge (Module)</td><td>N/A</td></tr>
+                    <tr><td>BoreMax (Gadget)</td><td>N/A</td></tr>
+                    <tr><td>OptiMax (Gadget)</td><td>N/A</td></tr>
+                </table>
+            </div>
+            
+        </div>
+
+        <div id="loadouts" class="tab-content">
+            
+            <h2>MOLE Component Loadouts</h2>
+            <p>Two primary loadouts are recommended for the MOLE, catering to different budget levels and operational goals. Both are designed for maximum effectiveness within their class.</p>
+            <h3>Budget Loadout (Entry-Level)</h3>
+            <p>This loadout uses readily available, cost-effective components that provide a solid foundation for new MOLE operators.</p>
+            <table>
+                <tr><th>Component</th><th>Item</th><th>Grade/Type</th></tr>
+                <tr><td>Mining Lasers</td><td>3x Arbor MH2</td><td>S2</td></tr>
+                <tr><td>Shield Generator</td><td>Bulwark</td><td>S3, Civilian C</td></tr>
+                <tr><td>Power Plant</td><td>Ginzel</td><td>S3, Civilian C</td></tr>
+                <tr><td>Cooler</td><td>Wen/Castra</td><td>S3, Civilian D</td></tr>
+                <tr><td>Quantum Drive</td><td>Atlas</td><td>S2, Civilian B</td></tr>
+            </table>
+            <h3>Top-Tier Loadout (Maximum Efficiency)</h3>
+            <p>This loadout utilizes the best purchasable components to maximize mining efficiency, profitability, and survivability.</p>
+            <table>
+                <tr><th>Component</th><th>Item</th><th>Grade/Type</th></tr>
+                <tr><td>Mining Lasers</td><td>1x Helix II, 2x Impact II</td><td>S2</td></tr>
+                <tr><td>Shield Generator</td><td>Rampart</td><td>S3, Industrial A</td></tr>
+                <tr><td>Power Plant</td><td>Fierté</td><td>S3, Competition A</td></tr>
+                <tr><td>Cooler</td><td>Polar</td><td>S3, Stealth A</td></tr>
+                <tr><td>Quantum Drive</td><td>Voyage</td><td>S2, Industrial A</td></tr>
+            </table>
+            
+        </div>
+
+        <div id="strategy" class="tab-content">
+            
+            <h2>Multi-Crew Mining Strategy</h2>
+            <p>The MOLE's primary advantage is its ability to coordinate multiple mining lasers on a single target. This section outlines the strategies for maximizing efficiency with a multi-person crew.</p>
+            <h3>Crew Roles and Responsibilities</h3>
+            <table>
+                <tr><th>Role</th><th>Responsibilities</th></tr>
+                <tr><td>Pilot</td><td>Navigation, scanning, rock selection, cargo management, communication hub.</td></tr>
+                <tr><td>Mining Operator(s)</td><td>Laser operation, power management, instability control, communication with pilot.</td></tr>
+            </table>
+            <h3>Fracturing Doctrine</h3>
+            <p>The key to efficient MOLE operation is coordinated fire. All operators should focus on a single rock, combining their laser power to fracture it quickly and safely.</p>
+            <ol>
+                <li>The pilot identifies a high-value rock and positions the ship for optimal turret coverage.</li>
+                <li>The pilot assigns a primary operator to initiate the fracture.</li>
+                <li>All operators power up their lasers and await the primary's signal.</li>
+                <li>The primary operator begins the fracture, calling out power levels and instability.</li>
+                <li>Other operators apply laser power as needed to keep the charge level in the optimal window.</li>
+                <li>Once the rock is fractured, the pilot moves to the next target.</li>
+            </ol>
+            <h3>Ore Selection Framework</h3>
+            <p>The ore selection framework is similar to the Prospector, but the MOLE can tackle larger and more challenging rocks.</p>
+            <ul>
+                <li><b>Quantanium:</b> Prioritize rocks with ≥30% Quantanium. With a full crew, rocks up to 15,000 mass are viable.</li>
+                <li><b>Taranite, Bexalite, etc.:</b> Follow the same profitability matrix as the Prospector, but target larger deposits.</li>
+                <li><b>Inert Material:</b> Avoid rocks with high concentrations of inert material, as they will quickly fill the MOLE's 96 SCU cargo hold.</li>
+            </ul>
+            
+        </div>
+
+        <div id="proficiency" class="tab-content">
+            
+            <h2>Operator Proficiency</h2>
+            <p>Proficiency with the MOLE is measured by the crew's ability to work together to efficiently and safely mine high-value deposits. This section outlines the progression from a novice crew to a top-tier mining team.</p>
+            <h3>Beginner Crew (2 Operators)</h3>
+            <p>A pilot and one mining operator. Focus on smaller, more stable rocks to practice communication and coordination. The pilot will also need to operate one of the mining turrets.</p>
+            <ul>
+                <li><b>Focus:</b> Communication, basic coordination, rock selection.</li>
+                <li><b>Target Rocks:</b> Stable rocks up to 8,000 mass.</li>
+                <li><b>Expected Yield:</b> 120-180k aUEC/hour.</li>
+            </ul>
+            <h3>Intermediate Crew (3 Operators)</h3>
+            <p>A dedicated pilot and two mining operators. This is the optimal crew size for most mining operations. The crew can tackle larger, more unstable rocks with coordinated fire.</p>
+            <ul>
+                <li><b>Focus:</b> Advanced coordination, instability management, multi-laser fracturing.</li>
+                <li><b>Target Rocks:</b> Unstable rocks up to 12,000 mass.</li>
+                <li><b>Expected Yield:</b> 180-250k aUEC/hour.</li>
+            </ul>
+            <h3>Advanced Crew (4 Operators)</h3>
+            <p>A dedicated pilot and three mining operators. This crew can operate all three mining turrets simultaneously, allowing for the fastest fracture times and the ability to tackle the largest and most challenging rocks in the verse.</p>
+            <ul>
+                <li><b>Focus:</b> Maximum efficiency, simultaneous fracturing, high-risk/high-reward targets.</li>
+                <li><b>Target Rocks:</b> Massive, highly unstable rocks up to 15,000 mass.</li>
+                <li><b>Expected Yield:</b> 250-350k aUEC/hour.</li>
+            </ul>
+            
+        </div>
+
+        <div id="execution" class="tab-content">
+            
+            <h2>Execution: The Mining Operation</h2>
+            <p>A successful MOLE mining operation is a well-choreographed dance between the pilot and the turret operators. This section breaks down the process into four distinct phases.</p>
+            <h3>Phase 1: Prospecting</h3>
+            <ol>
+                <li>The pilot navigates to the chosen mining location.</li>
+                <li>The pilot performs a wide-range scan to identify potential deposits.</li>
+                <li>The pilot selects a high-value target and positions the ship for optimal turret coverage.</li>
+                <li>The pilot communicates the rock type, mass, and instability to the crew.</li>
+            </ol>
+            <h3>Phase 2: Fracturing</h3>
+            <ol>
+                <li>The pilot assigns a primary operator to begin the fracture.</li>
+                <li>All operators power up their lasers and coordinate their fire on the target.</li>
+                <li>The crew communicates power levels and instability to keep the charge in the optimal window.</li>
+                <li>Once the rock is fractured, the pilot assesses the fragments for extraction.</li>
+            </ol>
+            <h3>Phase 3: Extraction</h3>
+            <ol>
+                <li>The pilot positions the ship for efficient extraction of the valuable fragments.</li>
+                <li>Operators use their extraction beams to collect the ore.</li>
+                <li>The pilot monitors cargo capacity and calls out when the hold is full.</li>
+            </ol>
+            <h3>Phase 4: Refinement</h3>
+            <ol>
+                <li>Once the cargo hold is full, the pilot navigates to the nearest refinery.</li>
+                <li>The crew unloads the ore and begins the refining process.</li>
+                <li>While the ore is refining, the crew can restock, repair, and prepare for the next run.</li>
+            </ol>
+            
+        </div>
+
+        <div id="locations" class="tab-content">
+            
+            <h2>Mining Locations</h2>
+            <p>The MOLE can operate in the same locations as the Prospector, but its ability to handle larger rocks makes certain areas more profitable. These locations are chosen for their high concentration of valuable minerals and their suitability for multi-crew operations.</p>
+            <h3>Stanton System</h3>
+            <ul>
+                <li><b>Lyria (ArcCorp):</b> The premier destination for Quantanium mining. The MOLE can tackle the massive Quantanium deposits found on this moon.</li>
+                <li><b>Yela Belt (Crusader):</b> A dense asteroid field with a high concentration of valuable minerals. The MOLE's multiple turrets are ideal for clearing clusters of asteroids.</li>
+                <li><b>Microtech:</b> A good backup location with a mix of minerals. Less profitable than Lyria, but also less crowded.</li>
+            </ul>
+            <h3>Pyro System</h3>
+            <ul>
+                <li><b>Bloom Surface:</b> A high-risk, high-reward location with a high concentration of premium minerals. The MOLE's superior defenses make it a viable option for operating in this dangerous system.</li>
+                <li><b>Terminus Belt:</b> A massive asteroid belt with large, valuable deposits. Ideal for a well-coordinated MOLE crew.</li>
+                <li><b>Pyro V Moon:</b> A good location for finding large Quantanium deposits, but be prepared for hostile encounters.</li>
+            </ul>
+            
+        </div>
+
+        <div id="troubleshooting" class="tab-content">
+            
+            <h2>Troubleshooting</h2>
+            <p>Even the best-laid plans can go wrong. This section provides solutions to common problems encountered during MOLE mining operations.</p>
+            <table>
+                <tr><th>Problem</th><th>Solution</th></tr>
+                <tr><td>Laser power insufficient for rock fracture.</td><td>Coordinate fire from multiple lasers. Use a Stampede gadget to increase power. Ensure the correct laser head is being used for the rock type.</td></tr>
+                <tr><td>Instability spikes and uncontrollable fractures.</td><td>Use a BoreMax gadget to reduce instability. Communicate power levels and "dance" the laser power to keep the charge in the optimal window.</td></tr>
+                <tr><td>Quantanium timer critical/expiration.</td><td>Immediately cease all mining operations and return to the nearest refinery. Do not attempt to collect more ore.</td></tr>
+                <tr><td>Thermal overheating of mining laser.</td><td>Reduce laser power or cease firing to allow the laser to cool. Ensure the ship's coolers are functioning correctly.</td></tr>
+                <tr><td>Power plant insufficient for sustained mining.</td><td>Upgrade to a higher-grade power plant. Manage power distribution to prioritize mining lasers.</td></tr>
+                <tr><td>Shield failure during mining operations.</td><td>Retreat to a safe distance and allow shields to recharge. Upgrade to a higher-grade shield generator.</td></tr>
+                <tr><td>Cargo hold overflow/management.</td><td>The pilot should monitor cargo capacity and call out when the hold is nearing full. Jettison low-value ore if necessary to make room for high-value minerals.</td></tr>
+                <tr><td>Poor communication between crew.</td><td>Establish clear communication protocols before the operation. Use a dedicated voice channel for the crew.</td></tr>
+                <tr><td>Environmental hazards (extreme cold, radiation).</td><td>Monitor ship and suit status. Carry appropriate medical supplies.</td></tr>
+                <tr><td>Hostile encounters (pirates).</td><td>The MOLE is not a combat ship. Retreat to a safe location and call for backup if necessary.</td></tr>
+            </table>
+            
+        </div>
+
+        <div id="checklist" class="tab-content">
+            
+            <h2>Pre-Flight Checklist</h2>
+            <ul class="checklist">
+                <li><input type="checkbox">MOLE is fueled and repaired.</li>
+                <li><input type="checkbox">All components are installed and functioning.</li>
+                <li><input type="checkbox">Crew members are assigned to their roles.</li>
+                <li><input type="checkbox">Communication channels are established and tested.</li>
+                <li><input type="checkbox">Medical and repair supplies are stocked.</li>
+            </ul>
+            <h2>Mining Operation Checklist</h2>
+            <div class="timer-container">
+                <h3>QUANTANIUM TIMER</h3>
+                <div class="timer-display" id="mole-timer">25:00</div>
+                <button class="timer-btn" onclick="startMoleTimer()">START TIMER</button>
+                <button class="timer-btn reset" onclick="resetMoleTimer()">RESET TIMER</button>
+            </div>
+            <ul class="checklist">
+                <li><input type="checkbox">Prospecting scan complete.</li>
+                <li><input type="checkbox">High-value target identified.</li>
+                <li><input type-="checkbox">Ship positioned for optimal turret coverage.</li>
+                <li><input type="checkbox">Fracturing complete.</li>
+                <li><input type="checkbox">Extraction complete.</li>
+                <li><input type="checkbox">Cargo hold full.</li>
+            </ul>
+            <h2>Post-Flight Checklist</h2>
+            <ul class="checklist">
+                <li><input type="checkbox">Ore delivered to refinery.</li>
+                <li><input type="checkbox">MOLE refueled and restocked.</li>
+                <li><input type="checkbox">Debrief with crew.</li>
+            </ul>
+            <script>
+                let moleTimerInterval;
+                let moleTimeRemaining = 25 * 60;
+
+                function startMoleTimer() {
+                    clearInterval(moleTimerInterval);
+                    moleTimerInterval = setInterval(() => {
+                        moleTimeRemaining--;
+                        const minutes = Math.floor(moleTimeRemaining / 60);
+                        const seconds = moleTimeRemaining % 60;
+                        document.getElementById("mole-timer").textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        if (moleTimeRemaining <= 0) {
+                            clearInterval(moleTimerInterval);
+                            document.getElementById("mole-timer").textContent = "TIMER EXPIRED";
+                        }
+                    }, 1000);
+                }
+
+                function resetMoleTimer() {
+                    clearInterval(moleTimerInterval);
+                    moleTimeRemaining = 25 * 60;
+                    document.getElementById("mole-timer").textContent = "25:00";
+                }
+            </script>
+            
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
+</html>
