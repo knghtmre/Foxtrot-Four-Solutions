@@ -1,144 +1,285 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F4S Standard Operating Procedure - MISC MOLE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <title>F4S MISC Mole Mining SOP v1.1</title>
     <style>
+        /* F4S "TITAN" CSS Framework v1.1 */
+        @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Russo+One&family=Rajdhani:wght@400;700&display=swap");
+
         :root {
             --f4s-gold: #cfaa48;
             --f4s-blue: #3b82f6;
             --f4s-red: #ef4444;
             --f4s-green: #10b981;
-            --f4s-dark: #111827;
-            --f4s-light: #f3f4f6;
+            --f4s-dark-bg: #111827;
+            --f4s-light-bg: #1f2937;
+            --f4s-text-light: #d1d5db;
+            --f4s-text-dark: #9ca3af;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: var(--f4s-dark);
-            color: var(--f4s-light);
-            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--f4s-dark-bg);
+            color: var(--f4s-text-light);
+            font-family: "Rajdhani", sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 20px;
         }
+
         .container {
             max-width: 1200px;
             margin: auto;
+            background: var(--f4s-light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
+
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--f4s-gold);
+            padding-bottom: 20px;
         }
-        .header img {
-            max-width: 100%;
-            height: auto;
-        }
+
         .classification-bar {
-            background-color: #000;
-            color: var(--f4s-gold);
-            padding: 5px 10px;
+            background: var(--f4s-gold);
+            color: var(--f4s-dark-bg);
+            padding: 8px 15px;
             text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 20px;
+            font-family: "Orbitron", sans-serif;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: inline-block;
+            width: 100%;
         }
+
+        .header h1 {
+            font-family: "Orbitron", sans-serif;
+            color: var(--f4s-gold);
+            margin: 20px 0 10px 0;
+            font-size: 2.5em;
+        }
+
+        .header p {
+            color: var(--f4s-text-dark);
+            margin: 5px 0;
+        }
+
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             border-bottom: 2px solid var(--f4s-gold);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            gap: 5px;
         }
+
         .tab-btn {
             background: none;
             border: none;
-            color: var(--f4s-light);
-            padding: 10px 20px;
+            color: var(--f4s-text-dark);
+            padding: 12px 16px;
             cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            font-family: "Orbitron", sans-serif;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--f4s-gold);
-            color: var(--f4s-dark);
+
+        .tab-btn.active {
+            color: var(--f4s-gold);
+            border-bottom: 3px solid var(--f4s-gold);
+            margin-bottom: -2px;
         }
+
+        .tab-btn:hover {
+            color: var(--f4s-gold);
+        }
+
         .tab-content {
             display: none;
         }
+
         .tab-content.active {
             display: block;
         }
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
+
+        h2 {
+            font-family: "Orbitron", sans-serif;
             color: var(--f4s-gold);
+            border-bottom: 1px solid var(--f4s-gold);
+            padding-bottom: 10px;
+            margin-top: 30px;
         }
+
+        h3 {
+            font-family: "Orbitron", sans-serif;
+            color: var(--f4s-blue);
+            margin-top: 25px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            background: var(--f4s-dark-bg);
         }
-        th, td {
-            border: 1px solid var(--f4s-gold);
-            padding: 10px;
-            text-align: left;
-        }
+
         th {
-            background-color: #333;
+            background: var(--f4s-gold);
+            color: var(--f4s-dark-bg);
+            padding: 12px;
+            text-align: left;
+            font-family: "Orbitron", sans-serif;
+            font-weight: 700;
         }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--f4s-text-dark);
+        }
+
+        tr:hover {
+            background: rgba(207, 170, 72, 0.1);
+        }
+
         .shop-card {
-            background-color: #222;
-            border: 1px solid var(--f4s-gold);
-            padding: 15px;
-            margin-bottom: 20px;
+            background: var(--f4s-dark-bg);
+            border-left: 4px solid var(--f4s-gold);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
+
         .shop-card h3 {
             margin-top: 0;
+            color: var(--f4s-gold);
         }
+
+        .location-card {
+            background: var(--f4s-dark-bg);
+            border-left: 4px solid var(--f4s-blue);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .location-card h3 {
+            margin-top: 0;
+            color: var(--f4s-blue);
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--f4s-red);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--f4s-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--f4s-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
         .checklist {
             list-style: none;
             padding: 0;
         }
+
         .checklist li {
-            background-color: #222;
-            padding: 10px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--f4s-text-dark);
         }
+
         .checklist input[type="checkbox"] {
             margin-right: 10px;
+            cursor: pointer;
         }
-        .timer-container {
-            background-color: var(--f4s-red);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            border: 6px solid var(--f4s-red);
+
+        code {
+            background: var(--f4s-dark-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: var(--f4s-gold);
         }
+
         .timer-display {
+            font-family: "Orbitron", sans-serif;
             font-size: 48px;
-            font-family: 'Orbitron', sans-serif;
+            color: var(--f4s-gold);
+            text-align: center;
+            margin: 20px 0;
         }
-        .timer-btn {
-            background-color: var(--f4s-green);
-            color: white;
+
+        .timer-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .timer-controls button {
+            background: var(--f4s-gold);
+            color: var(--f4s-dark-bg);
             border: none;
-            padding: 15px 20px;
+            padding: 15px 30px;
+            font-family: "Orbitron", sans-serif;
             font-size: 16px;
             cursor: pointer;
-            margin: 5px;
-            transition: background-color 0.3s;
+            margin: 0 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
-        .timer-btn.reset {
-            background-color: var(--f4s-red);
+
+        .timer-controls button:hover {
+            background: var(--f4s-blue);
+            color: var(--f4s-text-light);
+        }
+
+        .timer-controls button.reset-btn {
+            background: var(--f4s-red);
+            color: var(--f4s-text-light);
+        }
+
+        .timer-controls button.reset-btn:hover {
+            background: #dc2626;
+        }
+
+        #timer-status {
+            text-align: center;
+            font-size: 18px;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="classification-bar">F4S CLEARANCE: LEVEL 2 // F4S_SEN_MIN_MOLE_v1.1</div>
         <div class="header">
-            <img src="../../assets/image_0.png" alt="Foxtrot-Four Solutions Logo">
+            <div class="classification-bar">
+                F4S CLEARANCE: SENTINEL // VERSION: 1.1 // APPROVED STANDARD: F4S-STD-03
+            </div>
+            <img src="../../assets/image_0.png" alt="F4S Logo" style="max-width: 600px; width: 100%;">
+            <h1>MISC MOLE MINING SOP</h1>
+            <p>Standard Operating Procedure: Multi-Crew Mining Operations</p>
+            <p>Designation: F4S_SEN_MIN_MOLE_v1</p>
         </div>
 
         <div class="tabs">
@@ -154,311 +295,1014 @@
         </div>
 
         <div id="introduction" class="tab-content active">
-            
-            <h2>Introduction to Multi-Crew Mining</h2>
-            <p>This document provides the standard operating procedure (SOP) for the MISC MOLE, a multi-crew mining vessel. Unlike the Prospector, the MOLE is designed for team-based operations, allowing for significantly higher yields and the ability to tackle larger, more valuable deposits.</p>
-            <h3>Why the MISC MOLE?</h3>
-            <p>The MOLE is the industrial backbone of any serious mining operation. With three independent mining turrets and a 96 SCU cargo capacity, it represents a significant step up from solo mining operations. Its ability to fracture massive rocks that are impossible for a Prospector to handle makes it the premier choice for team-based profitability.</p>
+            <h2>Introduction: Multi-Crew Mining Operations</h2>
+            <p>The MISC Mole is a specialized multi-crew mining vessel designed to extract valuable minerals from asteroids and planetary surfaces. With three independent mining turrets and a cargo capacity of 96 SCU, the Mole represents a significant step up from solo mining operations. This Standard Operating Procedure provides comprehensive guidance for operating the Mole efficiently and profitably in Star Citizen 4.5.</p>
+
+            <h3>What is Mining in Star Citizen?</h3>
+            <p>Mining is the process of extracting valuable minerals from rocks found on planetary surfaces, moons, and asteroid belts. The process involves scanning for deposits, fracturing rocks using mining lasers, and collecting the resulting fragments. Refined ore can be sold at commodity trading terminals for profit.</p>
+
+            <h3>Why the MISC Mole?</h3>
+            <p>The Mole offers several advantages over solo mining ships like the Prospector:</p>
+            <ul>
+                <li><b>Three Mining Turrets:</b> Allows for coordinated fracturing of larger, more valuable rocks</li>
+                <li><b>96 SCU Cargo Capacity:</b> Three times the capacity of the Prospector (32 SCU)</li>
+                <li><b>Multi-Crew Operation:</b> Enables specialization and efficiency through teamwork</li>
+                <li><b>Higher Profitability:</b> Can tackle rocks up to 20,000+ mass with proper crew coordination</li>
+                <li><b>Solo Viable:</b> Can be operated solo by switching between turrets (advanced technique)</li>
+            </ul>
+
             <h3>Basic Mining Mechanics</h3>
-            <p>The core mechanics of mining remain the same: scanning for deposits, fracturing rocks, and extracting valuable ore. However, the MOLE introduces multi-crew coordination, requiring a pilot and up to three turret operators to work in concert for maximum efficiency.</p>
-            <h3>The Quantanium Timer: A Critical Safety Mechanic</h3>
-            <p>As with all mining operations, the 25-minute Quantanium timer is a critical safety consideration. Once Quantanium enters the cargo hold, a 25-minute countdown begins, after which the ore will detonate, destroying the ship. This SOP includes an interactive countdown timer in the checklist section to assist operators in managing this risk.</p>
+            <p>Mining in the Mole follows a four-phase process:</p>
+            <ol>
+                <li><b>Scanning:</b> Use the ship's scanner to identify mineral deposits. High-value deposits appear as bright, stable signals at long range (8km+).</li>
+                <li><b>Fracturing:</b> Use mining lasers to apply power to a rock until it fractures. The goal is to keep the charge in the "optimal window" (green zone) while managing instability.</li>
+                <li><b>Extraction:</b> After fracturing, use the extraction beam to collect the valuable fragments into the cargo hold.</li>
+                <li><b>Refinement:</b> Transport the raw ore to a refinery station, where it is processed into sellable commodities.</li>
+            </ol>
+
+            <h3>Quantanium Timer: Critical Safety Mechanic</h3>
+            <div class="warning-box">
+                <p><b>⚠ CRITICAL WARNING:</b> Quantanium is an unstable mineral that will detonate 25 minutes after entering your cargo hold. If the timer expires, your ship and cargo will be destroyed.</p>
+            </div>
+            <p>When mining Quantanium, operators must:</p>
+            <ul>
+                <li>Start the timer immediately when Quantanium enters the cargo hold</li>
+                <li>Plan a return route to the nearest refinery before reaching 10 minutes remaining</li>
+                <li>Return to the refinery before the timer expires</li>
+                <li>Avoid "topping off" the cargo hold with additional rocks once Quantanium is aboard</li>
+            </ul>
+
             <h3>Profitability Overview</h3>
-            <p>A fully crewed MOLE is one of the most profitable non-combat activities in the verse. With a top-tier loadout and a skilled crew, operators can expect to earn upwards of 250,000-350,000 aUEC per hour mining Quantanium.</p>
+            <p>The Mole's profitability scales with crew size and coordination:</p>
+            <table>
+                <tr>
+                    <th>Crew Size</th>
+                    <th>Expected Yield</th>
+                    <th>Optimal Rock Mass</th>
+                </tr>
+                <tr>
+                    <td>Solo (1 operator)</td>
+                    <td>100-150k aUEC/hour</td>
+                    <td>Up to 10,000 mass</td>
+                </tr>
+                <tr>
+                    <td>2 operators</td>
+                    <td>150-200k aUEC/hour</td>
+                    <td>Up to 12,000 mass</td>
+                </tr>
+                <tr>
+                    <td>3 operators</td>
+                    <td>200-280k aUEC/hour</td>
+                    <td>Up to 15,000 mass</td>
+                </tr>
+                <tr>
+                    <td>4 operators</td>
+                    <td>280-400k+ aUEC/hour</td>
+                    <td>Up to 20,000+ mass</td>
+                </tr>
+            </table>
+
             <h3>Prerequisites</h3>
+            <p>Before beginning Mole mining operations, operators should:</p>
             <ul>
-                <li>Basic understanding of Star Citizen flight and ship systems.</li>
-                <li>Familiarity with the mining mechanics outlined in the Prospector SOP.</li>
-                <li>Access to a MISC MOLE and the recommended components.</li>
-                <li>A crew of at least 2, with 3-4 being optimal.</li>
+                <li>Have basic understanding of Star Citizen flight controls and navigation</li>
+                <li>Understand the mining mechanics (scanning, fracturing, extraction)</li>
+                <li>Have access to a MISC Mole (can be rented or purchased)</li>
+                <li>Have sufficient aUEC to purchase components and mining gadgets</li>
+                <li>For multi-crew: Have clear communication protocols established</li>
             </ul>
+
             <h3>Mining Glossary</h3>
-            <ul>
-                <li><b>Fracturing:</b> The process of breaking a large rock into smaller, extractable fragments.</li>
-                <li><b>Instability:</b> A measure of how volatile a rock is during fracturing.</li>
-                <li><b>Optimal Charge Window:</b> The ideal power level for fracturing a rock without overcharging it.</li>
-                <li><b>Inert Material:</b> Worthless rock that takes up cargo space.</li>
-                <li><b>SCU:</b> Standard Cargo Unit, the measure of cargo capacity.</li>
-            </ul>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><b>Scan/Ping</b></td>
+                    <td>The process of using the ship's scanner to identify mineral deposits at range</td>
+                </tr>
+                <tr>
+                    <td><b>Fracture</b></td>
+                    <td>The process of applying laser power to a rock until it breaks apart</td>
+                </tr>
+                <tr>
+                    <td><b>Instability</b></td>
+                    <td>A measure of how difficult a rock is to fracture. High instability causes the charge window to fluctuate unpredictably</td>
+                </tr>
+                <tr>
+                    <td><b>Optimal Window</b></td>
+                    <td>The green zone on the fracture interface where the charge must be maintained for a successful fracture</td>
+                </tr>
+                <tr>
+                    <td><b>Resistance</b></td>
+                    <td>A measure of how much laser power is required to fracture a rock</td>
+                </tr>
+                <tr>
+                    <td><b>Inert Material</b></td>
+                    <td>Worthless material in a rock that dilutes the value of the ore</td>
+                </tr>
+                <tr>
+                    <td><b>Gadget</b></td>
+                    <td>A consumable module that modifies mining laser performance (e.g., BoreMax reduces instability)</td>
+                </tr>
+                <tr>
+                    <td><b>SCU</b></td>
+                    <td>Standard Cargo Unit - the measurement of cargo capacity in Star Citizen</td>
+                </tr>
+                <tr>
+                    <td><b>Mass</b></td>
+                    <td>The size of a rock, measured in tons. Larger mass generally means more ore but harder to fracture</td>
+                </tr>
+                <tr>
+                    <td><b>Quantanium</b></td>
+                    <td>The most valuable ore in Star Citizen, but unstable and will explode 25 minutes after collection</td>
+                </tr>
+            </table>
+
             <h3>Common Mistakes to Avoid</h3>
-            <ul>
-                <li>Attempting to solo mine large, unstable rocks.</li>
-                <li>Poor communication between pilot and turret operators.</li>
-                <li>Ignoring the Quantanium timer.</li>
-                <li>Using the wrong mining laser for the rock type.</li>
-                <li>Not carrying sufficient repair and medical supplies.</li>
-            </ul>
+            <ol>
+                <li><b>Chasing Low-Value Rocks:</b> Wasting time on rocks with low ore percentage or inert material. Always check composition before fracturing.</li>
+                <li><b>Overcharging Rocks:</b> Applying too much power too quickly, causing the rock to explode and destroying all ore.</li>
+                <li><b>Ignoring the Quantanium Timer:</b> Failing to track the 25-minute countdown, resulting in ship destruction.</li>
+                <li><b>Poor Crew Communication:</b> Lack of clear communication leads to inefficient fracturing and wasted time.</li>
+                <li><b>Topping Off the Cargo Hold:</b> Trying to squeeze in "one more rock" when Quantanium is aboard, risking timer expiration.</li>
+                <li><b>Not Using Gadgets:</b> Attempting to fracture high-instability rocks without gadgets, leading to failed fractures.</li>
+                <li><b>Ignoring Hazards:</b> Mining in high-risk areas without proper awareness, resulting in pirate attacks or environmental damage.</li>
+            </ol>
+
             <h3>Learning Resources</h3>
+            <p>The following resources provide additional guidance for Mole mining operations:</p>
             <ul>
-                <li><a href="https://www.youtube.com/watch?v=u3_iQdjOoIE" target="_blank">Captain Deadwake's Solo Mole Guide</a></li>
-                <li><a href="https://starcitizen.tools/" target="_blank">Star Citizen Tools Database</a></li>
-                <li><a href="https://www.erkul.games/" target="_blank">Erkul Games DPS Calculator</a></li>
+                <li><a href="https://www.youtube.com/watch?v=u3_iQdjOoIE" target="_blank" style="color: var(--f4s-blue);">Captain Deadwake - Solo Mole Mining Guide (YouTube)</a></li>
+                <li><a href="https://starcitizen.tools/MOLE" target="_blank" style="color: var(--f4s-blue);">Star Citizen Tools - MOLE Specifications</a></li>
+                <li><a href="https://www.erkul.games/" target="_blank" style="color: var(--f4s-blue);">Erkul Games DPS Calculator - Component Optimization</a></li>
+                <li><a href="https://regolith.rocks/" target="_blank" style="color: var(--f4s-blue);">Regolith Co - Mining Profitability Calculator</a></li>
             </ul>
-            
+
+            <h3>Quick Start Guide</h3>
+            <p>For operators ready to begin immediately:</p>
+            <ol>
+                <li>Acquire components and mining lasers (see LOGISTICS tab)</li>
+                <li>Choose a loadout (see LOADOUTS tab)</li>
+                <li>Review ore selection criteria (see STRATEGY tab)</li>
+                <li>Navigate to Lyria (Stanton I) for Quantanium mining</li>
+                <li>Scan for rocks 8km+ away with bright, stable signals</li>
+                <li>Target rocks 4,000-15,000 mass with 30%+ Quantanium</li>
+                <li>Fracture using coordinated laser fire (or solo seat-switching)</li>
+                <li>Extract fragments into cargo hold</li>
+                <li>Start timer when Quantanium enters hold</li>
+                <li>Return to ARC-L1 refinery before timer expires</li>
+            </ol>
         </div>
 
         <div id="logistics" class="tab-content">
-            
-            <h2>Component Acquisition</h2>
-            <p>Acquiring the optimal components for the MOLE requires visiting several locations across the Stanton system. This route is designed for efficiency, allowing operators to purchase all necessary components in a single trip.</p>
+            <h2>Component Acquisition Route</h2>
+            <p>This section provides a detailed acquisition route for all purchasable components required for optimal Mole mining operations. The route is optimized for efficiency, allowing operators to acquire all necessary components in a single trip across four locations.</p>
+
             <div class="shop-card">
-                <h3>1. Dumper's Depot - Area18, ArcCorp</h3>
-                <p><b>Navigation:</b> Fly to ArcCorp, land at Area18. Take the city transit to the ArcCorp Plaza. Dumper's Depot is located in the main plaza area.</p>
+                <h3>Stop 1: Dumper's Depot (Area 18, ArcCorp)</h3>
+                <p><b>Location:</b> Area 18 Spaceport → Take the metro to Area 18 Plaza → Enter Dumper's Depot (ground floor, near the metro station)</p>
+                <p><b>Components Available:</b></p>
                 <table>
-                    <tr><th>Item</th><th>Grade/Type</th></tr>
-                    <tr><td>Cirrus (Power Plant)</td><td>Industrial A</td></tr>
-                    <tr><td>Shimmer (Shield Generator)</td><td>Stealth D</td></tr>
+                    <tr>
+                        <th>Item</th>
+                        <th>Grade/Type</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Cirrus (S3 Power Plant)</td>
+                        <td>Industrial A</td>
+                        <td>Top-tier power generation for sustained mining operations</td>
+                    </tr>
+                    <tr>
+                        <td>Shimmer (S3 Shield Generator)</td>
+                        <td>Stealth D</td>
+                        <td>Alternative shield option for stealth operations</td>
+                    </tr>
                 </table>
+                <p><b>Navigation Details:</b></p>
+                <ol>
+                    <li>Land at Area 18 Spaceport (ArcCorp)</li>
+                    <li>Take the elevator down to the main concourse</li>
+                    <li>Board the metro to Area 18 Plaza</li>
+                    <li>Exit the metro and turn right</li>
+                    <li>Dumper's Depot is on the ground floor, near the metro entrance</li>
+                </ol>
             </div>
+
             <div class="shop-card">
-                <h3>2. Platinum Bay - HUR-L5</h3>
-                <p><b>Navigation:</b> Quantum travel to Hurston, then to the HUR-L5 Lagrange point. Dock at the station and locate Platinum Bay.</p>
+                <h3>Stop 2: Platinum Bay (HUR-L5 Everus Harbor, Hurston)</h3>
+                <p><b>Location:</b> Quantum travel to HUR-L5 → Dock at Everus Harbor → Take elevator to Galleria → Platinum Bay</p>
+                <p><b>Components Available:</b></p>
                 <table>
-                    <tr><th>Item</th><th>Grade/Type</th></tr>
-                    <tr><td>IceBox (Cooler)</td><td>Industrial A</td></tr>
-                    <tr><td>RPEL (Shield Generator)</td><td>Civilian D</td></tr>
-                    <tr><td>Agni (Quantum Drive)</td><td>Civilian B</td></tr>
+                    <tr>
+                        <th>Item</th>
+                        <th>Grade/Type</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>IceBox (S3 Cooler)</td>
+                        <td>Industrial A</td>
+                        <td>Top-tier thermal management for sustained mining</td>
+                    </tr>
+                    <tr>
+                        <td>RPEL (S3 Shield Generator)</td>
+                        <td>Civilian D</td>
+                        <td>Budget shield option</td>
+                    </tr>
+                    <tr>
+                        <td>Agni (S2 Quantum Drive)</td>
+                        <td>Industrial A</td>
+                        <td>Efficient quantum travel</td>
+                    </tr>
                 </table>
+                <p><b>Navigation Details:</b></p>
+                <ol>
+                    <li>Quantum travel to HUR-L5 Everus Harbor</li>
+                    <li>Request landing clearance and dock at the station</li>
+                    <li>Take the elevator from the hangar to the Galleria level</li>
+                    <li>Platinum Bay is located on the main Galleria floor</li>
+                </ol>
             </div>
+
             <div class="shop-card">
-                <h3>3. Cousin Crows Custom Craft - Orison, Crusader</h3>
-                <p><b>Navigation:</b> Fly to Crusader, land at the Orison spaceport. Take the shuttle to the industrial platform. Cousin Crows is located on the main promenade.</p>
+                <h3>Stop 3: Cousin Crows (New Babbage, microTech)</h3>
+                <p><b>Location:</b> New Babbage Spaceport → Take the tram to Commons → Cousin Crows (second floor)</p>
+                <p><b>Components Available:</b></p>
                 <table>
-                    <tr><th>Item</th><th>Grade/Type</th></tr>
-                    <tr><td>Helix II (Mining Laser)</td><td>N/A</td></tr>
-                    <tr><td>Impact II (Mining Laser)</td><td>N/A</td></tr>
+                    <tr>
+                        <th>Item</th>
+                        <th>Grade/Type</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Helix II (S2 Mining Laser)</td>
+                        <td>Mining Laser</td>
+                        <td>Best mining laser in the game - top-tier setup</td>
+                    </tr>
+                    <tr>
+                        <td>Impact II (S2 Mining Laser)</td>
+                        <td>Mining Laser</td>
+                        <td>High-power laser for resistant rocks</td>
+                    </tr>
+                    <tr>
+                        <td>Arbor MH2 (S2 Mining Laser)</td>
+                        <td>Mining Laser</td>
+                        <td>Budget all-purpose laser</td>
+                    </tr>
                 </table>
+                <p><b>Navigation Details:</b></p>
+                <ol>
+                    <li>Land at New Babbage Spaceport (microTech)</li>
+                    <li>Take the elevator down to the main concourse</li>
+                    <li>Board the tram to Commons</li>
+                    <li>Exit the tram and take the escalator to the second floor</li>
+                    <li>Cousin Crows is located on the second floor, near the central plaza</li>
+                </ol>
             </div>
+
             <div class="shop-card">
-                <h3>4. Refinery Deck - Any Major Station</h3>
-                <p><b>Navigation:</b> Available at most major space stations with a refinery (e.g., HUR-L1, CRU-L1).</p>
+                <h3>Stop 4: Refinery Deck (HUR-L1, Hurston)</h3>
+                <p><b>Location:</b> Quantum travel to HUR-L1 → Dock at the station → Take elevator to Refinery Deck</p>
+                <p><b>Components Available:</b></p>
                 <table>
-                    <tr><th>Item</th><th>Grade/Type</th></tr>
-                    <tr><td>Torrent III (Module)</td><td>N/A</td></tr>
-                    <tr><td>Focus III (Module)</td><td>N/A</td></tr>
-                    <tr><td>Surge (Module)</td><td>N/A</td></tr>
-                    <tr><td>BoreMax (Gadget)</td><td>N/A</td></tr>
-                    <tr><td>OptiMax (Gadget)</td><td>N/A</td></tr>
+                    <tr>
+                        <th>Item</th>
+                        <th>Grade/Type</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>BoreMax (Mining Gadget)</td>
+                        <td>Instability Reduction</td>
+                        <td>Essential for high-instability rocks</td>
+                    </tr>
+                    <tr>
+                        <td>OptiMax (Mining Gadget)</td>
+                        <td>Charge Window Increase</td>
+                        <td>Alternative to BoreMax</td>
+                    </tr>
+                    <tr>
+                        <td>Stampede (Mining Module)</td>
+                        <td>Power Increase</td>
+                        <td>Boosts laser power for resistant rocks</td>
+                    </tr>
+                    <tr>
+                        <td>Okunis (Mining Gadget)</td>
+                        <td>Charge Window Increase</td>
+                        <td>Alternative gadget option</td>
+                    </tr>
                 </table>
+                <p><b>Navigation Details:</b></p>
+                <ol>
+                    <li>Quantum travel to HUR-L1</li>
+                    <li>Request landing clearance and dock at the station</li>
+                    <li>Take the elevator from the hangar to the Refinery Deck</li>
+                    <li>The mining equipment shop is located on the Refinery Deck</li>
+                </ol>
             </div>
-            
+
+            <div class="info-box">
+                <p><b>ℹ Acquisition Notes:</b></p>
+                <ul>
+                    <li>This route is optimized for efficiency, allowing all components to be acquired in a single trip</li>
+                    <li>Stock availability may vary; check multiple shops if an item is out of stock</li>
+                    <li>Component prices fluctuate with the in-game economy; budget accordingly</li>
+                    <li>Gadgets are consumable and must be restocked after use</li>
+                </ul>
+            </div>
         </div>
 
         <div id="loadouts" class="tab-content">
-            
-            <h2>MOLE Component Loadouts</h2>
-            <p>Two primary loadouts are recommended for the MOLE, catering to different budget levels and operational goals. Both are designed for maximum effectiveness within their class.</p>
-            <h3>Budget Loadout (Entry-Level)</h3>
-            <p>This loadout uses readily available, cost-effective components that provide a solid foundation for new MOLE operators.</p>
+            <h2>Loadout Configurations</h2>
+            <p>This section provides two complete loadout configurations for the MISC Mole: a budget setup for cost-effective operations and a top-tier setup for maximum profitability. Both loadouts use only purchasable components (no military grade or looted items).</p>
+
+            <h3>Budget Loadout: Cost-Effective Mining</h3>
+            <div class="info-box">
+                <p><b>Philosophy:</b> This loadout prioritizes accessibility and cost-effectiveness while maintaining solid performance. Ideal for new operators or those building capital.</p>
+            </div>
             <table>
-                <tr><th>Component</th><th>Item</th><th>Grade/Type</th></tr>
-                <tr><td>Mining Lasers</td><td>3x Arbor MH2</td><td>S2</td></tr>
-                <tr><td>Shield Generator</td><td>Bulwark</td><td>S3, Civilian C</td></tr>
-                <tr><td>Power Plant</td><td>Ginzel</td><td>S3, Civilian C</td></tr>
-                <tr><td>Cooler</td><td>Wen/Castra</td><td>S3, Civilian D</td></tr>
-                <tr><td>Quantum Drive</td><td>Atlas</td><td>S2, Civilian B</td></tr>
+                <tr>
+                    <th>Component</th>
+                    <th>Model</th>
+                    <th>Grade/Class</th>
+                    <th>Specifications</th>
+                </tr>
+                <tr>
+                    <td>Mining Laser (x3)</td>
+                    <td>Arbor MH2</td>
+                    <td>S2 Mining Laser</td>
+                    <td>Power: 400-2000, Range: 20m, All-purpose</td>
+                </tr>
+                <tr>
+                    <td>Shield Generator</td>
+                    <td>RPEL</td>
+                    <td>S3 Civilian D</td>
+                    <td>HP: 3,840, Regen: 211/s</td>
+                </tr>
+                <tr>
+                    <td>Power Plant</td>
+                    <td>LightBlossom</td>
+                    <td>S3 Civilian C</td>
+                    <td>Output: Sufficient for basic operations</td>
+                </tr>
+                <tr>
+                    <td>Cooler</td>
+                    <td>BlastChill</td>
+                    <td>S3 Civilian D</td>
+                    <td>Cooling: Basic thermal management</td>
+                </tr>
+                <tr>
+                    <td>Quantum Drive</td>
+                    <td>Explorer</td>
+                    <td>S2 Civilian A</td>
+                    <td>Fuel efficient, moderate speed</td>
+                </tr>
             </table>
-            <h3>Top-Tier Loadout (Maximum Efficiency)</h3>
-            <p>This loadout utilizes the best purchasable components to maximize mining efficiency, profitability, and survivability.</p>
+            <p><b>Profitability:</b> 100-200k aUEC/hour (depending on crew size)</p>
+            <p><b>Best For:</b> Beginner crews, stable rocks up to 12,000 mass, Lyria surface mining</p>
+
+            <h3>Top-Tier Loadout: Maximum Profitability</h3>
+            <div class="success-box">
+                <p><b>Philosophy:</b> This loadout maximizes mining efficiency and profitability. The mixed laser configuration (Helix II + Impact II) provides versatility for different rock types.</p>
+            </div>
             <table>
-                <tr><th>Component</th><th>Item</th><th>Grade/Type</th></tr>
-                <tr><td>Mining Lasers</td><td>1x Helix II, 2x Impact II</td><td>S2</td></tr>
-                <tr><td>Shield Generator</td><td>Rampart</td><td>S3, Industrial A</td></tr>
-                <tr><td>Power Plant</td><td>Fierté</td><td>S3, Competition A</td></tr>
-                <tr><td>Cooler</td><td>Polar</td><td>S3, Stealth A</td></tr>
-                <tr><td>Quantum Drive</td><td>Voyage</td><td>S2, Industrial A</td></tr>
+                <tr>
+                    <th>Component</th>
+                    <th>Model</th>
+                    <th>Grade/Class</th>
+                    <th>Specifications</th>
+                </tr>
+                <tr>
+                    <td>Mining Laser (Front)</td>
+                    <td>Helix II</td>
+                    <td>S2 Mining Laser</td>
+                    <td>Power: 600-3000, Range: 25m, Best in game</td>
+                </tr>
+                <tr>
+                    <td>Mining Laser (Port)</td>
+                    <td>Impact II</td>
+                    <td>S2 Mining Laser</td>
+                    <td>Power: 800-2800, High power for resistant rocks</td>
+                </tr>
+                <tr>
+                    <td>Mining Laser (Starboard)</td>
+                    <td>Helix II</td>
+                    <td>S2 Mining Laser</td>
+                    <td>Power: 600-3000, Range: 25m, Best in game</td>
+                </tr>
+                <tr>
+                    <td>Shield Generator</td>
+                    <td>7SA 'Concord'</td>
+                    <td>S3 Civilian A</td>
+                    <td>HP: 5,190, Regen: 138/s</td>
+                </tr>
+                <tr>
+                    <td>Power Plant</td>
+                    <td>Cirrus</td>
+                    <td>S3 Industrial A</td>
+                    <td>Output: Maximum power for sustained operations</td>
+                </tr>
+                <tr>
+                    <td>Cooler</td>
+                    <td>IceBox</td>
+                    <td>S3 Industrial A</td>
+                    <td>Cooling: Superior thermal management</td>
+                </tr>
+                <tr>
+                    <td>Quantum Drive</td>
+                    <td>FoxFire</td>
+                    <td>S2 Competition B</td>
+                    <td>Fast travel, moderate fuel consumption</td>
+                </tr>
             </table>
-            
+            <p><b>Profitability:</b> 200-400k+ aUEC/hour (depending on crew size and coordination)</p>
+            <p><b>Best For:</b> Advanced crews, unstable rocks up to 20,000+ mass, Quantanium specialist operations</p>
+
+            <h3>Loadout Comparison</h3>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Budget Loadout</th>
+                    <th>Top-Tier Loadout</th>
+                </tr>
+                <tr>
+                    <td>Max Rock Mass</td>
+                    <td>~12,000 mass</td>
+                    <td>~20,000+ mass</td>
+                </tr>
+                <tr>
+                    <td>Instability Management</td>
+                    <td>Requires gadgets for high instability</td>
+                    <td>Can handle high instability with mixed lasers</td>
+                </tr>
+                <tr>
+                    <td>Thermal Management</td>
+                    <td>Basic - requires cooldown periods</td>
+                    <td>Superior - sustained operations</td>
+                </tr>
+                <tr>
+                    <td>Profitability (Solo)</td>
+                    <td>100-150k aUEC/hour</td>
+                    <td>120-180k aUEC/hour</td>
+                </tr>
+                <tr>
+                    <td>Profitability (4-person crew)</td>
+                    <td>180-250k aUEC/hour</td>
+                    <td>280-400k+ aUEC/hour</td>
+                </tr>
+            </table>
+
+            <div class="warning-box">
+                <p><b>⚠ Important Notes:</b></p>
+                <ul>
+                    <li>All components listed are purchasable in-game shops (no military grade or looted items)</li>
+                    <li>The mixed laser configuration (Helix II + Impact II) provides versatility for different rock types</li>
+                    <li>Gadgets (BoreMax, OptiMax, Stampede) are consumable and must be restocked regularly</li>
+                    <li>Component wear and damage will reduce performance over time - regular maintenance is essential</li>
+                </ul>
+            </div>
         </div>
 
         <div id="strategy" class="tab-content">
-            
-            <h2>Multi-Crew Mining Strategy</h2>
-            <p>The MOLE's primary advantage is its ability to coordinate multiple mining lasers on a single target. This section outlines the strategies for maximizing efficiency with a multi-person crew.</p>
-            <h3>Crew Roles and Responsibilities</h3>
+            <h2>Ore Selection Framework</h2>
+            <p>Profitability in Mole mining operations is determined by the ability to identify and prioritize high-value targets. This seven-part framework provides a systematic approach to ore selection, ensuring operators maximize their earnings while minimizing wasted time.</p>
+
+            <h3>1. Scan Return Strength: What to Chase</h3>
+            <p>You do not get a numeric value on the first ping, so use distance and clarity to identify valuable deposits.</p>
+            <div class="success-box">
+                <p><b>✓ Chase These:</b></p>
+                <ul>
+                    <li>Return appears beyond ~8 km</li>
+                    <li>Bright, stable blip on the scanner</li>
+                    <li>Does not flicker when you change heading</li>
+                    <li>Often resolves into 2–4 rocks (clusters)</li>
+                </ul>
+                <p>These correlate with mineable mass and high ore concentration.</p>
+            </div>
+            <div class="warning-box">
+                <p><b>✗ Ignore These:</b></p>
+                <ul>
+                    <li>Only appears inside 3–4 km</li>
+                    <li>Faint or flickering signal</li>
+                    <li>Resolves into a single pebble</li>
+                </ul>
+                <p>These waste time and yield minimal ore.</p>
+            </div>
+
+            <h3>2. Rock Mass: The Hard Numbers</h3>
+            <p>Once you scan a rock directly, you get mass in tons. The Mole's multi-crew nature allows it to tackle significantly larger rocks than the Prospector.</p>
             <table>
-                <tr><th>Role</th><th>Responsibilities</th></tr>
-                <tr><td>Pilot</td><td>Navigation, scanning, rock selection, cargo management, communication hub.</td></tr>
-                <tr><td>Mining Operator(s)</td><td>Laser operation, power management, instability control, communication with pilot.</td></tr>
+                <tr>
+                    <th>Mass Range</th>
+                    <th>Crew Requirement</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>4,000 – 10,000 mass</td>
+                    <td>Solo or 2-person</td>
+                    <td>Sweet spot for solo operations</td>
+                </tr>
+                <tr>
+                    <td>10,000 – 15,000 mass</td>
+                    <td>2-3 person</td>
+                    <td>Ideal for coordinated crews</td>
+                </tr>
+                <tr>
+                    <td>15,000 – 20,000 mass</td>
+                    <td>3-4 person</td>
+                    <td>Maximum profitability with full crew</td>
+                </tr>
+                <tr>
+                    <td>&lt;2,000 mass</td>
+                    <td>Skip</td>
+                    <td>Even if Quantanium is present, yield is too low</td>
+                </tr>
+                <tr>
+                    <td>&gt;20,000 mass</td>
+                    <td>Skip (solo/small crew)</td>
+                    <td>Requires 4-person crew with perfect coordination</td>
+                </tr>
             </table>
-            <h3>Fracturing Doctrine</h3>
-            <p>The key to efficient MOLE operation is coordinated fire. All operators should focus on a single rock, combining their laser power to fracture it quickly and safely.</p>
-            <ol>
-                <li>The pilot identifies a high-value rock and positions the ship for optimal turret coverage.</li>
-                <li>The pilot assigns a primary operator to initiate the fracture.</li>
-                <li>All operators power up their lasers and await the primary's signal.</li>
-                <li>The primary operator begins the fracture, calling out power levels and instability.</li>
-                <li>Other operators apply laser power as needed to keep the charge level in the optimal window.</li>
-                <li>Once the rock is fractured, the pilot moves to the next target.</li>
-            </ol>
-            <h3>Ore Selection Framework</h3>
-            <p>The ore selection framework is similar to the Prospector, but the MOLE can tackle larger and more challenging rocks.</p>
+
+            <h3>3. Quantanium Percentage: When to Mine</h3>
+            <p>This is the real gate for profitability. Quantanium is the most valuable ore, but it requires careful management due to the 25-minute timer.</p>
+            <div class="success-box">
+                <p><b>✓ Mine Immediately If:</b></p>
+                <ul>
+                    <li>Quantanium ≥30% in a single rock</li>
+                    <li>Quantanium ≥25% in a multi-rock cluster</li>
+                </ul>
+            </div>
+            <div class="warning-box">
+                <p><b>✗ Skip If:</b></p>
+                <ul>
+                    <li>Quantanium &lt;20%</li>
+                    <li>Quantanium mixed heavily with inert junk (&gt;50% inert)</li>
+                </ul>
+                <p><b>Remember:</b> A half-full hold of 35% Quantanium beats a full hold of garbage.</p>
+            </div>
+
+            <h3>4. Other Valuable Minerals</h3>
+            <p>If Quantanium is not present or below threshold, evaluate other minerals:</p>
+            <table>
+                <tr>
+                    <th>Mineral</th>
+                    <th>Minimum %</th>
+                    <th>Value Tier</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>Taranite</td>
+                    <td>≥40%</td>
+                    <td>High</td>
+                    <td>Second most valuable, no timer</td>
+                </tr>
+                <tr>
+                    <td>Hadanite</td>
+                    <td>≥50%</td>
+                    <td>Medium-High</td>
+                    <td>Consistent value, common on Lyria</td>
+                </tr>
+                <tr>
+                    <td>Bexalite</td>
+                    <td>≥50%</td>
+                    <td>Medium</td>
+                    <td>Good backup option</td>
+                </tr>
+                <tr>
+                    <td>Corundum</td>
+                    <td>≥60%</td>
+                    <td>Medium</td>
+                    <td>Lower value but common</td>
+                </tr>
+                <tr>
+                    <td>Titanium</td>
+                    <td>≥70%</td>
+                    <td>Low</td>
+                    <td>Only if nothing else available</td>
+                </tr>
+            </table>
+
+            <h3>5. Fracture Difficulty & Instability</h3>
+            <p>When you target a rock, you will see:</p>
             <ul>
-                <li><b>Quantanium:</b> Prioritize rocks with ≥30% Quantanium. With a full crew, rocks up to 15,000 mass are viable.</li>
-                <li><b>Taranite, Bexalite, etc.:</b> Follow the same profitability matrix as the Prospector, but target larger deposits.</li>
-                <li><b>Inert Material:</b> Avoid rocks with high concentrations of inert material, as they will quickly fill the MOLE's 96 SCU cargo hold.</li>
+                <li>Optimal charge window (green zone)</li>
+                <li>Instability rating (how erratic the charge window behaves)</li>
             </ul>
-            
+            <div class="success-box">
+                <p><b>✓ Green Light:</b></p>
+                <ul>
+                    <li>Instability manageable with BoreMax or OptiMax gadgets</li>
+                    <li>Charge window not razor-thin after gadgets</li>
+                    <li>Multiple lasers can coordinate to manage instability</li>
+                </ul>
+            </div>
+            <div class="warning-box">
+                <p><b>✗ Red Flag:</b></p>
+                <ul>
+                    <li>Instability spikes uncontrollably even with gadgets</li>
+                    <li>Charge window collapses even with multiple lasers</li>
+                    <li>Rock resistance exceeds combined laser power</li>
+                </ul>
+                <p>Leave. You are not here to wrestle rocks.</p>
+            </div>
+
+            <h3>6. Quantanium Timer: The Rule That Matters</h3>
+            <p>Once Quantanium enters your hold, the clock is live.</p>
+            <div class="warning-box">
+                <p><b>⚠ Critical Timer Rules:</b></p>
+                <ul>
+                    <li>You have 25 minutes before detonation</li>
+                    <li>Timer stacks with amount collected (more Quantanium = same timer)</li>
+                    <li>Heat and damage can shorten the margin</li>
+                </ul>
+            </div>
+            <p><b>Hard Rules:</b></p>
+            <ul>
+                <li>Start heading back once you hit your target fill (60-80% Quantanium)</li>
+                <li>Do not "top off" the cargo hold</li>
+                <li>Do not detour for one more rock</li>
+            </ul>
+            <p><b>Target Fill (Safe and Fast):</b> 60–80% Quantanium. This balances payout and survival.</p>
+            <p><b>Greed kills runs.</b></p>
+
+            <h3>7. Maximum Mass You Should Ever Crack</h3>
+            <table>
+                <tr>
+                    <th>Crew Size</th>
+                    <th>Absolute Ceiling</th>
+                    <th>Smart Ceiling</th>
+                </tr>
+                <tr>
+                    <td>Solo</td>
+                    <td>~12,000 mass</td>
+                    <td>~10,000 mass</td>
+                </tr>
+                <tr>
+                    <td>2-person</td>
+                    <td>~15,000 mass</td>
+                    <td>~12,000 mass</td>
+                </tr>
+                <tr>
+                    <td>3-person</td>
+                    <td>~18,000 mass</td>
+                    <td>~15,000 mass</td>
+                </tr>
+                <tr>
+                    <td>4-person</td>
+                    <td>~25,000 mass</td>
+                    <td>~20,000 mass</td>
+                </tr>
+            </table>
+            <p>If you see a 25k monster with 40% Quantanium:</p>
+            <ul>
+                <li>Smile</li>
+                <li>Mark it mentally</li>
+                <li>Move on</li>
+            </ul>
+            <p>You will make more credits skipping it (unless you have a full 4-person crew with perfect coordination).</p>
         </div>
 
         <div id="proficiency" class="tab-content">
-            
-            <h2>Operator Proficiency</h2>
-            <p>Proficiency with the MOLE is measured by the crew's ability to work together to efficiently and safely mine high-value deposits. This section outlines the progression from a novice crew to a top-tier mining team.</p>
+            <h2>Operator Proficiency Pathways</h2>
+            <p>Proficiency with the MOLE is measured by the crew's ability to work together to efficiently and safely mine high-value deposits. This section outlines the progression from a solo operator to a top-tier mining team, with detailed strategies for each level.</p>
+
+            <h3>Solo Operator</h3>
+            <p>Operating the MOLE solo is a significant challenge but can be highly profitable. It requires constant seat-switching and a deep understanding of mining mechanics. This is the ultimate test of a solo miner's skill.</p>
+            <ul>
+                <li><b>Focus:</b> Seat-switching efficiency, power management, gadget use, patience.</li>
+                <li><b>Target Rocks:</b> Stable rocks up to 10,000 mass. Avoid highly unstable rocks.</li>
+                <li><b>Expected Yield:</b> 100-150k aUEC/hour (highly dependent on operator skill).</li>
+                <li><b>Key Strategy:</b> Park the MOLE at an optimal distance and angle to the rock. Switch to the main turret, fracture the rock, then switch back to the pilot seat to reposition for extraction. Repeat for each fragment. Use gadgets liberally to manage instability.</li>
+            </ul>
+
             <h3>Beginner Crew (2 Operators)</h3>
-            <p>A pilot and one mining operator. Focus on smaller, more stable rocks to practice communication and coordination. The pilot will also need to operate one of the mining turrets.</p>
+            <p>A pilot and one dedicated mining operator. This is the entry point for multi-crew mining. The focus is on clear communication and basic coordination.</p>
             <ul>
-                <li><b>Focus:</b> Communication, basic coordination, rock selection.</li>
-                <li><b>Target Rocks:</b> Stable rocks up to 8,000 mass.</li>
-                <li><b>Expected Yield:</b> 120-180k aUEC/hour.</li>
+                <li><b>Focus:</b> Clear communication, basic coordination, rock selection, power management.</li>
+                <li><b>Target Rocks:</b> Stable rocks up to 12,000 mass.</li>
+                <li><b>Expected Yield:</b> 150-200k aUEC/hour.</li>
+                <li><b>Key Strategy:</b> The pilot positions the ship and may operate a secondary laser for support. The primary operator focuses on the main fracture, communicating power levels and instability clearly.</li>
             </ul>
+
             <h3>Intermediate Crew (3 Operators)</h3>
-            <p>A dedicated pilot and two mining operators. This is the optimal crew size for most mining operations. The crew can tackle larger, more unstable rocks with coordinated fire.</p>
+            <p>A dedicated pilot and two mining operators. This is the optimal crew size for most mining operations, providing a balance of efficiency and coordination complexity.</p>
             <ul>
-                <li><b>Focus:</b> Advanced coordination, instability management, multi-laser fracturing.</li>
-                <li><b>Target Rocks:</b> Unstable rocks up to 12,000 mass.</li>
-                <li><b>Expected Yield:</b> 180-250k aUEC/hour.</li>
+                <li><b>Focus:</b> Advanced coordination, instability management, multi-laser fracturing, rapid extraction.</li>
+                <li><b>Target Rocks:</b> Unstable rocks up to 15,000 mass.</li>
+                <li><b>Expected Yield:</b> 200-280k aUEC/hour.</li>
+                <li><b>Key Strategy:</b> The pilot focuses solely on positioning and scanning. The two operators coordinate their fire, with one leading the fracture and the other providing support to manage instability and speed up the process.</li>
             </ul>
+
             <h3>Advanced Crew (4 Operators)</h3>
-            <p>A dedicated pilot and three mining operators. This crew can operate all three mining turrets simultaneously, allowing for the fastest fracture times and the ability to tackle the largest and most challenging rocks in the verse.</p>
+            <p>A dedicated pilot and three mining operators. This configuration allows for maximum mining power and efficiency, capable of tackling the largest and most challenging rocks in the verse.</p>
             <ul>
-                <li><b>Focus:</b> Maximum efficiency, simultaneous fracturing, high-risk/high-reward targets.</li>
-                <li><b>Target Rocks:</b> Massive, highly unstable rocks up to 15,000 mass.</li>
-                <li><b>Expected Yield:</b> 250-350k aUEC/hour.</li>
+                <li><b>Focus:</b> Maximum efficiency, simultaneous fracturing of multiple rocks, high-risk/high-reward targets, flawless communication.</li>
+                <li><b>Target Rocks:</b> Massive, highly unstable rocks up to 20,000+ mass.</li>
+                <li><b>Expected Yield:</b> 280-400k+ aUEC/hour.</li>
+                <li><b>Key Strategy:</b> The crew operates like a well-oiled machine. All three lasers are coordinated for maximum power and precision. The pilot is constantly scanning for the next target while the operators are fracturing and extracting. This level of operation requires extensive practice and a deep understanding of the MOLE's capabilities.</li>
             </ul>
-            
         </div>
 
         <div id="execution" class="tab-content">
-            
-            <h2>Execution: The Mining Operation</h2>
-            <p>A successful MOLE mining operation is a well-choreographed dance between the pilot and the turret operators. This section breaks down the process into four distinct phases.</p>
+            <h2>Execution Doctrine: The Mining Operation</h2>
+            <p>A successful MOLE mining operation is a well-choreographed dance between the pilot and the turret operators. This section provides a detailed breakdown of each phase, including communication protocols and specific actions for both multi-crew and solo operations.</p>
+
             <h3>Phase 1: Prospecting</h3>
             <ol>
-                <li>The pilot navigates to the chosen mining location.</li>
-                <li>The pilot performs a wide-range scan to identify potential deposits.</li>
-                <li>The pilot selects a high-value target and positions the ship for optimal turret coverage.</li>
-                <li>The pilot communicates the rock type, mass, and instability to the crew.</li>
+                <li><b>Navigate & Scan:</b> The pilot navigates to the chosen mining location and performs a wide-range scan (ping) to identify potential deposits.</li>
+                <li><b>Identify Target:</b> The pilot selects a high-value target based on the Ore Selection Framework and positions the ship for optimal turret coverage.</li>
+                <li><b>Communicate Intel:</b> The pilot communicates the rock type, mass, instability, and composition to the crew. Example: "Calling out a 12,000 mass Quantanium rock, 35% concentration, low instability. Positioning on the port side."</li>
             </ol>
-            <h3>Phase 2: Fracturing</h3>
+
+            <h3>Phase 2: Fracturing (Multi-Crew)</h3>
             <ol>
-                <li>The pilot assigns a primary operator to begin the fracture.</li>
-                <li>All operators power up their lasers and coordinate their fire on the target.</li>
-                <li>The crew communicates power levels and instability to keep the charge in the optimal window.</li>
-                <li>Once the rock is fractured, the pilot assesses the fragments for extraction.</li>
+                <li><b>Assign Primary:</b> The pilot assigns a primary operator to lead the fracture.</li>
+                <li><b>Coordinate Fire:</b> All operators power up their lasers and coordinate their fire on the target. The primary operator initiates the charge, with support operators adding power as needed.</li>
+                <li><b>Communicate Status:</b> The primary operator provides a constant stream of information: "Charge started," "Approaching optimal," "In the green," "Instability spike, feathering power," "Fracture complete."</li>
+                <li><b>Power Management:</b> The pilot manages ship power, prioritizing lasers during the fracture and shields during extraction.</li>
             </ol>
+
+            <h3>Phase 2.5: Fracturing (Solo Operation)</h3>
+            <p>Based on the strategies demonstrated by Captain Deadwake, solo operation of the MOLE is a high-skill, high-reward endeavor that relies on efficiency of movement and precise laser control.</p>
+            <ol>
+                <li><b>Positioning is Key:</b> Park the MOLE at an optimal distance (50-100m) and angle to the rock, ensuring the main turret has a clear line of sight.</li>
+                <li><b>Seat-Switching:</b> The core of solo operation. After positioning, switch to the main turret (front) to begin the fracture.</li>
+                <li><b>Laser Control:</b> Use a powerful laser like the Helix II for the initial crack. If instability spikes, feather the power or use a gadget.</li>
+                <li><b>Gadget Use:</b> Gadgets are essential for solo operation. Use a BoreMax to manage instability and a Stampede to power through resistant rocks.</li>
+                <li><b>Reposition & Repeat:</b> After the initial fracture, switch back to the pilot seat to reposition the ship for extracting the fragments. You may need to switch between turrets to reach all fragments.</li>
+            </ol>
+
             <h3>Phase 3: Extraction</h3>
             <ol>
-                <li>The pilot positions the ship for efficient extraction of the valuable fragments.</li>
-                <li>Operators use their extraction beams to collect the ore.</li>
-                <li>The pilot monitors cargo capacity and calls out when the hold is full.</li>
+                <li><b>Coordinated Extraction:</b> The pilot positions the ship for efficient extraction. Operators are assigned to specific fragments to speed up the process.</li>
+                <li><b>Cargo Management:</b> The pilot monitors cargo capacity and provides updates at 50%, 75%, and 90% full.</li>
+                <li><b>Jettison Low-Value Ore:</b> If the hold is nearing full and a high-value fragment is available, jettison low-value ore to make room.</li>
             </ol>
-            <h3>Phase 4: Refinement</h3>
+
+            <h3>Phase 4: Refinement & Logistics</h3>
             <ol>
-                <li>Once the cargo hold is full, the pilot navigates to the nearest refinery.</li>
-                <li>The crew unloads the ore and begins the refining process.</li>
-                <li>While the ore is refining, the crew can restock, repair, and prepare for the next run.</li>
+                <li><b>Navigate to Refinery:</b> Once the cargo hold is full, the pilot navigates to the nearest refinery.</li>
+                <li><b>Unload & Refine:</b> The crew unloads the ore and starts the refining process.</li>
+                <li><b>Restock & Repair:</b> While the ore is refining, the crew restocks on gadgets, fuel, and medical supplies, and repairs any damage to the ship.</li>
             </ol>
-            
         </div>
 
         <div id="locations" class="tab-content">
-            
-            <h2>Mining Locations</h2>
-            <p>The MOLE can operate in the same locations as the Prospector, but its ability to handle larger rocks makes certain areas more profitable. These locations are chosen for their high concentration of valuable minerals and their suitability for multi-crew operations.</p>
-            <h3>Stanton System</h3>
-            <ul>
-                <li><b>Lyria (ArcCorp):</b> The premier destination for Quantanium mining. The MOLE can tackle the massive Quantanium deposits found on this moon.</li>
-                <li><b>Yela Belt (Crusader):</b> A dense asteroid field with a high concentration of valuable minerals. The MOLE's multiple turrets are ideal for clearing clusters of asteroids.</li>
-                <li><b>Microtech:</b> A good backup location with a mix of minerals. Less profitable than Lyria, but also less crowded.</li>
-            </ul>
-            <h3>Pyro System</h3>
-            <ul>
-                <li><b>Bloom Surface:</b> A high-risk, high-reward location with a high concentration of premium minerals. The MOLE's superior defenses make it a viable option for operating in this dangerous system.</li>
-                <li><b>Terminus Belt:</b> A massive asteroid belt with large, valuable deposits. Ideal for a well-coordinated MOLE crew.</li>
-                <li><b>Pyro V Moon:</b> A good location for finding large Quantanium deposits, but be prepared for hostile encounters.</li>
-            </ul>
-            
+            <h2>Mining Locations & Hazard Analysis</h2>
+            <p>The MOLE can operate in the same locations as the Prospector, but its ability to handle larger rocks and its multi-crew nature make certain areas more profitable and viable. These locations are chosen for their high concentration of valuable minerals and their suitability for multi-crew operations.</p>
+
+            <div class="location-card">
+                <h3>Stanton I: Lyria (ArcCorp)</h3>
+                <p>The premier destination for Quantanium mining. The MOLE's ability to crack massive rocks makes Lyria exceptionally profitable.</p>
+                <table>
+                    <tr><th>Profitability</th><th>Risk</th><th>Primary Ore</th><th>Refinery</th></tr>
+                    <tr><td>Maximum</td><td>Low-Medium</td><td>Quantanium</td><td>ARC-L1</td></tr>
+                </table>
+                <p><b>Navigation:</b> Quantum travel to ArcCorp, then to Lyria. Descend to the surface and begin scanning. Focus on areas with high concentrations of large rock clusters.</p>
+                <p><b>Hazards:</b> Occasional pirate activity. Extreme cold on the dark side of the moon.</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Stanton II: Yela Belt (Crusader)</h3>
+                <p>A dense asteroid field with a high concentration of valuable minerals. The MOLE's multiple turrets are ideal for clearing clusters of asteroids quickly.</p>
+                <table>
+                    <tr><th>Profitability</th><th>Risk</th><th>Primary Ore</th><th>Refinery</th></tr>
+                    <tr><td>High</td><td>Medium</td><td>Taranite, Bexalite</td><td>CRU-L1</td></tr>
+                </table>
+                <p><b>Navigation:</b> Quantum travel to Crusader, then to the Yela asteroid belt. Navigate carefully through the dense field, scanning for high-value clusters.</p>
+                <p><b>Hazards:</b> High pirate activity. Risk of collision with asteroids.</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Stanton III: Microtech Moons (Calliope, Clio, Euterpe)</h3>
+                <p>A good backup location with a mix of minerals. Less profitable than Lyria, but also less crowded and generally safer.</p>
+                <table>
+                    <tr><th>Profitability</th><th>Risk</th><th>Primary Ore</th><th>Refinery</th></tr>
+                    <tr><td>Medium</td><td>Low</td><td>Corundum, Hadanite</td><td>MIC-L1</td></tr>
+                </table>
+                <p><b>Navigation:</b> Quantum travel to Microtech, then to one of its moons. Descend to the surface and scan for deposits.</p>
+                <p><b>Hazards:</b> Extreme cold. Low visibility during snowstorms.</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Pyro I: Bloom Surface</h3>
+                <p>A high-risk, high-reward location with a high concentration of premium minerals. The MOLE's superior defenses and firepower make it a viable option for operating in this dangerous system.</p>
+                <table>
+                    <tr><th>Profitability</th><th>Risk</th><th>Primary Ore</th><th>Refinery</th></tr>
+                    <tr><td>Maximum+</td><td>Very High</td><td>Agricium, Borase</td><td>None (must transport to Stanton)</td></tr>
+                </table>
+                <p><b>Navigation:</b> Requires a jump point to enter the Pyro system. Navigate to Pyro I and descend to the Bloom surface. Be prepared for immediate hostile encounters.</p>
+                <p><b>Hazards:</b> Extreme pirate activity. Unstable environment. No safe zones.</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Pyro II: Terminus Belt</h3>
+                <p>A massive asteroid belt with large, valuable deposits. Ideal for a well-coordinated MOLE crew that can defend itself.</p>
+                <table>
+                    <tr><th>Profitability</th><th>Risk</th><th>Primary Ore</th><th>Refinery</th></tr>
+                    <tr><td>Very High</td><td>High</td><td>Quantanium, Taranite</td><td>None (must transport to Stanton)</td></tr>
+                </table>
+                <p><b>Navigation:</b> Navigate through the Pyro system to the Terminus Belt. The belt is vast and requires extensive scanning to find the best deposits.</p>
+                <p><b>Hazards:</b> Constant threat of pirate attacks. Dense asteroid field requires careful piloting.</p>
+            </div>
+
+            <div class="location-card">
+                <h3>Pyro V: The "Goldilocks" Moon</h3>
+                <p>A good location for finding large Quantanium deposits, but be prepared for hostile encounters. The moon's relative stability makes it a popular spot for high-risk miners.</p>
+                <table>
+                    <tr><th>Profitability</th><th>Risk</th><th>Primary Ore</th><th>Refinery</th></tr>
+                    <tr><td>High</td><td>High</td><td>Quantanium</td><td>None (must transport to Stanton)</td></tr>
+                </table>
+                <p><b>Navigation:</b> Navigate to Pyro V and descend to the surface. Scan for large Quantanium deposits, but remain vigilant for enemy ships.</p>
+                <p><b>Hazards:</b> High pirate activity. Unpredictable environmental conditions.</p>
+            </div>
         </div>
 
         <div id="troubleshooting" class="tab-content">
-            
-            <h2>Troubleshooting</h2>
-            <p>Even the best-laid plans can go wrong. This section provides solutions to common problems encountered during MOLE mining operations.</p>
-            <table>
-                <tr><th>Problem</th><th>Solution</th></tr>
-                <tr><td>Laser power insufficient for rock fracture.</td><td>Coordinate fire from multiple lasers. Use a Stampede gadget to increase power. Ensure the correct laser head is being used for the rock type.</td></tr>
-                <tr><td>Instability spikes and uncontrollable fractures.</td><td>Use a BoreMax gadget to reduce instability. Communicate power levels and "dance" the laser power to keep the charge in the optimal window.</td></tr>
-                <tr><td>Quantanium timer critical/expiration.</td><td>Immediately cease all mining operations and return to the nearest refinery. Do not attempt to collect more ore.</td></tr>
-                <tr><td>Thermal overheating of mining laser.</td><td>Reduce laser power or cease firing to allow the laser to cool. Ensure the ship's coolers are functioning correctly.</td></tr>
-                <tr><td>Power plant insufficient for sustained mining.</td><td>Upgrade to a higher-grade power plant. Manage power distribution to prioritize mining lasers.</td></tr>
-                <tr><td>Shield failure during mining operations.</td><td>Retreat to a safe distance and allow shields to recharge. Upgrade to a higher-grade shield generator.</td></tr>
-                <tr><td>Cargo hold overflow/management.</td><td>The pilot should monitor cargo capacity and call out when the hold is nearing full. Jettison low-value ore if necessary to make room for high-value minerals.</td></tr>
-                <tr><td>Poor communication between crew.</td><td>Establish clear communication protocols before the operation. Use a dedicated voice channel for the crew.</td></tr>
-                <tr><td>Environmental hazards (extreme cold, radiation).</td><td>Monitor ship and suit status. Carry appropriate medical supplies.</td></tr>
-                <tr><td>Hostile encounters (pirates).</td><td>The MOLE is not a combat ship. Retreat to a safe location and call for backup if necessary.</td></tr>
-            </table>
-            
+            <h2>Troubleshooting: Common Failures & Solutions</h2>
+            <p>This section addresses the most common failures encountered during Mole mining operations and provides specific solutions for each scenario.</p>
+
+            <h3>1. Laser Power Insufficient for Rock Fracture</h3>
+            <p><b>Symptom:</b> The charge bar fills slowly or not at all, even with all three lasers firing.</p>
+            <p><b>Cause:</b> Rock resistance exceeds combined laser power.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Use a Stampede module to boost laser power</li>
+                <li>Ensure all three lasers are firing simultaneously</li>
+                <li>If still insufficient, skip the rock and find a lower-resistance target</li>
+            </ul>
+
+            <h3>2. Instability Spikes Uncontrollably</h3>
+            <p><b>Symptom:</b> The charge window fluctuates wildly, making it impossible to maintain optimal charge.</p>
+            <p><b>Cause:</b> High instability rating on the rock.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Use a BoreMax gadget to reduce instability</li>
+                <li>Feather laser power (pulse on/off) to manage the charge</li>
+                <li>Coordinate with crew to balance power across multiple lasers</li>
+                <li>If instability remains unmanageable, skip the rock</li>
+            </ul>
+
+            <h3>3. Quantanium Timer Expired</h3>
+            <p><b>Symptom:</b> Ship and cargo destroyed by Quantanium detonation.</p>
+            <p><b>Cause:</b> Failed to return to refinery within 25 minutes.</p>
+            <p><b>Prevention:</b></p>
+            <ul>
+                <li>Start the timer immediately when Quantanium enters cargo hold</li>
+                <li>Plan return route before reaching 10 minutes remaining</li>
+                <li>Do not "top off" cargo hold once Quantanium is aboard</li>
+                <li>Prioritize speed over additional mining once timer is active</li>
+            </ul>
+
+            <h3>4. Thermal Overheating of Mining Lasers</h3>
+            <p><b>Symptom:</b> Lasers shut down due to overheating.</p>
+            <p><b>Cause:</b> Sustained high-power laser use without cooldown periods.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Upgrade to IceBox (Industrial A) cooler for better thermal management</li>
+                <li>Rotate laser use between turrets to allow cooldown</li>
+                <li>Reduce laser power during extraction phase</li>
+            </ul>
+
+            <h3>5. Power Plant Insufficient for Sustained Mining</h3>
+            <p><b>Symptom:</b> Ship systems shut down or lasers lose power during fracturing.</p>
+            <p><b>Cause:</b> Power plant cannot supply sufficient energy for all three lasers simultaneously.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Upgrade to Cirrus (Industrial A) power plant</li>
+                <li>Manage power distribution: prioritize lasers during fracture, shields during extraction</li>
+                <li>Reduce non-essential systems during mining operations</li>
+            </ul>
+
+            <h3>6. Shield Failure During Mining Operations</h3>
+            <p><b>Symptom:</b> Shields collapse, exposing ship to damage.</p>
+            <p><b>Cause:</b> Pirate attack or environmental hazards.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Upgrade to 7SA 'Concord' (Civilian A) shield for maximum protection</li>
+                <li>Maintain situational awareness: scan for hostile ships regularly</li>
+                <li>Retreat to safe distance if under attack</li>
+                <li>For multi-crew: assign one operator to monitor shields and threats</li>
+            </ul>
+
+            <h3>7. Cargo Hold Overflow/Management</h3>
+            <p><b>Symptom:</b> Cargo hold full, but high-value fragments remain.</p>
+            <p><b>Cause:</b> Poor cargo management or unexpected high-yield rock.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Jettison low-value ore to make room for high-value fragments</li>
+                <li>Monitor cargo capacity throughout extraction phase</li>
+                <li>Prioritize Quantanium and Taranite over lower-value ores</li>
+            </ul>
+
+            <h3>8. Navigation/Approach Vector Failures</h3>
+            <p><b>Symptom:</b> Ship positioned poorly for turret coverage, requiring constant repositioning.</p>
+            <p><b>Cause:</b> Poor initial positioning or pilot inexperience.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Position ship 50-100m from rock at optimal angle for all three turrets</li>
+                <li>Use decoupled mode for fine positioning adjustments</li>
+                <li>For solo: park ship before switching to turret</li>
+            </ul>
+
+            <h3>9. Communication Breakdown (Multi-Crew)</h3>
+            <p><b>Symptom:</b> Crew members work at cross-purposes, wasting time and resources.</p>
+            <p><b>Cause:</b> Lack of clear communication protocols.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Establish clear roles: pilot, primary operator, support operators</li>
+                <li>Use standardized callouts: "Charge started," "In the green," "Fracture complete"</li>
+                <li>Pilot provides constant intel: rock mass, composition, instability</li>
+                <li>Practice together to build coordination</li>
+            </ul>
+
+            <h3>10. Rock Explodes (Overcharge)</h3>
+            <p><b>Symptom:</b> Rock detonates, destroying all ore.</p>
+            <p><b>Cause:</b> Charge exceeded optimal window and entered red zone.</p>
+            <p><b>Solution:</b></p>
+            <ul>
+                <li>Feather laser power as charge approaches optimal window</li>
+                <li>Use OptiMax gadget to widen charge window</li>
+                <li>Coordinate crew to reduce power simultaneously when approaching red zone</li>
+                <li>Practice charge management on low-value rocks before attempting high-value targets</li>
+            </ul>
         </div>
 
         <div id="checklist" class="tab-content">
-            
-            <h2>Pre-Flight Checklist</h2>
-            <ul class="checklist">
-                <li><input type="checkbox">MOLE is fueled and repaired.</li>
-                <li><input type="checkbox">All components are installed and functioning.</li>
-                <li><input type="checkbox">Crew members are assigned to their roles.</li>
-                <li><input type="checkbox">Communication channels are established and tested.</li>
-                <li><input type="checkbox">Medical and repair supplies are stocked.</li>
-            </ul>
-            <h2>Mining Operation Checklist</h2>
-            <div class="timer-container">
-                <h3>QUANTANIUM TIMER</h3>
-                <div class="timer-display" id="mole-timer">25:00</div>
-                <button class="timer-btn" onclick="startMoleTimer()">START TIMER</button>
-                <button class="timer-btn reset" onclick="resetMoleTimer()">RESET TIMER</button>
+            <h2>Operational Checklists</h2>
+            <p>These checklists ensure all critical steps are completed before, during, and after mining operations. Use the interactive checkboxes to track your progress.</p>
+
+            <div class="warning-box">
+                <h3 style="margin-top: 0; color: var(--f4s-red);">⚠ QUANTANIUM COUNTDOWN TIMER ⚠</h3>
+                <p style="text-align: center; font-size: 18px;"><b>START HERE: When Quantanium enters cargo hold, start the timer immediately!</b></p>
+                <div class="timer-display" id="timer-display">25:00</div>
+                <div class="timer-controls">
+                    <button onclick="startTimer()">START TIMER</button>
+                    <button class="reset-btn" onclick="resetTimer()">RESET TIMER</button>
+                </div>
+                <div id="timer-status" style="color: var(--f4s-green);">✓ Timer ready. Start when Quantanium enters cargo hold.</div>
             </div>
-            <ul class="checklist">
-                <li><input type="checkbox">Prospecting scan complete.</li>
-                <li><input type="checkbox">High-value target identified.</li>
-                <li><input type-="checkbox">Ship positioned for optimal turret coverage.</li>
-                <li><input type="checkbox">Fracturing complete.</li>
-                <li><input type="checkbox">Extraction complete.</li>
-                <li><input type="checkbox">Cargo hold full.</li>
-            </ul>
-            <h2>Post-Flight Checklist</h2>
-            <ul class="checklist">
-                <li><input type="checkbox">Ore delivered to refinery.</li>
-                <li><input type="checkbox">MOLE refueled and restocked.</li>
-                <li><input type="checkbox">Debrief with crew.</li>
-            </ul>
-            <script>
-                let moleTimerInterval;
-                let moleTimeRemaining = 25 * 60;
 
-                function startMoleTimer() {
-                    clearInterval(moleTimerInterval);
-                    moleTimerInterval = setInterval(() => {
-                        moleTimeRemaining--;
-                        const minutes = Math.floor(moleTimeRemaining / 60);
-                        const seconds = moleTimeRemaining % 60;
-                        document.getElementById("mole-timer").textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                        if (moleTimeRemaining <= 0) {
-                            clearInterval(moleTimerInterval);
-                            document.getElementById("mole-timer").textContent = "TIMER EXPIRED";
-                        }
-                    }, 1000);
-                }
+            <h3>Pre-Flight Checklist</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> All components installed and functional</li>
+                <li><input type="checkbox"> Mining lasers equipped (Helix II / Impact II / Arbor MH2)</li>
+                <li><input type="checkbox"> Shield generator operational (7SA 'Concord' or RPEL)</li>
+                <li><input type="checkbox"> Power plant sufficient for all systems (Cirrus or LightBlossom)</li>
+                <li><input type="checkbox"> Cooler functional (IceBox or BlastChill)</li>
+                <li><input type="checkbox"> Quantum drive operational (FoxFire or Explorer)</li>
+                <li><input type="checkbox"> Mining gadgets stocked (BoreMax, OptiMax, Stampede)</li>
+                <li><input type="checkbox"> Fuel tanks full</li>
+                <li><input type="checkbox"> Cargo hold empty (96 SCU available)</li>
+                <li><input type="checkbox"> Crew roles assigned (pilot, primary operator, support operators)</li>
+                <li><input type="checkbox"> Communication protocols established</li>
+                <li><input type="checkbox"> Destination selected (Lyria, Yela Belt, Microtech, Pyro)</li>
+            </ul>
 
-                function resetMoleTimer() {
-                    clearInterval(moleTimerInterval);
-                    moleTimeRemaining = 25 * 60;
-                    document.getElementById("mole-timer").textContent = "25:00";
-                }
-            </script>
-            
+            <h3>Mining Operation Checklist</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> Arrived at mining location</li>
+                <li><input type="checkbox"> Performed wide-range scan (ping)</li>
+                <li><input type="checkbox"> Identified high-value target (8km+ signal, bright and stable)</li>
+                <li><input type="checkbox"> Verified rock mass (4,000-20,000 mass depending on crew size)</li>
+                <li><input type="checkbox"> Verified ore composition (Quantanium ≥30% or Taranite ≥40%)</li>
+                <li><input type="checkbox"> Positioned ship for optimal turret coverage (50-100m distance)</li>
+                <li><input type="checkbox"> Assigned primary operator for fracture</li>
+                <li><input type="checkbox"> Coordinated laser fire (all operators ready)</li>
+                <li><input type="checkbox"> Applied gadgets if needed (BoreMax for instability, Stampede for resistance)</li>
+                <li><input type="checkbox"> Maintained charge in optimal window (green zone)</li>
+                <li><input type="checkbox"> Fracture complete (rock split into fragments)</li>
+                <li><input type="checkbox"> Extracted all high-value fragments</li>
+                <li><input type="checkbox"> <b>If Quantanium collected: STARTED TIMER IMMEDIATELY</b></li>
+                <li><input type="checkbox"> Monitored cargo capacity (50%, 75%, 90% callouts)</li>
+                <li><input type="checkbox"> Jettisoned low-value ore if needed</li>
+            </ul>
+
+            <h3>Post-Mining Checklist</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> Cargo hold at target capacity (60-80% if Quantanium, 90-100% otherwise)</li>
+                <li><input type="checkbox"> Navigated to nearest refinery (ARC-L1, CRU-L1, MIC-L1, HUR-L1)</li>
+                <li><input type="checkbox"> <b>If Quantanium aboard: Arrived at refinery with time remaining on timer</b></li>
+                <li><input type="checkbox"> Unloaded ore at refinery</li>
+                <li><input type="checkbox"> Started refining process</li>
+                <li><input type="checkbox"> <b>RESET TIMER after ore unloaded</b></li>
+                <li><input type="checkbox"> Restocked mining gadgets</li>
+                <li><input type="checkbox"> Refueled ship</li>
+                <li><input type="checkbox"> Repaired any damage</li>
+                <li><input type="checkbox"> Collected refined ore and sold at commodity terminal</li>
+            </ul>
+
+            <h3>Performance Tracking</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> Recorded total SCU mined</li>
+                <li><input type="checkbox"> Recorded ore types and percentages</li>
+                <li><input type="checkbox"> Recorded total aUEC earned</li>
+                <li><input type="checkbox"> Calculated aUEC per hour</li>
+                <li><input type="checkbox"> Identified areas for improvement</li>
+            </ul>
         </div>
-
     </div>
 
     <script>
@@ -466,16 +1310,64 @@
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
             }
             tablinks = document.getElementsByClassName("tab-btn");
             for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].classList.remove("active");
             }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        let timerInterval;
+        let timeRemaining = 25 * 60; // 25 minutes in seconds
+
+        function startTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            timeRemaining = 25 * 60;
+            updateTimerDisplay();
+            timerInterval = setInterval(function() {
+                timeRemaining--;
+                updateTimerDisplay();
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById("timer-status").innerHTML = "⚠ TIMER EXPIRED - QUANTANIUM DETONATION IMMINENT ⚠";
+                    document.getElementById("timer-status").style.color = "var(--f4s-red)";
+                }
+            }, 1000);
+        }
+
+        function resetTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            timeRemaining = 25 * 60;
+            updateTimerDisplay();
+            document.getElementById("timer-status").innerHTML = "✓ Timer reset. Start when Quantanium enters cargo hold.";
+            document.getElementById("timer-status").style.color = "var(--f4s-green)";
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            const display = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            document.getElementById("timer-display").innerHTML = display;
+
+            // Update status message based on time remaining
+            if (timeRemaining > 10 * 60) {
+                document.getElementById("timer-status").innerHTML = "✓ Timer running. Continue mining operations.";
+                document.getElementById("timer-status").style.color = "var(--f4s-green)";
+            } else if (timeRemaining > 5 * 60) {
+                document.getElementById("timer-status").innerHTML = "⚠ WARNING: Less than 10 minutes remaining. Plan return route to refinery.";
+                document.getElementById("timer-status").style.color = "var(--f4s-gold)";
+            } else if (timeRemaining > 0) {
+                document.getElementById("timer-status").innerHTML = "⚠ CRITICAL: Less than 5 minutes remaining. Return to refinery immediately.";
+                document.getElementById("timer-status").style.color = "var(--f4s-red)";
+            }
         }
     </script>
 </body>
-</html>
 </html>
